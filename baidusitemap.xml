@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://yoursite-url/cn/Hexo-Theme-LiveMyLife/</loc>
-    <lastmod>2020-04-16</lastmod>
+    <loc>http://yoursite-url/%E5%AE%9E%E9%AA%8C/Lab1/</loc>
+    <lastmod>2021-09-21</lastmod>
   </url>
   <url>
-    <loc>http://yoursite-url/en/Hexo-Theme-LiveMyLife/</loc>
-    <lastmod>2020-04-16</lastmod>
+    <loc>http://yoursite-url/%E5%AE%9E%E9%AA%8C/Lab0/</loc>
+    <lastmod>2021-09-21</lastmod>
   </url>
 </urlset> 
