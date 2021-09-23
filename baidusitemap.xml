@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://yoursite-url/%E5%AE%9E%E9%AA%8C/Lab1/</loc>
+    <loc>http://wangkang.com/my/moon/</loc>
+    <lastmod>2021-09-23</lastmod>
+  </url>
+  <url>
+    <loc>http://wangkang.com/my/%E5%B0%8F%E8%AE%B0/</loc>
+    <lastmod>2021-09-23</lastmod>
+  </url>
+  <url>
+    <loc>http://wangkang.com/my/Lab1/</loc>
     <lastmod>2021-09-21</lastmod>
   </url>
   <url>
-    <loc>http://yoursite-url/%E5%AE%9E%E9%AA%8C/Lab0/</loc>
+    <loc>http://wangkang.com/my/Lab0/</loc>
     <lastmod>2021-09-21</lastmod>
   </url>
 </urlset> 
