@@ -247,9 +247,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              ARCHIVES
+              ABOUT
               
               
             </a>
@@ -258,9 +258,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/archive/">
               
-              ABOUT
+              ARCHIVES
               
               
             </a>
@@ -404,7 +404,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">173</span> In Total
+              Words <span class="post-count">142</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -467,10 +467,11 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
         <p>很久之前就想做一个像样的个人博客，用来记录一些有趣的东西。</p>
-<p>无奈水平太差，心有余而力不足。在经过一番挣扎后，此事只能搁置。</p>
-<p>最近图形学老师要求建立个人博客，于是重新想做个博客。无意间在网上发现了<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">Hexo</a>这么好用的博客框架，那我就不客气的拿来用了。</p>
+<p>无奈水平太差，心有余而力不足。</p>
+<p>最近因课程要求建立个人网站，于是重新想做个博客。</p>
+<p>另，在网上发现了<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">Hexo</a>这么好用的博客框架，那我就拿来用了。</p>
 <p>上手还是很简单的，感谢<a target="_blank" rel="noopener" href="https://v-vincen.life/">作者</a>开发了这么好用的主题。</p>
-<p>所以，我打算没事就写点博客，打发打发时间，发些无聊的感慨，抒发心中的某些东西。</p>
+<p>所以，我打算没事就写点博客，打发打发时间，发些无聊的感慨。</p>
 <p>so，就这样，持续努力中。。</p>
 
 
@@ -749,7 +750,7 @@
 
   
     <!-- Mouseclick -->
-    <script type="text/javascript" src="/js/mouseclick.js" content='The first step is as good as half over...,Laugh and grow fat...,Man proposes God disposes...,When all else is lost the future still remains...,Wasting time is robbing oneself...,Sharp tools make good work...,Cease to struggle and you cease to live...,A friend in need is a friend indeed...,Faith can move mountains...,单身狗' color='#9933CC,#339933,#66CCCC,#FF99CC,#CCCCFF,#6666CC,#663399,#66CC99,#FF0033,#9933CC'></script>
+    <script type="text/javascript" src="/js/mouseclick.js" content='The first step is as good as half over...,Laugh and grow fat...,Man proposes God disposes...,When all else is lost the future still remains...,Wasting time is robbing oneself...,Sharp tools make good work...,Cease to struggle and you cease to live...,A friend in need is a friend indeed...,Faith can move mountains...' color='#9933CC,#339933,#66CCCC,#FF99CC,#CCCCFF,#6666CC,#663399,#66CC99,#FF0033'></script>
   
 
   
@@ -1138,5 +1139,20 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
