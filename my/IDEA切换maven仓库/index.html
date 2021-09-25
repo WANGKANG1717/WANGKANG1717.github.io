@@ -115,10 +115,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="http://wangkang.com/my/Lab1/">
+  <link rel="canonical" href="http://wangkang.com/my/IDEA切换maven仓库/">
   <title>
     
-      Lab1 - dead or alive
+      IDEA切换maven仓库 - dead or alive
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -314,19 +314,19 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/newhome_bg.jpg');
-      --intro-header-background-image-url-post: url('/img/header_img/lml_bg.jpg');
-      --intro-header-background-image-url-page: url('//img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-post: url('/img/header_img/archive_bg3.jpg');
+      --intro-header-background-image-url-page: url('//img/header_img/archive_bg3.jpg');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/newhome_bg.jpg');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/lml_bg.jpg');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/archive_bg3.jpg');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/header_img/archive_bg3.jpg');
     }
 
     header.intro-header {
        /*post*/
         background-image: var(--intro-header-background-image-url-post);
-        /* background-image: url('/img/header_img/lml_bg.jpg'); */
+        /* background-image: url('/img/header_img/archive_bg3.jpg'); */
       
     }
 
@@ -351,14 +351,14 @@
           <div class="post-heading">
             <div class="tags">
               
-              <a class="tag" href="/tags/#实验" title="实验">实验</a>
+              <a class="tag" href="/tags/#maven" title="maven">maven</a>
               
             </div>
-            <h1>Lab1</h1>
-            <h2 class="subheading">绘制三角形</h2>
+            <h1>IDEA切换maven仓库</h1>
+            <h2 class="subheading">阿里大法好</h2>
             <span class="meta">
               Posted by WK on
-              2021-09-21
+              2021-09-25
             </span>
 
 
@@ -370,7 +370,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">161</span> In Total
+              Words <span class="post-count">185</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -432,47 +432,30 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h3 id="工具">工具</h3>
-<p>HBuilder</p>
-<h3 id="webgl库">webgl库</h3>
-<p><img src="lib.png" width="350" alt="lib.png"></img></p>
-<h3 id="结构总览">结构总览</h3>
-<p><img src="zonglan.png" width="350" alt="zonglan.png"></img></p>
-<h3 id="任务">任务</h3>
-<ul>
-<li>任务a. 修改三角形的显示颜色，比如改成蓝色或绿色</li>
-</ul>
-<p><img src="a.png" width="350" alt="a.png"></img></p>
-<ul>
-<li>任务b. 绘制一个四边形，颜色可任意设置为除红色之外的颜色</li>
-</ul>
-<p><img src="b.png" width="350" alt="b.png"></img></p>
-<ul>
-<li>任务c. 同时绘制一个三角形和一个四边形，将两者设置为相同的颜色，要求同上</li>
-</ul>
-<p><img src="c.png" width="350" alt="c.png"></img></p>
-<ul>
-<li>任务d. 将任务c中的三角形和四边形设置为不同的颜色</li>
-<li>ps:这个想了许久，没有做出来，惭愧惭愧</li>
-</ul>
-<p><img src="d.png" width="350" alt="d.png"></img></p>
-<ul>
-<li>任务e<a target="_blank" rel="noopener" href="https://liyi1003zcmu.github.io/CourseWare/CGChapters/Chapter1/Chapter-1-lab1.html#fn:1">1</a>. 绘制如下图所示效果的三角形，三角形大小可变，颜色按照示例</li>
-</ul>
-<p><img src="e.png" width="350" alt="e.png"></img></p>
+        <p>IEAD默认的maven库下载太慢，于是乎有必要换一个更快的maven库</p>
+<h4 id="方法"><strong>方法</strong></h4>
+<h5 id="一：找到Maven的settings-xml文件">一：找到Maven的settings.xml文件</h5>
+<p>settings.xml默认存放地址为IDEA安装路劲下的：</p>
+<p>JetBrains\IntelliJ IDEA <a target="_blank" rel="noopener" href="http://xxx.xxx">xxx.xxx</a>\plugins\maven\lib\maven3\conf</p>
+<p>复制一份settings.xml 到：C:\Users\You user.m2/</p>
+<h5 id="二：修改settings-xml-文件">二：修改settings.xml 文件</h5>
+<p>找到</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">&lt;mirrors&gt;</span> <span class="section">&lt;/mirrors&gt;</span></span><br></pre></td></tr></table></figure>
+<p>标签，并添加如下阿里maven仓库配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span> </span><br><span class="line">   <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span> </span><br><span class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span> </span><br><span class="line">   <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span> <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>     </span><br><span class="line">  <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="1.png" width="500" alt="1.png"></img></p>
+<p>最后修改 IDEA 中的配置File----&gt; settings --&gt; Build,Executon,Deployment --&gt; Maven：找到下图位置，选择你settings.xml文件路径，勾选 Override 便可。</p>
+<p><img src="2.png" width="500" alt="2.png"></img></p>
+<p>大功告成！</p>
 
 
         <hr>
         <!-- Pager -->
         <ul class="pager">
           
-          <li class="previous">
-            <a href="/my/小记/" data-toggle="tooltip" data-placement="top" title="小记">&larr; Previous Post</a>
-          </li>
-          
           
           <li class="next">
-            <a href="/my/Lab0/" data-toggle="tooltip" data-placement="top" title="Lab0">Next Post &rarr;</a>
+            <a href="/my/Gitalk配置/" data-toggle="tooltip" data-placement="top" title="Gitalk配置">Next Post &rarr;</a>
           </li>
           
         </ul>
@@ -516,7 +499,7 @@
       repo: 'blog_comment',
       owner: 'WANGKANG1717',
       admin: 'WANGKANG1717',
-      id: 'Tue Sep 21 2021 20:30:23 GMT+0800', // Ensure uniqueness and length less than 50
+      id: 'Sat Sep 25 2021 16:00:56 GMT+0800', // Ensure uniqueness and length less than 50
       distractionFreeMode: false, // Facebook-like distraction free mode
       perPage: 10,
       pagerDirection: 'last',
@@ -569,7 +552,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">工具</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#webgl%E5%BA%93"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">webgl库</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BB%93%E6%9E%84%E6%80%BB%E8%A7%88"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">结构总览</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%BB%E5%8A%A1"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">任务</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">方法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E4%B8%80%EF%BC%9A%E6%89%BE%E5%88%B0Maven%E7%9A%84settings-xml%E6%96%87%E4%BB%B6"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">一：找到Maven的settings.xml文件</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E4%BA%8C%EF%BC%9A%E4%BF%AE%E6%94%B9settings-xml-%E6%96%87%E4%BB%B6"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">二：修改settings.xml 文件</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -592,7 +575,7 @@
           </h5>
           <div class="tags">
             
-            <a class="tag" href="/tags/#实验" title="实验">实验</a>
+            <a class="tag" href="/tags/#maven" title="maven">maven</a>
             
           </div>
         </section>
