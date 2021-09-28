@@ -115,10 +115,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="http://wangkang.com/my/Lab0/">
+  <link rel="canonical" href="http://wangkang.com/my/Gitalk配置/">
   <title>
     
-      Lab0 - dead or alive
+      Gitalk配置 - dead or alive
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -351,14 +351,14 @@
           <div class="post-heading">
             <div class="tags">
               
-              <a class="tag" href="/tags/#实验" title="实验">实验</a>
+              <a class="tag" href="/tags/#Gitalk" title="Gitalk">Gitalk</a>
               
             </div>
-            <h1>Lab0</h1>
-            <h2 class="subheading">绘制一副图，要求有明确的主题</h2>
+            <h1>Gitalk配置</h1>
+            <h2 class="subheading">其实很简单</h2>
             <span class="meta">
               Posted by WK on
-              2021-09-21
+              2021-09-24
             </span>
 
 
@@ -370,7 +370,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">0</span> In Total
+              Words <span class="post-count">115</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -432,7 +432,19 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <p><img src="p1.png" width="350" alt="p1.png"></img></p>
+        <p>1.首先在https://github.com/settings/developers里面建立一个新的OAuthApps<br>
+具体的格式如下：</p>
+<p><img src="1.png" width="500" alt="1.png"></img></p>
+<p><img src="2.png" width="500" alt="2.png"></img></p>
+<p>最后一个很重要，建议Homepage URL和Authorization callback URL填写同一个，也就是你的博客地址</p>
+<p>2.在你的github中新建一个空仓库</p>
+<p><img src="3.png" width="500" alt="3.png"></img></p>
+<p>并且在设置中开启Issues（好像是默认开启）<br>
+3.在Hexo的_config.yml中修改gitalk配置，如下：</p>
+<p><img src="4.png" width="500" alt="4.png"></img></p>
+<p>client_id和client_secret可以在你的OAuthApps找到：</p>
+<p><img src="5.png" width="500" alt="5.png"></img></p>
+<p>4.然后就可以愉快的玩耍了啊</p>
 
 
         <hr>
@@ -440,9 +452,13 @@
         <ul class="pager">
           
           <li class="previous">
-            <a href="/my/Lab1/" data-toggle="tooltip" data-placement="top" title="Lab1">&larr; Previous Post</a>
+            <a href="/my/IDEA切换maven仓库/" data-toggle="tooltip" data-placement="top" title="IDEA切换maven仓库">&larr; Previous Post</a>
           </li>
           
+          
+          <li class="next">
+            <a href="/my/moon/" data-toggle="tooltip" data-placement="top" title="moon">Next Post &rarr;</a>
+          </li>
           
         </ul>
 
@@ -485,7 +501,7 @@
       repo: 'blog_comment',
       owner: 'WANGKANG1717',
       admin: 'WANGKANG1717',
-      id: 'Tue Sep 21 2021 19:47:59 GMT+0800', // Ensure uniqueness and length less than 50
+      id: 'Fri Sep 24 2021 10:13:18 GMT+0800', // Ensure uniqueness and length less than 50
       distractionFreeMode: false, // Facebook-like distraction free mode
       perPage: 10,
       pagerDirection: 'last',
@@ -561,7 +577,7 @@
           </h5>
           <div class="tags">
             
-            <a class="tag" href="/tags/#实验" title="实验">实验</a>
+            <a class="tag" href="/tags/#Gitalk" title="Gitalk">Gitalk</a>
             
           </div>
         </section>
