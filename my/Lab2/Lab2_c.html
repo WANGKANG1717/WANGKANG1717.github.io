@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<title>Lab2_c</title>
+		<!-- 顶点着色器和片元着色器代码 -->
+		<script id="vertex-shader" type="x-shader/x-vertex">
+			attribute vec4 vPosition;
+			void main(){
+				gl_PointSize = 10.0;
+				gl_Position = vPosition;
+			}
+		</script>
+		<!-- 四边形形 -->
+		<script id="fragment-shader" type="x-shader/x-fragment">
+			precision mediump float;
+			void main(){
+				gl_FragColor = vec4( 0.0, 1.0, 0.0, 1.0 );
+			}
+		</script>
+		<!-- 一组相关的JS库 -->
+		<script type="text/javascript" src="lib/webgl-utils.js"></script>
+		<script type="text/javascript" src="lib/initShaders.js"></script>
+		<script type="text/javascript" src="lib/gl-matrix-min.js"></script>
+		<!-- 绘制四边形的JS代码 -->
+		<script type="text/javascript" src="js/2D.js"></script>
+	</head>
+	<body onload="DrawTriangle()">
+		<div style="width: 100%; margin-top: 20px;" align="center">
+			<div style="height:50px; width: 345px;">
+				<a style="font-size: 30px; font-family: 楷体; background-color: aqua;">Sierpinski Gasket的绘制</a>
+			</div>
+			<form name="myform"p>
+				剖分层次：<input type="text" value="1" name="Count" style="margin-bottom: 5px;" /> <br />
+				<input type="button" value="确定" style="margin-bottom: 5px;" onclick="DrawTriangle()" /> <br />
+			</form>
+			<div id="Triangle"></div>
+		</div>
+	</body>
+</html>
