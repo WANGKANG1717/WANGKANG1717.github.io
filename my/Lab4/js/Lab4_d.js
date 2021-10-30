@@ -158,6 +158,7 @@ function render() {
 var count = 0;
 var clickTimer = null;
 var ctrl = false;
+var shift = false;
 var flag = false;
 
 function addEvent() {
@@ -177,6 +178,7 @@ function addEvent() {
 		} else if (pre_t[0] > 0.5) {
 			alpha[1] -= 0.04;
 		}
+		// console.log(alpha);
 	});
 	//鼠标按下
 	canvas.addEventListener("mousedown", function(event) {
@@ -190,6 +192,7 @@ function addEvent() {
 	//鼠标双击
 	canvas.addEventListener("dblclick", function(event) {
 		alpha = [0, 0, 0];
+		// console.log(alpha);
 	});
 	//鼠标释放
 	canvas.addEventListener("mouseup", function(event) {
@@ -201,10 +204,13 @@ function addEvent() {
 		if (event.keyCode == 17) {
 			ctrl = true;
 		} else ctrl = false;
-		// console.log(ctrl);
+		if (event.keyCode == 16) {
+			shift = true;
+		} else shift = false;
 	}
 	document.getElementById("BODY").onkeyup = function(event) {
 		ctrl = false;
+		shift = false;
 	}
 	//鼠标移动
 	canvas.addEventListener("mousemove", function(event) {
@@ -225,17 +231,15 @@ function addEvent() {
 			var cX = event.clientX - rect.left;
 			var cY = event.clientY - rect.top;
 			var t = vec2.fromValues(2 * cX / canvas.width - 1, 1 - 2 * cY / canvas.height);
-			offset[0]=t[0];
-			offset[1]=t[1];
+			offset[0] = t[0];
+			offset[1] = t[1];
 		}
 	});
 	//鼠标滚轮控制缩放
 	canvas.addEventListener("mousewheel", function(event) {
-		if(ctrl) {
-			scale[0]+=event.wheelDelta/1200;
-		}
-		else {
-			scale[1]+=event.wheelDelta/1200;
+		if (shift) {
+			scale[0] += event.wheelDelta / 1200;
+			scale[1] += event.wheelDelta / 1200;
 		}
 	});
 }
