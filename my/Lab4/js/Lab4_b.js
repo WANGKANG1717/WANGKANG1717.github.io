@@ -170,14 +170,14 @@ function addEvent() {
 	
 	document.getElementById("X_offset").onchange=function(event) {
 		offset[0]=event.target.value/canvas.width;
-		console.log(offset);
+		// console.log(offset);
 	}
 	document.getElementById("Y_offset").onchange=function(event) {
 		offset[1]=event.target.value/canvas.height;
-		console.log(offset);
+		// console.log(offset);
 	}
 	document.getElementById("Z_offset").onchange=function(event) {
 		offset[2]=event.target.value/canvas.width;
-		console.log(offset);
+		// console.log(offset);
 	}
 }

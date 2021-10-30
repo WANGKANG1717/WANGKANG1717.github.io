@@ -1,6 +1,6 @@
 /**
  * kang
- * 2021/10/12
+ * 2021/10/30
  */
 const {
 	vec2,
@@ -13,7 +13,7 @@ var gl;
 
 var points = [];
 var colors = [];
-
+//控制旋转
 var xAxis = 0;
 var yAxis = 1;
 var zAxis = 2;
@@ -21,9 +21,12 @@ var zAxis = 2;
 var axis = 0;
 var theta = [0, 0, 0];
 var thetaLoc;
-
-//偏移量
-var scale=vec3.fromValues(1,  1, 1);
+var alpha = [0, 0, 0];
+//控制旋平移
+var offset = vec3.fromValues(0, 0, 0);
+var offsetLoc;
+//控制缩放
+var scale = vec3.fromValues(1, 1, 1);
 var scaleLoc;
 
 window.onload = function initCube() {
@@ -77,6 +80,9 @@ window.onload = function initCube() {
 	//theta是3维浮点型数组，所以是3fv
 	gl.uniform3fv(thetaLoc, theta);
 	//
+	offsetLoc = gl.getUniformLocation(program, "offset");
+	gl.uniform3fv(offsetLoc, offset);
+	//
 	scaleLoc = gl.getUniformLocation(program, "scale");
 	gl.uniform3fv(scaleLoc, scale);
 	/**
@@ -111,16 +117,7 @@ function makeCube() {
 		vec4.fromValues(1.0, 1.0, 1.0, 1.0)
 	];
 
-	// var faces = [
-	// 	1, 0, 3, 1, 3, 2, //正
-	// 	2, 3, 7, 2, 7, 6, //右
-	// 	3, 0, 4, 3, 4, 7, //底
-	// 	6, 5, 1, 6, 1, 2, //顶
-	// 	4, 5, 6, 4, 6, 7, //背
-	// 	5, 4, 0, 5, 0, 1 //左
-	// ];
-	
-	var faces= [
+	var faces = [
 		1, 0, 3, 2,
 		2, 3, 7, 6,
 		3, 0, 4, 7,
@@ -139,45 +136,106 @@ function makeCube() {
 }
 
 function render() {
-	// console.log(points.length);
-	// console.log(colors.length);
 	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-	theta[axis] += 0.1;
+	theta[0] += alpha[0];
+	theta[1] += alpha[1];
+	// theta[2]+=alpha[2];
 	gl.uniform3fv(thetaLoc, theta);
-	//更新偏移量
+	//更新位移
+	gl.uniform3fv(offsetLoc, offset);
+	//更新缩放
 	gl.uniform3fv(scaleLoc, scale);
-	
-	for(var i=0; i<points.length/3; i+=4) {
+
+	for (var i = 0; i < points.length / 3; i += 4) {
 		gl.drawArrays(gl.TRIANGLE_FAN, i, 4);
 	}
 
 	requestAnimFrame(render);
 }
 
+//监听鼠标点击次数
+var count = 0;
+var clickTimer = null;
+var ctrl = false;
+var flag = false;
+
 function addEvent() {
-	document.getElementById("rotateX").onclick = function() {
-		axis = xAxis;
+	//监听鼠标点击事件
+	canvas.addEventListener("click", function(event) {
+		var rect = canvas.getBoundingClientRect();
+		var cX = event.clientX - rect.left;
+		var cY = event.clientY - rect.top;
+		// console.log(cX+" "+cY+" "+rect.left+" "+rect.top);
+		var pre_t = vec2.fromValues(2 * cX / canvas.width - 1, 1 - 2 * cY / canvas.height);
+		if (pre_t[1] > 0.5) {
+			alpha[0] += 0.04;
+		} else if (pre_t[1] < -0.5) {
+			alpha[0] -= 0.04;
+		} else if (pre_t[0] < -0.5) {
+			alpha[1] += 0.04;
+		} else if (pre_t[0] > 0.5) {
+			alpha[1] -= 0.04;
+		}
+	});
+	//鼠标按下
+	canvas.addEventListener("mousedown", function(event) {
+		flag = true;
+		var rect = canvas.getBoundingClientRect();
+		var cX = event.clientX - rect.left;
+		var cY = event.clientY - rect.top;
+		// console.log(cX+" "+cY+" "+rect.left+" "+rect.top);
+		pre_t = vec2.fromValues(2 * cX / canvas.width - 1, 1 - 2 * cY / canvas.height);
+	});
+	//鼠标双击
+	canvas.addEventListener("dblclick", function(event) {
+		alpha = [0, 0, 0];
+	});
+	//鼠标释放
+	canvas.addEventListener("mouseup", function(event) {
+		flag = false;
+	});
+	//ctrl键按下
+	document.getElementById("BODY").onkeydown = function(event) {
+		// console.log(event.keyCode);
+		if (event.keyCode == 17) {
+			ctrl = true;
+		} else ctrl = false;
+		// console.log(ctrl);
 	}
-	
-	document.getElementById("rotateY").onclick = function() {
-		axis = yAxis;
+	document.getElementById("BODY").onkeyup = function(event) {
+		ctrl = false;
 	}
-	
-	document.getElementById("rotateZ").onclick = function() {
-		axis = zAxis;
-	}
-	
-	document.getElementById("X_Scale").onchange=function(event) {
-		scale[0]=event.target.value/100;
-		// console.log(scale);
-	}
-	document.getElementById("Y_Scale").onchange=function(event) {
-		scale[1]=event.target.value/100;
-		// console.log(scale);
-	}
-	document.getElementById("Z_Scale").onchange=function(event) {
-		scale[2]=event.target.value/100;
-		// console.log(scale);
-	}
+	//鼠标移动
+	canvas.addEventListener("mousemove", function(event) {
+		if (flag && !ctrl) {
+			//修正鼠标的位置
+			//使canvas的中心为坐标原点
+			var rect = canvas.getBoundingClientRect();
+			var cX = event.clientX - rect.left;
+			var cY = event.clientY - rect.top;
+			// console.log(cX+" "+cY+" "+rect.left+" "+rect.top);
+			var t = vec2.fromValues(2 * cX / canvas.width - 1, 1 - 2 * cY / canvas.height);
+			// console.log(t);
+			alpha[0] = t[1] / 10;
+			alpha[1] = -t[0] / 10;
+		} else if (flag && ctrl) {
+			console.log("bbb");
+			var rect = canvas.getBoundingClientRect();
+			var cX = event.clientX - rect.left;
+			var cY = event.clientY - rect.top;
+			var t = vec2.fromValues(2 * cX / canvas.width - 1, 1 - 2 * cY / canvas.height);
+			offset[0]=t[0];
+			offset[1]=t[1];
+		}
+	});
+	//鼠标滚轮控制缩放
+	canvas.addEventListener("mousewheel", function(event) {
+		if(ctrl) {
+			scale[0]+=event.wheelDelta/1200;
+		}
+		else {
+			scale[1]+=event.wheelDelta/1200;
+		}
+	});
 }
