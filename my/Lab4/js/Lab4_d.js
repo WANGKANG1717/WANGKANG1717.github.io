@@ -146,8 +146,8 @@ function render() {
 	gl.uniform3fv(offsetLoc, offset);
 	//更新缩放
 	gl.uniform3fv(scaleLoc, scale);
-
-	for (var i = 0; i < points.length / 3; i += 4) {
+	// console.log(points.length/3);
+	for (var i = 0; i < points.length/3; i += 4) {
 		gl.drawArrays(gl.TRIANGLE_FAN, i, 4);
 	}
 
@@ -155,8 +155,6 @@ function render() {
 }
 
 //监听鼠标点击次数
-var count = 0;
-var clickTimer = null;
 var ctrl = false;
 var shift = false;
 var flag = false;
@@ -226,7 +224,7 @@ function addEvent() {
 			alpha[0] = t[1] / 10;
 			alpha[1] = -t[0] / 10;
 		} else if (flag && ctrl) {
-			console.log("bbb");
+			// console.log("bbb");
 			var rect = canvas.getBoundingClientRect();
 			var cX = event.clientX - rect.left;
 			var cY = event.clientY - rect.top;

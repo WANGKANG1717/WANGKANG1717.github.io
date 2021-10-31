@@ -1,0 +1,13 @@
+input[type="range"] {
+	width: 130px;
+	height: 15px;
+	margin:0px 10px 10px 10px;
+}
+
+#DIV {
+	width: 600px;
+	font-size: 20px;
+	font-family: 隶书;
+	background-color: rgba(0, 255, 255, 0.2);
+	margin-bottom: 10px;
+}
