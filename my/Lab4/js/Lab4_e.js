@@ -361,41 +361,7 @@ function addEvent() {
 	}
 	//清空
 	document.getElementById("clear").onclick = function(event) {
-		index = bg_index;
-		//正三角形
-		scale_tri = 1.0;
-		TriIndex = [];
-		TriScale = [];
-		TriScaleFlag = [];
-		TriOffset = [];
-		//正方形
-		scale_squ = 1;
-		speed_squ = 50;
-		SquIndex = [];
-		SquScale = [];
-		SquOffset = [];
-		SquTheta = [];
-		SquTheta_speed = [];
-		//立方体
-		scale_cube = 1;
-		CubeIndex = [];
-		CubeScale = [];
-		CubeOffset = [];
-		CubeTheta = [];
-		CubeTheta_speed = vec3.fromValues(0.01, 0.01, 0);
-		//圆
-		scale_circle = 1;
-		CircleIndex = [];
-		CircleNums = [];
-		CircleScale = [];
-		CircleOffset = [];
-		CircleTheta = [];
-		Circleoffset_speed = [];
-		CircleX = [];
-		CircleY = [];
-		CircleEdge = 180;
-		offsetAlpha = 45 * Math.PI / 180;
-		Circle_speed = 0.025;
+		clear();
 	}
 }
 //-----------------------界面操作部分end-----------------------------
@@ -561,4 +527,42 @@ function addCircle(pos) {
 	}
 	CircleNums.push(count);
 	index += count;
+}
+
+function clear() {
+	index = bg_index;
+	//正三角形
+	// scale_tri = 1.0;
+	TriIndex = [];
+	TriScale = [];
+	TriScaleFlag = [];
+	TriOffset = [];
+	//正方形
+	// scale_squ = 1;
+	// speed_squ = 50;
+	SquIndex = [];
+	SquScale = [];
+	SquOffset = [];
+	SquTheta = [];
+	SquTheta_speed = [];
+	//立方体
+	// scale_cube = 1;
+	CubeIndex = [];
+	CubeScale = [];
+	CubeOffset = [];
+	CubeTheta = [];
+	// CubeTheta_speed = vec3.fromValues(0.01, 0.01, 0);
+	//圆
+	// scale_circle = 1;
+	CircleIndex = [];
+	CircleNums = [];
+	CircleScale = [];
+	CircleOffset = [];
+	CircleTheta = [];
+	Circleoffset_speed = [];
+	CircleX = [];
+	CircleY = [];
+	// CircleEdge = 180;
+	// offsetAlpha = 45 * Math.PI / 180;
+	// Circle_speed = 0.025;
 }
