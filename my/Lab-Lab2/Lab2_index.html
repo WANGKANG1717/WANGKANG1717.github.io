@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<title>Lab2_index</title>
+		<!-- 顶点着色器和片元着色器代码 -->
+		<script id="vertex-shader" type="x-shader/x-vertex">
+			attribute vec4 vPosition;
+			attribute vec4 aColor;
+			varying vec4 vColor;
+			void main(){
+				gl_PointSize = 20.0;
+				gl_Position = vPosition;
+				vColor=aColor;
+			}
+		</script>
+		<!-- 四边形形 -->
+		<script id="fragment-shader" type="x-shader/x-fragment">
+			precision mediump float;
+			varying vec4 vColor;
+			void main(){
+				gl_FragColor = vColor;
+			}
+		</script>
+		<!-- 一组相关的JS库 -->
+		<script type="text/javascript" src="lib/webgl-utils.js"></script>
+		<script type="text/javascript" src="lib/initShaders.js"></script>
+		<script type="text/javascript" src="lib/gl-matrix-min.js"></script>
+		<!-- 绘制四边形的JS代码 -->
+		<script type="text/javascript" src="js/Lab2_index.js"></script>
+	</head>
+	<body onload="DrawTriangle()">
+		<div style="width: 100%; margin-top: 20px;" align="center">
+			<div style="height:50px;  width: 465px;">
+				<a style="font-size: 30px; font-family: 楷体; background-color: aqua;">Sierpinski Gasket交互式绘制界面</a>
+			</div>
+			<form name="myform">
+				绘制维数: <select name="Dimension" style="width: 173px; height: 21px; margin-bottom: 5px;">
+					<option value="2" selected="selected">2维Sierpinski Gasket</option>
+					<option value="3">3维Sierpinski Gasket</option>
+				</select> <br />
+				旋转方式: <select name="Rotate" style="width: 173px; height: 21px; margin-bottom: 5px;">
+					<option value="1" selected="selected">普通旋转</option>
+					<option value="2">根据距离旋转</option>
+				</select> <br />
+				是否填充: <select name="Fill" style="width: 173px; height: 21px; margin-bottom: 5px;">
+					<option value="1">填充</option>
+					<option value="2" selected="selected">不填充</option>
+				</select> <br />
+				剖分层次: <input type="text" value="0" name="Count" style="margin-bottom: 5px;" /> <br />
+				旋转角度: <input type="text" value="0" name="Angle" style="margin-bottom: 5px;" /> <br />
+				RGB(0-255): <input type="text" style="width: 50px;" value="0" name="R" />
+				<input type="text" style="width: 50px;" value="255" name="G" />
+				<input type="text" style="width: 50px;" value="255" name="B" /> <br />
+				<div style="border: aquamarine 2px solid; margin: 10px; width: 270px;">
+					自动旋转: <select name="Play" style="width: 173px; height: 21px; margin-bottom: 5px; margin-top: 5px;">
+						<option value="1">是</option>
+						<option value="2" selected="selected">否</option>
+					</select> <br />
+					角度范围: <input type="text" style="width: 70px; margin-bottom: 5px;" value="0" name="Angle_min" /> ->
+						<input type="text" style="width: 70px; margin-bottom: 5px;" value="0" name="Angle_max" /> <br />
+					时间间隔(毫秒): <input type="text" style="width: 130px; margin-bottom: 5px;" value="100" name="Time_slot" /> <br />
+				</div>
+				<input type="button" value="确定" style="margin: 10px;" onclick="DrawTriangle()" /> <br />
+			</form>
+			<!-- 获取到数据后，将三角型绘制到这里 -->
+			<div id="Triangle"></div>
+		</div>
+	</body>
+</html>

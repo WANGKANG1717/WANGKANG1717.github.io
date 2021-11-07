@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!-- 
+	kang
+	2021/10/12
+ -->
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Lab4_a</title>
+		<!-- 顶点着色器 -->
+		<script id="vertex-shader">
+			attribute vec4 vPosition;
+			attribute vec4 vColor;
+			varying vec4 fColor;
+			//
+			uniform vec3 theta;
+			//
+			void main() {
+				// radians()将角度值转换为弧度值，相当于theta/180*PI
+				vec3 angles = radians(theta);
+				vec3 cost = cos(theta);
+				vec3 sint = sin(theta);
+				//4*4矩阵
+				//以下为三个模-视变换矩阵
+				mat4 rx = mat4(
+					1.0, 0.0, 0.0, 0.0,
+					0.0, cost.x, sint.x, 0.0,
+					0.0, -sint.x, cost.x, 0.0,
+					0.0, 0.0, 0.0, 1.0
+				);
+
+				mat4 ry = mat4(
+					cost.y, 0.0, -sint.y, 0.0,
+					0.0, 1.0, 0.0, 0.0,
+					sint.y, 0.0, cost.y, 0.0,
+					0.0, 0.0, 0.0, 1.0
+				);
+
+				mat4 rz = mat4(
+					cost.z, sint.z, 0.0, 0.0,
+					-sint.z, cost.z, 0.0, 0.0,
+					0.0, 0.0, 1.0, 0.0,
+					0.0, 0.0, 0.0, 1.0
+				);
+
+				fColor = vColor;
+				gl_Position = rz * ry * rx * vPosition;
+				// gl_Position.z = -gl_Position.z;
+			}
+		</script>
+		<!-- 片元着色器 -->
+		<script id="fragment-shader">
+			precision mediump float;
+			varying vec4 fColor;
+
+			void main() {
+				gl_FragColor = fColor;
+			}
+		</script>
+		<script type="text/javascript" src="lib/webgl-utils.js"></script>
+		<script type="text/javascript" src="lib/initShaders.js"></script>
+		<script type="text/javascript" src="lib/gl-matrix-min.js"></script>
+
+		<script type="text/javascript" src="js/Lab4_a.js"></script>
+	</head>
+
+	<body>
+		<div align="center">
+			<div style="height:50px; width: 435px;">
+				<a style="font-size: 30px; font-family: 楷体; background-color: aqua;">任务a</a>
+			</div>
+			<button id="rotateX">Rotate X</button>
+			<button id="rotateY">Rotate Y</button>
+			<button id="rotateZ" style="margin-bottom: 10px;">Rotate Z</button><br />
+			旋转速度: 1 <input type="range" id="Speed" min="1" max="100" value="50" step="1"
+				style="width: 100px; height:15px; margin-bottom: 10px;"> 100<br />
+			<canvas id="webgl" width="500" height="500">你的浏览器不支持HTML5 canvas元素</canvas>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!-- 
+	kang
+	2021/10/31
+ -->
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Lab4_e</title>
+		<!-- 顶点着色器和片元着色器代码 -->
+		<script id="vertex-shader">
+			attribute vec4 vPosition;
+			attribute vec4 vColor;
+			varying vec4 fColor;
+			//
+			uniform vec3 theta;
+			uniform vec3 offset;
+			uniform vec3 scale;
+			//
+			void main() {
+				// radians()将角度值转换为弧度值，相当于theta/180*PI
+				vec3 angles = radians(theta);
+				vec3 cost = cos(theta);
+				vec3 sint = sin(theta);
+				//4*4矩阵
+				//以下为三个模-视变换矩阵
+				//并且是列主序，记住这一点
+				mat4 rx = mat4(
+					1.0, 0.0, 0.0, 0.0,
+					0.0, cost.x, sint.x, 0.0,
+					0.0, -sint.x, cost.x, 0.0,
+					0.0, 0.0, 0.0, 1.0
+				);
+
+				mat4 ry = mat4(
+					cost.y, 0.0, -sint.y, 0.0,
+					0.0, 1.0, 0.0, 0.0,
+					sint.y, 0.0, cost.y, 0.0,
+					0.0, 0.0, 0.0, 1.0
+				);
+
+				mat4 rz = mat4(
+					cost.z, sint.z, 0.0, 0.0,
+					-sint.z, cost.z, 0.0, 0.0,
+					0.0, 0.0, 1.0, 0.0,
+					0.0, 0.0, 0.0, 1.0
+				);
+
+				mat4 off = mat4(
+					1.0, 0.0, 0.0, 0.0,
+					0.0, 1.0, 0.0, 0.0,
+					0.0, 0.0, 1.0, 0.0,
+					offset[0], offset[1], offset[2], 1.0
+				);
+
+				mat4 sca = mat4(
+					scale[0], 0.0, 0.0, 0.0,
+					0.0, scale[1], 0.0, 0.0,
+					0.0, 0.0, scale[2], 0.0,
+					0.0, 0.0, 0.0, 1.0
+				);
+				gl_PointSize = 20.0;
+				fColor = vColor;
+				gl_Position = off * sca * rz * ry * rx * vPosition;
+			}
+		</script>
+		<!-- 四边形形 -->
+		<script id="fragment-shader">
+			precision mediump float;
+			varying vec4 fColor;
+			void main() {
+				gl_FragColor = fColor;
+			}
+		</script>
+		<script type="text/javascript" src="lib/webgl-utils.js"></script>
+		<script type="text/javascript" src="lib/initShaders.js"></script>
+		<script type="text/javascript" src="lib/gl-matrix-min.js"></script>
+
+		<script type="text/javascript" src="js/Lab4_e.js"></script>
+		<link type="text/css" rel="stylesheet" href="css/Leb4_e.css" />
+	</head>
+
+	<body id="BODY" onload="init()">
+		<div align="center">
+			<div style="height:50px; width: 435px;">
+				<a style="font-size: 30px; font-family: 楷体; background-color: aqua;">任务e</a>
+			</div>
+			<div align="left" id="DIV">
+				&diams; 鼠标单击=随机添加图形<br />
+				&diams; 鼠标单击+按键=添加指定图形<br />
+				&diams; 按键 1:正三角形 2:正方形 3:立方体 4:圆 <br />
+				&diams; 颜色选择器: <input type="color" id="objcolor" name="objcolor" value="#4bbaff"> <br />
+				&diams; 正三角形 <br />
+				&nbsp;&nbsp;&nbsp;&nbsp;缩放:0.5<input type="range" id="Scale" min="0.5" max="2" value="1"
+					step="0.01">2<br />
+				&diams; 正方形 <br />
+				&nbsp;&nbsp;&nbsp;&nbsp;大小:0.1<input type="range" id="Size" min="0.1" max="2" value="1"
+					step="0.01">2<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;速度: &nbsp;0<input type="range" id="Square_speed" min="0" max="100" value="50"
+					step="1">100<br />
+				&diams; 立方体 单击加速 双击减速<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;<button id="rotateX">Rotate X</button>
+				<button id="rotateY">Rotate Y</button>
+				<button id="rotateZ" style="margin-bottom: 10px;">Rotate Z</button><br />
+				&diams; 圆<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;边数: &nbsp;4<input type="range" id="CircleEdge" min="4" max="360" value="180"
+					step="1">360<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;速度: &nbsp;0<input type="range" id="Circle_speed" min="0" max="10" value="5"
+					step="1">10<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;角度: &nbsp;0<input type="range" id="OffsetAlpha" min="0" max="360" value="45"
+					step="1">360<br />
+				&diams; <input type="button" id="clear" value="清空"
+					style="margin-bottom: 10px; padding: 1px; font-size: 19px; font-family: 楷体;" /> <br />
+			</div>
+			<canvas id="webgl" width="600" height="600">你的浏览器不支持HTML5 canvas元素</canvas>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Lab3_a</title>
+		<!-- 顶点着色器和片元着色器代码 -->
+		<script id="vertex-shader" type="x-shader/x-vertex">
+			attribute vec4 vPosition;
+			attribute vec4 vColor;
+			varying vec4 fColor;
+			uniform float theta;
+			void main()
+			{
+				float u = cos( theta );
+				float v = sin( theta );
+				gl_Position.x = vPosition.x * u - vPosition.y * v;
+				gl_Position.y = vPosition.x * v + vPosition.y * u;
+				gl_Position.z = 0.0;
+				gl_Position.w = 1.0;
+				fColor=vColor;
+			}
+		</script>
+		<!-- 四边形形 -->
+		<script id="fragment-shader" type="x-shader/x-fragment">
+			precision mediump float;
+			varying vec4 fColor;
+			void main(){
+				gl_FragColor = fColor;
+			}
+		</script>
+		<script type="text/javascript" src="lib/webgl-utils.js"></script>
+		<script type="text/javascript" src="lib/initShaders.js"></script>
+		<script type="text/javascript" src="lib/gl-matrix-min.js"></script>
+		<script type="text/javascript" src="js/Lab3_a.js"></script>
+	</head>
+	<body onload="main()">
+		<div style="width: 100%; margin-top: 20px;" align="center">
+			<div style="height:50px; width: 435px;">
+				<a style="font-size: 30px; font-family: 楷体; background-color: aqua;">任务a</a>
+			</div>
+			<div>
+				<!-- 旋转方向: <select id="Direction" style="width: 120px; height: 25px; margin-bottom: 10px;">
+					<option value="1" selected="selected">顺时针</option>
+					<option value="2">逆时针</option>
+				</select> <br /> -->
+				<input type="button" value="换个方向" style="width: 120px; margin-bottom: 10px;" id="Direction" /><br />
+				旋转角度: <input type="number" id="Angle" value="10" min="0" max="360"
+					style="width: 120px; margin-bottom: 10px;"><br />
+				<!-- <input style="visibility: hidden;"><br /> -->
+				旋转速度: 1 <input type="range" id="Speed" min="1" max="100" value="50" step="1"
+					style="width: 100px; height:15px; margin-bottom: 10px;"> 100<br />
+				<!-- RGB(0-255): 
+				<input type="number" style="width: 50px;" min="0" max="255" value="0" id="R" />
+				<input type="number" style="width: 50px;" min="0" max="255" value="255" id="G" />
+				<input type="number" style="width: 50px; margin-bottom: 10px;" min="0" max="255" value="255" id="B" />
+				<br /> -->
+			</div>
+			<div>
+				<canvas id="webgl" width="500" height="500"></canvas>
+			</div>
+		</div>
+	</body>
+</html>

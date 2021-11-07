@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<title>任务d</title>
+		<!-- 顶点着色器和片元着色器代码 -->
+		<script id="vertex-shader" type="x-shader/x-vertex">
+			attribute vec4 vPosition;
+			attribute vec4 aColor;
+			varying vec4 vColor;
+			void main(){
+				gl_Position = vPosition;
+				vColor=aColor;
+			}
+		</script>
+		<!-- 四边形形 -->
+		<!-- gl_FragColor = vec4( 0.0, 1.0, 0.0, 1.0 ); -->
+		<script id="fragment-shader" type="x-shader/x-fragment">
+			precision mediump float;
+			varying vec4 vColor;
+			void main(){
+				gl_FragColor = vColor;
+			}
+		</script>
+		<!-- 一组相关的JS库 -->
+		<script type="text/javascript" src="lib/webgl-utils.js"></script>
+		<script type="text/javascript" src="lib/initShaders.js"></script>
+		<!-- 绘制四边形的JS代码 -->
+		<script type="text/javascript" src="js/color.js"></script>
+	</head>
+	<body>
+		<!--  绘制三角形-->
+		<canvas id="both-canvas" style="border:none;" width="500" height="500"></canvas>
+	</body>
+</html>
