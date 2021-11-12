@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag (contains Google-Analytics、Baidu-Tongji)-->
+<head>
+  <!-- Google Analytics -->
+  
+
+  <!-- Baidu Tongji -->
+  
+
+  <!-- Baidu Push -->
+  
+    <script>
+      (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
+  
+
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  <meta name="google-site-verification" content="lxDfCplOZbIzjhG34NuQBgu2gdyRlAtMB4utP5AgEBc"/>
+  <meta name="baidu-site-verification" content="PpzM9WxOJU"/>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content="It&#39;s an IT blog..."/>
+  <meta name="keyword" content="C++,Java,SQL,WEB,图形学,实验,随笔"/>
+  <link rel="shortcut icon" href="/img/avatar/head.png"/>
+
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async="async" defer="defer" src="https://buttons.github.io/buttons.js"></script>
+
+  
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css"/>
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css"/>
+    <link rel="stylesheet" href="/css/widget.css"/>
+    <link rel="stylesheet" href="/css/rocket.css"/>
+    <link rel="stylesheet" href="/css/signature.css"/>
+    <link rel="stylesheet" href="/css/catalog.css"/>
+    <link rel="stylesheet" href="/css/livemylife.css"/>
+
+    
+      <!-- wave start -->
+      <link rel="stylesheet" href="/css/wave.css"/>
+      <!-- wave end -->
+    
+
+    
+      <!-- top start (article top hot config) -->
+      <link rel="stylesheet" href="/css/top.css"/>
+      <!-- top end -->
+    
+
+    
+      <!-- ThemeColor start -->
+      <link rel="stylesheet" href="/css/scroll.css"/>
+      <!-- ThemeColor end -->
+    
+
+    
+      <!-- viewer start (Picture preview) -->
+      <link rel="stylesheet" href="/css/viewer.min.css"/>
+      <!-- viewer end -->
+    
+
+    
+      <!-- Search start -->
+      <link rel="stylesheet" href="/css/search.css"/>
+      <!-- Search end -->
+    
+
+    
+      <!-- ThemeColor start -->
+      <link rel="stylesheet" href="/css/themecolor.css"/>
+      <!-- ThemeColor end -->
+    
+
+    
+
+    
+      <!-- gitalk start -->
+      <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"> -->
+      <link rel="stylesheet" href="/css/gitalk.css"/>
+      <!-- gitalk end -->
+    
+  
+
+  <!-- Custom Fonts -->
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+  <!-- Hux change font-awesome CDN to qiniu -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Hux Delete, sad but pending in China <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'> <link
+  href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/ css'> -->
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
+
+  <!-- ga & ba script hoook -->
+  <link rel="canonical" href="https://kang17.xyz/my/demo5-3注释/">
+  <title>
+    
+      demo5-3注释 - dead or alive
+    
+  </title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<!-- hack iOS CSS :active style -->
+
+	<body ontouchstart="" class="body--light body--light">
+
+
+		<!-- ThemeColor -->
+		
+		<!-- ThemeColor -->
+<style type="text/css">
+  .body--light {
+    --light-mode: none;
+    --dark-mode: block;
+  }
+  .body--dark {
+    --light-mode: block;
+    --dark-mode: none;
+  }
+  i.mdui-icon.material-icons.light-mode {
+    display: var(--light-mode);
+  }
+  i.mdui-icon.material-icons.dark-mode {
+    display: var(--dark-mode);
+  }
+</style>
+<div class="toggle" onclick="document.body.classList.toggle('body--dark')">
+  <i class="mdui-icon material-icons light-mode"></i>
+  <i class="mdui-icon material-icons dark-mode"></i>
+</div>
+<script>
+  //getCookieValue
+  function getCookieValue(a) {
+    var b = document.cookie.match('(^|[^;]+)\\s*' + a + '\\s*=\\s*([^;]+)');
+    return b
+      ? b.pop()
+      : '';
+  }
+  let themeMode = 'light';
+  if (getCookieValue('sb-color-mode') && (getCookieValue('sb-color-mode') !== themeMode)) {
+    let dbody = document.body.classList;
+    themeMode === 'dark' ? dbody.remove('body--dark') : dbody.add('body--dark');
+  }
+
+  //setCookieValue
+  var toggleBtn = document.querySelector(".toggle");
+  toggleBtn.addEventListener("click", function () {
+    var e = document.body.classList.contains("body--dark");
+    var cookieString = e
+      ? "dark"
+      : "light";
+    var exp = new Date();
+    exp.setTime(exp.getTime() + 3 * 24 * 60 * 60 * 1000); //3天过期
+    document.cookie = "sb-color-mode=" + cookieString + ";expires=" + exp.toGMTString() + ";path=/";
+  });
+</script>
+
+		
+
+		<!-- Gitter -->
+		
+
+		<!-- Navigation (contains search)-->
+		<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">WK&#39;website</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <!-- Known Issue, found by Hux: <nav>'s height woule be hold on by its content. so, when navbar scale out, the <nav> will cover tags. also mask any touch event of tags, unfortunately. -->
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="/">HOME</a>
+          </li>
+
+          
+          
+          <li>
+            <a href="/categories/">
+              
+              CATEGORIES
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/about/">
+              
+              ABOUT
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          
+          
+          <li>
+            <a href="/archive/">
+              
+              ARCHIVES
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/tags/">
+              
+              TAGS
+              
+              
+            </a>
+          </li>
+          
+          
+
+          
+          <li>
+            <a class="popup-trigger">
+              <span class="search-icon"></span>SEARCH</a>
+          </li>
+          
+
+          <!-- LangSelect -->
+          
+        </ul>
+      </div>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
+<!-- progress -->
+<div id="progress">
+  <div class="line" style="width: 0%;"></div>
+</div>
+
+<script>
+  // Drop Bootstarp low-performance Navbar Use customize navbar with high-quality material design animation in high-perf jank-free CSS3 implementation
+  var $body = document.body;
+  var $toggle = document.querySelector('.navbar-toggle');
+  var $navbar = document.querySelector('#huxblog_navbar');
+  var $collapse = document.querySelector('.navbar-collapse');
+
+  $toggle.addEventListener('click', handleMagic)
+
+  function handleMagic(e) {
+    if ($navbar.className.indexOf('in') > 0) {
+      // CLOSE
+      $navbar.className = " ";
+      // wait until animation end.
+      setTimeout(function() {
+        // prevent frequently toggle
+        if ($navbar.className.indexOf('in') < 0) {
+          $collapse.style.height = "0px"
+        }
+      }, 400)
+    } else {
+      // OPEN
+      $collapse.style.height = "auto"
+      $navbar.className += " in";
+    }
+  }
+</script>
+
+
+		<!-- Post Header (contains intro-header、signature、wordcount、busuanzi、waveoverlay) -->
+		<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+
+  <style type="text/css">
+    .body--light {
+      /* intro-header */
+      --intro-header-background-image-url-home: url('/img/header_img/newhome_bg.jpg');
+      --intro-header-background-image-url-post: url('/img/header_img/archive_bg.jpg');
+      --intro-header-background-image-url-page: url('//img/header_img/archive_bg.jpg');
+    }
+    .body--dark {
+      --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/newhome_bg.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/archive_bg.jpg');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/header_img/archive_bg.jpg');
+    }
+
+    header.intro-header {
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url('/img/header_img/archive_bg.jpg'); */
+      
+    }
+
+    
+      #signature {/*signature*/
+        background-image: url('/img/signature/wk.png');
+      }
+    
+  </style>
+
+
+
+
+
+<header class="intro-header">
+  <!-- Signature -->
+  <div id="signature">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#图形学" title="图形学">图形学</a>
+              
+            </div>
+            <h1>demo5-3注释</h1>
+            <h2 class="subheading">学习日志2</h2>
+            <span class="meta">
+              Posted by WK on
+              2021-11-12
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">18</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">3.8k</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- WordCount end -->
+            
+            
+            <!-- 不蒜子统计 start -->
+            <span class="meta" id="busuanzi_container_page_pv">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            
+
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- waveoverlay start -->
+  <div class="preview-overlay">
+    <svg class="preview-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+      <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+      </defs>
+      <g class="preview-parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" fill=var(--gentle-wave1)></use>
+        <use xlink:href="#gentle-wave" x="48" y="3" fill=var(--gentle-wave2)></use>
+        <use xlink:href="#gentle-wave" x="48" y="5" fill=var(--gentle-wave3)></use>
+        <use xlink:href="#gentle-wave" x="48" y="7" fill=var(--gentle-wave)></use>
+      </g>
+    </svg>
+  </div>
+  <!-- waveoverlay end -->
+  
+
+</header>
+
+
+
+		<!-- Main Content (Post contains
+	Pager、
+	tip、
+	socialshare、
+	gitalk、gitment、disqus-comment、
+	Catalog、
+	Sidebar、
+	Featured-Tags、
+	Friends Blog、
+	anchorjs、
+	) -->
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
+
+        <blockquote>
+<p>大部分代码都有注释，其余没有注释的，需要自己看课本了。。</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">一些英文缩写的解释</span></span><br><span class="line">	<span class="attr">projtype:</span> <span class="string">projection</span> <span class="string">type</span> <span class="string">投影模式</span></span><br><span class="line">	<span class="attr">ortho:</span> <span class="string">orthographic</span> <span class="string">projection</span> <span class="string">正交投影</span></span><br><span class="line">	<span class="attr">persp:</span> <span class="string">perspective</span> <span class="string">透视投影</span></span><br><span class="line">	<span class="attr">wire:</span> <span class="string">线框模式</span></span><br><span class="line">	<span class="attr">solid:</span> <span class="string">实体模式</span></span><br><span class="line">	<span class="attr">objpos:</span> <span class="string">物体位置</span></span><br><span class="line">	<span class="attr">campos:</span> <span class="string">相机位置</span></span><br><span class="line">	<span class="attr">xyz-pos:</span> <span class="string">控制物体平移</span></span><br><span class="line">	<span class="attr">xyz-rot:</span> <span class="string">控制物体旋转</span></span><br><span class="line">	<span class="attr">posgrp:</span> <span class="string">作用的对象:相机/物体</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br><span class="line">483</span><br><span class="line">484</span><br><span class="line">485</span><br><span class="line">486</span><br><span class="line">487</span><br><span class="line">488</span><br><span class="line">489</span><br><span class="line">490</span><br><span class="line">491</span><br><span class="line">492</span><br><span class="line">493</span><br><span class="line">494</span><br><span class="line">495</span><br><span class="line">496</span><br><span class="line">497</span><br><span class="line">498</span><br><span class="line">499</span><br><span class="line">500</span><br><span class="line">501</span><br><span class="line">502</span><br><span class="line">503</span><br><span class="line">504</span><br><span class="line">505</span><br><span class="line">506</span><br><span class="line">507</span><br><span class="line">508</span><br><span class="line">509</span><br><span class="line">510</span><br><span class="line">511</span><br><span class="line">512</span><br><span class="line">513</span><br><span class="line">514</span><br><span class="line">515</span><br><span class="line">516</span><br><span class="line">517</span><br><span class="line">518</span><br><span class="line">519</span><br><span class="line">520</span><br><span class="line">521</span><br><span class="line">522</span><br><span class="line">523</span><br><span class="line">524</span><br><span class="line">525</span><br><span class="line">526</span><br><span class="line">527</span><br><span class="line">528</span><br><span class="line">529</span><br><span class="line">530</span><br><span class="line">531</span><br><span class="line">532</span><br><span class="line">533</span><br><span class="line">534</span><br><span class="line">535</span><br><span class="line">536</span><br><span class="line">537</span><br><span class="line">538</span><br><span class="line">539</span><br><span class="line">540</span><br><span class="line">541</span><br><span class="line">542</span><br><span class="line">543</span><br><span class="line">544</span><br><span class="line">545</span><br><span class="line">546</span><br><span class="line">547</span><br><span class="line">548</span><br><span class="line">549</span><br><span class="line">550</span><br><span class="line">551</span><br><span class="line">552</span><br><span class="line">553</span><br><span class="line">554</span><br><span class="line">555</span><br><span class="line">556</span><br><span class="line">557</span><br><span class="line">558</span><br><span class="line">559</span><br><span class="line">560</span><br><span class="line">561</span><br><span class="line">562</span><br><span class="line">563</span><br><span class="line">564</span><br><span class="line">565</span><br><span class="line">566</span><br><span class="line">567</span><br><span class="line">568</span><br><span class="line">569</span><br><span class="line">570</span><br><span class="line">571</span><br><span class="line">572</span><br><span class="line">573</span><br><span class="line">574</span><br><span class="line">575</span><br><span class="line">576</span><br><span class="line">577</span><br><span class="line">578</span><br><span class="line">579</span><br><span class="line">580</span><br><span class="line">581</span><br><span class="line">582</span><br><span class="line">583</span><br><span class="line">584</span><br><span class="line">585</span><br><span class="line">586</span><br><span class="line">587</span><br><span class="line">588</span><br><span class="line">589</span><br><span class="line">590</span><br><span class="line">591</span><br><span class="line">592</span><br><span class="line">593</span><br><span class="line">594</span><br><span class="line">595</span><br><span class="line">596</span><br><span class="line">597</span><br><span class="line">598</span><br><span class="line">599</span><br><span class="line">600</span><br><span class="line">601</span><br><span class="line">602</span><br><span class="line">603</span><br><span class="line">604</span><br><span class="line">605</span><br><span class="line">606</span><br><span class="line">607</span><br><span class="line">608</span><br><span class="line">609</span><br><span class="line">610</span><br><span class="line">611</span><br><span class="line">612</span><br><span class="line">613</span><br><span class="line">614</span><br><span class="line">615</span><br><span class="line">616</span><br><span class="line">617</span><br><span class="line">618</span><br><span class="line">619</span><br><span class="line">620</span><br><span class="line">621</span><br><span class="line">622</span><br><span class="line">623</span><br><span class="line">624</span><br><span class="line">625</span><br><span class="line">626</span><br><span class="line">627</span><br><span class="line">628</span><br><span class="line">629</span><br><span class="line">630</span><br><span class="line">631</span><br><span class="line">632</span><br><span class="line">633</span><br><span class="line">634</span><br><span class="line">635</span><br><span class="line">636</span><br><span class="line">637</span><br><span class="line">638</span><br><span class="line">639</span><br><span class="line">640</span><br><span class="line">641</span><br><span class="line">642</span><br><span class="line">643</span><br><span class="line">644</span><br><span class="line">645</span><br><span class="line">646</span><br><span class="line">647</span><br><span class="line">648</span><br><span class="line">649</span><br><span class="line">650</span><br><span class="line">651</span><br><span class="line">652</span><br><span class="line">653</span><br><span class="line">654</span><br><span class="line">655</span><br><span class="line">656</span><br><span class="line">657</span><br><span class="line">658</span><br><span class="line">659</span><br><span class="line">660</span><br><span class="line">661</span><br><span class="line">662</span><br><span class="line">663</span><br><span class="line">664</span><br><span class="line">665</span><br><span class="line">666</span><br><span class="line">667</span><br><span class="line">668</span><br><span class="line">669</span><br><span class="line">670</span><br><span class="line">671</span><br><span class="line">672</span><br><span class="line">673</span><br><span class="line">674</span><br><span class="line">675</span><br><span class="line">676</span><br><span class="line">677</span><br><span class="line">678</span><br><span class="line">679</span><br><span class="line">680</span><br><span class="line">681</span><br><span class="line">682</span><br><span class="line">683</span><br><span class="line">684</span><br><span class="line">685</span><br><span class="line">686</span><br><span class="line">687</span><br><span class="line">688</span><br><span class="line">689</span><br><span class="line">690</span><br><span class="line">691</span><br><span class="line">692</span><br><span class="line">693</span><br><span class="line">694</span><br><span class="line">695</span><br><span class="line">696</span><br><span class="line">697</span><br><span class="line">698</span><br><span class="line">699</span><br><span class="line">700</span><br><span class="line">701</span><br><span class="line">702</span><br><span class="line">703</span><br><span class="line">704</span><br><span class="line">705</span><br><span class="line">706</span><br><span class="line">707</span><br><span class="line">708</span><br><span class="line">709</span><br><span class="line">710</span><br><span class="line">711</span><br><span class="line">712</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@data </span>2021/11/12</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author </span>WK/teacher</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description </span>将老师的代码从头到尾进行详细的注释</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> &#123;</span><br><span class="line">	vec3, <span class="comment">//三维向量</span></span><br><span class="line">	vec4, <span class="comment">//四维向量</span></span><br><span class="line">	mat3, <span class="comment">//3*3矩阵</span></span><br><span class="line">	mat4, <span class="comment">//4*4矩阵  //列为主</span></span><br><span class="line">	quat <span class="comment">//四元组</span></span><br><span class="line">&#125; = glMatrix;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> canvas; <span class="comment">// 画布</span></span><br><span class="line"><span class="keyword">var</span> gl; <span class="comment">//gl</span></span><br><span class="line"><span class="keyword">var</span> fileInput; <span class="comment">//文件输入</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> meshdata; <span class="comment">// 网格数据</span></span><br><span class="line"><span class="keyword">var</span> mesh; <span class="comment">//mesh:网眼、网格</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> points = []; <span class="comment">//点数组</span></span><br><span class="line"><span class="keyword">var</span> colors = []; <span class="comment">//颜色数组</span></span><br><span class="line"><span class="keyword">var</span> lineIndex = [];</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 模型视图变换矩阵: 确定某一帧中，空间里每个顶点的坐标</span></span><br><span class="line"><span class="comment"> * 其实就是将之前的三个平移矩阵、旋转、缩放矩阵合并成一个矩阵,简称为模视变换矩阵</span></span><br><span class="line"><span class="comment"> * 叫法可能会有所不同,但是作用是一致的</span></span><br><span class="line"><span class="comment"> * 这样的话,在着色器中进行计算时,只需要进行一次计算就可以将点放置到合适的位置</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> modelViewMatrix = mat4.create(); <span class="comment">//模视变换矩阵</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 透视投影变换矩阵: 将顶点坐标映射到二维的屏幕上</span></span><br><span class="line"><span class="comment"> * 最主要的有两种投影方式，正射投影和透视投影。</span></span><br><span class="line"><span class="comment"> * 前者用于精确制图，如工业零件侧视图或建筑物顶视图，从屏幕上就可以量测平行于屏幕的线段长度；</span></span><br><span class="line"><span class="comment"> * 后者用于模拟视觉，远处的物体看上去较小。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> projectionMatrix = mat4.create(); <span class="comment">//透视投影变化矩阵</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 三维世界的显示中，屏幕模拟了一个窗口，你透过这个窗口观察“外面”的世界。</span></span><br><span class="line"><span class="comment"> * 你的屏幕是有边缘的（除非你有一个球形的房间，内壁全是屏幕），</span></span><br><span class="line"><span class="comment"> * 因此你仅仅能观察到那个世界的一部分，即“相机空间”。</span></span><br><span class="line"><span class="comment"> * 相机空间的左、右、上、下边界是受限于屏幕的边缘，</span></span><br><span class="line"><span class="comment"> * 同时也设定前、后边界，因为你很难看清太近或太远的东西。</span></span><br><span class="line"><span class="comment"> * 在正射投影中，相机空间是一个规则的立方体，而在透视投影中则是一个方台体。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 三维模型可能在不同的显示器上展现，因此投影的过程中不该将显示器参数加入进来，</span></span><br><span class="line"><span class="comment"> * 而是将空间中的点投影到一个规范的显示器中。</span></span><br><span class="line"><span class="comment"> * 另外，透视投影中的z值并不是毫无用处，它可以用来表示顶点的“深度”：</span></span><br><span class="line"><span class="comment"> * 如果三维空间中的两个不同顶点投影到平面上时重合了，那么将显示深度较浅的顶点。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Buffer:缓冲流,用来向着色器发送数据</span></span><br><span class="line"><span class="comment"> * vPosition\vColor: 用于向着色器中指定特定变量的值</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> vBuffer = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">var</span> vPosition = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">var</span> cBuffer = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">var</span> vColor = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * o是orthographic projection(正交投影)的首字母</span></span><br><span class="line"><span class="comment"> * p是perspective(透视投影)的首字母</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> oleft = -<span class="number">3.0</span>;</span><br><span class="line"><span class="keyword">var</span> oright = <span class="number">3.0</span>;</span><br><span class="line"><span class="keyword">var</span> oytop = <span class="number">3.0</span>;</span><br><span class="line"><span class="keyword">var</span> oybottom = -<span class="number">3.0</span>;</span><br><span class="line"><span class="keyword">var</span> onear = -<span class="number">5</span>;</span><br><span class="line"><span class="keyword">var</span> ofar = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> oradius = <span class="number">3.0</span>;</span><br><span class="line"><span class="keyword">var</span> theta = <span class="number">0.0</span>;</span><br><span class="line"><span class="keyword">var</span> phi = <span class="number">0.0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> pleft = -<span class="number">10.0</span>;</span><br><span class="line"><span class="keyword">var</span> pright = <span class="number">10.0</span>;</span><br><span class="line"><span class="keyword">var</span> pytop = <span class="number">10.0</span>;</span><br><span class="line"><span class="keyword">var</span> pybottom = -<span class="number">10.0</span>;</span><br><span class="line"><span class="keyword">var</span> pnear = <span class="number">0.01</span>;</span><br><span class="line"><span class="keyword">var</span> pfar = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">var</span> pradius = <span class="number">3.0</span>;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * fov: 应该是这个单词foveal:中心凹</span></span><br><span class="line"><span class="comment"> * y: 包括上面的y不知道什么意思</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> fovy = <span class="number">45.0</span> * <span class="built_in">Math</span>.PI / <span class="number">180.0</span>;	<span class="comment">//透视投影张角</span></span><br><span class="line"><span class="keyword">var</span> aspect;				<span class="comment">//透视投影的矩形的长宽比</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 不加t表示平移</span></span><br><span class="line"><span class="comment"> * 加t表示旋转</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> dx = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> dy = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> dz = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> step = <span class="number">0.1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> dxt = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> dyt = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> dzt = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> stept = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//控制缩放</span></span><br><span class="line"><span class="keyword">var</span> sx = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> sy = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> sz = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//相机位置</span></span><br><span class="line"><span class="keyword">var</span> cx = <span class="number">0.0</span>;</span><br><span class="line"><span class="keyword">var</span> cy = <span class="number">0.0</span>;</span><br><span class="line"><span class="keyword">var</span> cz = <span class="number">4.0</span>;</span><br><span class="line"><span class="keyword">var</span> stepc = <span class="number">0.1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cxt = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> cyt = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> czt = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> stepct = <span class="number">2</span>;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 计算用</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> mvMatrix = mat4.create();</span><br><span class="line"><span class="keyword">var</span> pMatrix = mat4.create();</span><br><span class="line"><span class="keyword">var</span> eye = vec3.fromValues(cx, cy, cz);			<span class="comment">//就是相机的位置</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> at = vec3.fromValues(<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>);</span><br><span class="line"><span class="keyword">var</span> up = vec3.fromValues(<span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//鼠标点击和记录上次的鼠标位置</span></span><br><span class="line"><span class="keyword">var</span> mouseDown = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">var</span> lastMouseX = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">var</span> lastMouseY = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> currentKey = [];</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 可视化界面控制</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * projectionType: 投影模式</span></span><br><span class="line"><span class="comment"> * drawType: 绘制模式</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> projectionType = <span class="number">1</span>; <span class="comment">// default is Orthographic(1), Perspective(2)</span></span><br><span class="line"><span class="keyword">var</span> drawType = <span class="number">1</span>; <span class="comment">// default is WireFrame(1), Solid(2)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//改变的是相机还是物体的位置</span></span><br><span class="line"><span class="keyword">var</span> changePos = <span class="number">1</span>; <span class="comment">// default is Object(1), camera(2)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//当前的颜色</span></span><br><span class="line"><span class="keyword">var</span> currentColor = vec4.create();</span><br><span class="line"></span><br><span class="line"><span class="comment">//着色器程序对象,用来对着色器进行控制</span></span><br><span class="line"><span class="keyword">var</span> program = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//控制键盘</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 搞明白这个代码之后,我只能说写的太烂了</span></span><br><span class="line"><span class="comment"> * 可以精简很多的</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleKeyDown</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> key = event.keyCode;	<span class="comment">//获取键盘按下的键值</span></span><br><span class="line">	currentKey[key] = <span class="literal">true</span>;		<span class="comment">//标记当前按键</span></span><br><span class="line">	<span class="keyword">if</span> (changePos === <span class="number">1</span>) &#123;		<span class="comment">//如果当前移动的是物体的位置</span></span><br><span class="line">		<span class="keyword">switch</span> (key) &#123;			<span class="comment">//根据键值进行相应的操作</span></span><br><span class="line">			<span class="comment">//w s a d 控制物体上下左右平移</span></span><br><span class="line">			<span class="comment">//z x 控制物体沿着z轴前进后退</span></span><br><span class="line">			<span class="keyword">case</span> <span class="number">65</span>: <span class="comment">//left//a</span></span><br><span class="line">				dx -= step;</span><br><span class="line">				<span class="built_in">document</span>.getElementById(<span class="string">&quot;xpos&quot;</span>).value = dx;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">68</span>: <span class="comment">// right//d</span></span><br><span class="line">				dx += step;</span><br><span class="line">				<span class="built_in">document</span>.getElementById(<span class="string">&quot;xpos&quot;</span>).value = dx;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">87</span>: <span class="comment">// up//w</span></span><br><span class="line">				dy += step;</span><br><span class="line">				<span class="built_in">document</span>.getElementById(<span class="string">&quot;ypos&quot;</span>).value = dy;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">83</span>: <span class="comment">// down//s</span></span><br><span class="line">				dy -= step;</span><br><span class="line">				<span class="built_in">document</span>.getElementById(<span class="string">&quot;ypos&quot;</span>).value = dy;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">90</span>: <span class="comment">// a//z</span></span><br><span class="line">				dz += step;</span><br><span class="line">				<span class="built_in">document</span>.getElementById(<span class="string">&quot;zpos&quot;</span>).value = dz;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">88</span>: <span class="comment">// d//x</span></span><br><span class="line">				dz -= step;</span><br><span class="line">				<span class="built_in">document</span>.getElementById(<span class="string">&quot;zpos&quot;</span>).value = dz;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">				<span class="comment">//h k 控制物体沿着y轴旋转</span></span><br><span class="line">			<span class="keyword">case</span> <span class="number">72</span>: <span class="comment">// h//ytheta-</span></span><br><span class="line">				dyt -= stept;</span><br><span class="line">				<span class="built_in">document</span>.getElementById(<span class="string">&quot;yrot&quot;</span>).value = dyt;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">75</span>: <span class="comment">// k//ytheta+</span></span><br><span class="line">				dyt += stept;</span><br><span class="line">				<span class="built_in">document</span>.getElementById(<span class="string">&quot;yrot&quot;</span>).value = dyt;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">				<span class="comment">//u j 沿着x轴旋转</span></span><br><span class="line">			<span class="keyword">case</span> <span class="number">85</span>: <span class="comment">// u//xtheta+</span></span><br><span class="line">				dxt -= stept;</span><br><span class="line">				<span class="built_in">document</span>.getElementById(<span class="string">&quot;xrot&quot;</span>).value = dxt;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">74</span>: <span class="comment">// j//xtheta-</span></span><br><span class="line">				dxt += stept;</span><br><span class="line">				<span class="built_in">document</span>.getElementById(<span class="string">&quot;xrot&quot;</span>).value = dxt;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">				<span class="comment">//n m 沿着z轴旋转</span></span><br><span class="line">			<span class="keyword">case</span> <span class="number">78</span>: <span class="comment">// n//ztheta+</span></span><br><span class="line">				dzt += stept;</span><br><span class="line">				<span class="built_in">document</span>.getElementById(<span class="string">&quot;zrot&quot;</span>).value = dzt;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">77</span>: <span class="comment">// m//ztheta-</span></span><br><span class="line">				dzt -= stept;</span><br><span class="line">				<span class="built_in">document</span>.getElementById(<span class="string">&quot;zrot&quot;</span>).value = dzt;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">				<span class="comment">//清空</span></span><br><span class="line">				<span class="comment">//这里有个小bug</span></span><br><span class="line">				<span class="comment">//就是清空之后下面的轴没有同步清空</span></span><br><span class="line">				<span class="comment">//这个问题,可以有空解决下</span></span><br><span class="line">			<span class="keyword">case</span> <span class="number">82</span>: <span class="comment">// r//reset</span></span><br><span class="line">				dx = <span class="number">0</span>;</span><br><span class="line">				dy = <span class="number">0</span>;</span><br><span class="line">				dz = <span class="number">0</span>;</span><br><span class="line">				dxt = <span class="number">0</span>;</span><br><span class="line">				dyt = <span class="number">0</span>;</span><br><span class="line">				dzt = <span class="number">0</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (changePos === <span class="number">2</span>) &#123; <span class="comment">//如果当前移动的是相机的位置</span></span><br><span class="line">		<span class="keyword">switch</span> (key) &#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">65</span>: <span class="comment">//left//a</span></span><br><span class="line">				cx -= stepc;</span><br><span class="line">				<span class="built_in">document</span>.getElementById(<span class="string">&quot;xpos&quot;</span>).value = cx;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">68</span>: <span class="comment">// right//d</span></span><br><span class="line">				cx += stepc;</span><br><span class="line">				<span class="built_in">document</span>.getElementById(<span class="string">&quot;xpos&quot;</span>).value = cx;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">87</span>: <span class="comment">// up//w</span></span><br><span class="line">				cy += stepc;</span><br><span class="line">				<span class="built_in">document</span>.getElementById(<span class="string">&quot;ypos&quot;</span>).value = cy;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">83</span>: <span class="comment">// down//s</span></span><br><span class="line">				cy -= stepc;</span><br><span class="line">				<span class="built_in">document</span>.getElementById(<span class="string">&quot;ypos&quot;</span>).value = cy;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">90</span>: <span class="comment">// a//z</span></span><br><span class="line">				cz += stepc;</span><br><span class="line">				<span class="built_in">document</span>.getElementById(<span class="string">&quot;zpos&quot;</span>).value = cz;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">88</span>: <span class="comment">// d//x</span></span><br><span class="line">				cz -= stepc;</span><br><span class="line">				<span class="built_in">document</span>.getElementById(<span class="string">&quot;zpos&quot;</span>).value = cz;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">72</span>: <span class="comment">// h//ytheta-</span></span><br><span class="line">				cyt -= stepct;</span><br><span class="line">				<span class="built_in">document</span>.getElementById(<span class="string">&quot;yrot&quot;</span>).value = cyt;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">75</span>: <span class="comment">// k//ytheta+</span></span><br><span class="line">				cyt += stepct;</span><br><span class="line">				<span class="built_in">document</span>.getElementById(<span class="string">&quot;yrot&quot;</span>).value = cyt;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">85</span>: <span class="comment">// u//xtheta+</span></span><br><span class="line">				cxt -= stepct;</span><br><span class="line">				<span class="built_in">document</span>.getElementById(<span class="string">&quot;xrot&quot;</span>).value = cxt;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">74</span>: <span class="comment">// j//xtheta-</span></span><br><span class="line">				cxt += stepct;</span><br><span class="line">				<span class="built_in">document</span>.getElementById(<span class="string">&quot;xrot&quot;</span>).value = cxt;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">78</span>: <span class="comment">// n//ztheta+</span></span><br><span class="line">				czt += stepct;</span><br><span class="line">				<span class="built_in">document</span>.getElementById(<span class="string">&quot;zrot&quot;</span>).value = czt;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">77</span>: <span class="comment">// m//ztheta-</span></span><br><span class="line">				czt -= stepct;</span><br><span class="line">				<span class="built_in">document</span>.getElementById(<span class="string">&quot;zrot&quot;</span>).value = czt;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">82</span>: <span class="comment">// r//reset</span></span><br><span class="line">				cx = <span class="number">0</span>;</span><br><span class="line">				cy = <span class="number">0</span>;</span><br><span class="line">				cz = <span class="number">4</span>;</span><br><span class="line">				cxt = <span class="number">0</span>;</span><br><span class="line">				cyt = <span class="number">0</span>;</span><br><span class="line">				czt = <span class="number">0</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	buildModelViewProj();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 处理按键释放</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleKeyUp</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">	currentKey[event.keyCode] = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//记录鼠标按住位置</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleMouseDown</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">	mouseDown = <span class="literal">true</span>;</span><br><span class="line">	lastMouseX = event.clientX;</span><br><span class="line">	lastMouseY = event.clientY;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//释放鼠标</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleMouseUp</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">	mouseDown = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//处理鼠标的移动</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleMouseMove</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (!mouseDown) <span class="comment">//如果鼠标没有按住,则返回</span></span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	<span class="comment">//记录新的鼠标的位置</span></span><br><span class="line">	<span class="keyword">var</span> newX = event.clientX;</span><br><span class="line">	<span class="keyword">var</span> newY = event.clientY;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> deltaX = (newX - lastMouseX);</span><br><span class="line">	<span class="keyword">var</span> d = deltaX;</span><br><span class="line">	theta = theta - <span class="built_in">parseFloat</span>(d); <span class="comment">//新建一个变量d?  多此一举!🤣😒</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> deltaY = (newY - lastMouseY);</span><br><span class="line">	d = deltaY;</span><br><span class="line">	phi = phi - <span class="built_in">parseFloat</span>(d); <span class="comment">//新建一个变量d?  多此一举!🤣😒</span></span><br><span class="line"></span><br><span class="line">	lastMouseX = newX; <span class="comment">//更新&#x27;旧鼠标&#x27;位置</span></span><br><span class="line">	lastMouseY = newY;</span><br><span class="line">	buildModelViewProj();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//检查输入</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkInput</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="comment">//投影模式</span></span><br><span class="line">	<span class="keyword">var</span> ptype = <span class="built_in">document</span>.getElementById(<span class="string">&quot;ortho&quot;</span>).checked;</span><br><span class="line">	<span class="keyword">if</span> (ptype) &#123;</span><br><span class="line">		projectionType = <span class="number">1</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">document</span>.getElementById(<span class="string">&quot;persp&quot;</span>).checked) &#123;</span><br><span class="line">		projectionType = <span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	<span class="keyword">var</span> dtype = <span class="built_in">document</span>.getElementById(<span class="string">&quot;wire&quot;</span>).checked;</span><br><span class="line">	<span class="keyword">if</span> (dtype) &#123;</span><br><span class="line">		drawType = <span class="number">1</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">document</span>.getElementById(<span class="string">&quot;solid&quot;</span>).checked) &#123;</span><br><span class="line">		drawType = <span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 这段代码可以学习下</span></span><br><span class="line"><span class="comment">	 * 将取色器中的颜色字符串方便的转换成合乎要求的颜色数组</span></span><br><span class="line"><span class="comment">	 * 这很可以</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">var</span> hexcolor = <span class="built_in">document</span>.getElementById(<span class="string">&quot;objcolor&quot;</span>).value.substring(<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">var</span> rgbHex = hexcolor.match(<span class="regexp">/.&#123;1,2&#125;/g</span>);</span><br><span class="line">	currentColor = vec4.fromValues(</span><br><span class="line">		<span class="built_in">parseInt</span>(rgbHex[<span class="number">0</span>], <span class="number">16</span>) / <span class="number">255.0</span>,</span><br><span class="line">		<span class="built_in">parseInt</span>(rgbHex[<span class="number">1</span>], <span class="number">16</span>) / <span class="number">255.0</span>,</span><br><span class="line">		<span class="built_in">parseInt</span>(rgbHex[<span class="number">2</span>], <span class="number">16</span>) / <span class="number">255.0</span>,</span><br><span class="line">		<span class="number">1.0</span></span><br><span class="line">	);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 更新html的滑动条</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">restoreSliderValue</span>(<span class="params">changePos</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (changePos === <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="built_in">document</span>.getElementById(<span class="string">&quot;xpos&quot;</span>).value = dx;</span><br><span class="line">		<span class="built_in">document</span>.getElementById(<span class="string">&quot;ypos&quot;</span>).value = dy;</span><br><span class="line">		<span class="built_in">document</span>.getElementById(<span class="string">&quot;zpos&quot;</span>).value = dz;</span><br><span class="line">		<span class="built_in">document</span>.getElementById(<span class="string">&quot;xrot&quot;</span>).value = <span class="built_in">Math</span>.floor(dxt);</span><br><span class="line">		<span class="built_in">document</span>.getElementById(<span class="string">&quot;yrot&quot;</span>).value = <span class="built_in">Math</span>.floor(dyt);</span><br><span class="line">		<span class="built_in">document</span>.getElementById(<span class="string">&quot;zrot&quot;</span>).value = <span class="built_in">Math</span>.floor(dzt);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (changePos === <span class="number">2</span>) &#123;</span><br><span class="line">		<span class="built_in">document</span>.getElementById(<span class="string">&quot;xpos&quot;</span>).value = cx;</span><br><span class="line">		<span class="built_in">document</span>.getElementById(<span class="string">&quot;ypos&quot;</span>).value = cy;</span><br><span class="line">		<span class="built_in">document</span>.getElementById(<span class="string">&quot;zpos&quot;</span>).value = cz;</span><br><span class="line">		<span class="built_in">document</span>.getElementById(<span class="string">&quot;xrot&quot;</span>).value = <span class="built_in">Math</span>.floor(cxt);</span><br><span class="line">		<span class="built_in">document</span>.getElementById(<span class="string">&quot;yrot&quot;</span>).value = <span class="built_in">Math</span>.floor(cyt);</span><br><span class="line">		<span class="built_in">document</span>.getElementById(<span class="string">&quot;zrot&quot;</span>).value = <span class="built_in">Math</span>.floor(czt);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> <span class="title">initWindow</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="comment">//获取画布</span></span><br><span class="line">	canvas = <span class="built_in">document</span>.getElementById(<span class="string">&quot;webgl&quot;</span>);</span><br><span class="line">	<span class="comment">//得到gl</span></span><br><span class="line">	gl = WebGLUtils.setupWebGL(canvas);</span><br><span class="line">	<span class="keyword">if</span> (!gl) &#123;</span><br><span class="line">		alert(<span class="string">&quot;WebGL isn&#x27;t available&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//背景色设置</span></span><br><span class="line">	gl.clearColor(<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>);</span><br><span class="line">	<span class="comment">//开启隐藏面消除算法</span></span><br><span class="line">	gl.enable(gl.DEPTH_TEST);</span><br><span class="line">	<span class="comment">//得到着色器控制程序</span></span><br><span class="line">	program = initShaders(gl, <span class="string">&quot;vertex-shader&quot;</span>, <span class="string">&quot;fragment-shader&quot;</span>);</span><br><span class="line">	gl.useProgram(program); <span class="comment">//绑定着色器</span></span><br><span class="line"></span><br><span class="line">	initInterface();</span><br><span class="line"></span><br><span class="line">	checkInput();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化缓冲流</span></span><br><span class="line"><span class="comment">//?????????这东西还需要单独初始化?????????</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">initBuffers</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	vBuffer = gl.createBuffer();</span><br><span class="line">	cBuffer = gl.createBuffer();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * FileReader 对象允许Web应用程序异步读取存储在用户计算机上的文件（或原始数据缓冲区）的内容，</span></span><br><span class="line"><span class="comment"> * 使用 File 或 Blob 对象指定要读取的文件或数据。</span></span><br><span class="line"><span class="comment"> * 其中File对象可以是来自用户在一个&lt;input&gt;元素上选择文件后返回的FileList对象,</span></span><br><span class="line"><span class="comment"> * 也可以来自拖放操作生成的 DataTransfer对象,</span></span><br><span class="line"><span class="comment"> * 还可以是来自在一个HTMLCanvasElement上执行mozGetAsFile()方法后返回结果。</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 重要提示</span></span><br><span class="line"><span class="comment"> * FileReader仅用于以安全的方式从用户（远程）系统读取文件内容 </span></span><br><span class="line"><span class="comment"> * 它不能用于从文件系统中按路径名简单地读取文件。 </span></span><br><span class="line"><span class="comment"> * 要在JavaScript中按路径名读取文件，应使用标准Ajax解决方案进行服务器端文件读取，</span></span><br><span class="line"><span class="comment"> * 如果读取跨域，则使用CORS权限。</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 详细的文档请看:https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 初始化</span></span><br><span class="line"><span class="comment"> * 其实就是将文件读进来,然后进行各个数据的初始化</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">initInterface</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	fileInput = <span class="built_in">document</span>.getElementById(<span class="string">&quot;fileInput&quot;</span>);	<span class="comment">// 获取fileinput对象</span></span><br><span class="line">	fileInput.addEventListener(<span class="string">&quot;change&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;	<span class="comment">//添加事件</span></span><br><span class="line">		<span class="keyword">var</span> file = fileInput.files[<span class="number">0</span>];					<span class="comment">//得到files列表中的第一个obj对象</span></span><br><span class="line">		<span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();					<span class="comment">//fileEeader对象</span></span><br><span class="line">		</span><br><span class="line">		reader.readAsText(file);						<span class="comment">//以字符串形式读取file中的内容</span></span><br><span class="line">		reader.onload = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;				<span class="comment">//当读取完成时,进行以下操作</span></span><br><span class="line">			meshdata = reader.result;					<span class="comment">//将result属性中的数据赋值给meshdata</span></span><br><span class="line">			<span class="comment">// console.log(meshdata.toString());</span></span><br><span class="line">			initObj();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 下面就是给各html中各个组件添加事件</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="comment">//获取投影模式的所有的选择项</span></span><br><span class="line">	<span class="keyword">var</span> projradios = <span class="built_in">document</span>.getElementsByName(<span class="string">&quot;projtype&quot;</span>);</span><br><span class="line">	<span class="comment">//给所有投影模式选择项批量添加事件</span></span><br><span class="line">	<span class="comment">//没想到name属性和元素数组还可以这样使用,学到了</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; projradios.length; i++) &#123;</span><br><span class="line">		projradios[i].addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">			<span class="keyword">var</span> value = <span class="built_in">this</span>.value;</span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">this</span>.checked) &#123;</span><br><span class="line">				projectionType = <span class="built_in">parseInt</span>(value);		<span class="comment">//更新投影模式</span></span><br><span class="line">			&#125;</span><br><span class="line">			buildModelViewProj();</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//获取绘制模式的选择项并批量添加事件</span></span><br><span class="line">	<span class="keyword">var</span> drawradios = <span class="built_in">document</span>.getElementsByName(<span class="string">&quot;drawtype&quot;</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; drawradios.length; i++) &#123;</span><br><span class="line">		drawradios[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">var</span> value = <span class="built_in">this</span>.value;</span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">this</span>.checked) &#123;</span><br><span class="line">				drawType = <span class="built_in">parseInt</span>(value);				<span class="comment">//更新绘制模式</span></span><br><span class="line">			&#125;</span><br><span class="line">			updateModelData();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//当一个 &lt;input&gt;, &lt;select&gt;, 或 &lt;textarea&gt; 元素的 value 被修改时，会触发 input 事件。</span></span><br><span class="line">	<span class="built_in">document</span>.getElementById(<span class="string">&quot;objcolor&quot;</span>).addEventListener(<span class="string">&quot;input&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> hexcolor = <span class="built_in">this</span>.value.substring(<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">var</span> rgbHex = hexcolor.match(<span class="regexp">/.&#123;1,2&#125;/g</span>);</span><br><span class="line">		currentColor = vec4.fromValues(</span><br><span class="line">			<span class="built_in">parseInt</span>(rgbHex[<span class="number">0</span>], <span class="number">16</span>) * <span class="number">1.0</span> / <span class="number">255.0</span>,</span><br><span class="line">			<span class="built_in">parseInt</span>(rgbHex[<span class="number">1</span>], <span class="number">16</span>) * <span class="number">1.0</span> / <span class="number">255.0</span>,</span><br><span class="line">			<span class="built_in">parseInt</span>(rgbHex[<span class="number">2</span>], <span class="number">16</span>) * <span class="number">1.0</span> / <span class="number">255.0</span>,</span><br><span class="line">			<span class="number">1.0</span></span><br><span class="line">		);</span><br><span class="line">		updateColor();</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">document</span>.getElementById(<span class="string">&quot;xpos&quot;</span>).addEventListener(<span class="string">&quot;input&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (changePos === <span class="number">1</span>)</span><br><span class="line">			dx = <span class="built_in">this</span>.value;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (changePos === <span class="number">2</span>)</span><br><span class="line">			cx = <span class="built_in">this</span>.value;</span><br><span class="line">		buildModelViewProj();</span><br><span class="line">	&#125;);</span><br><span class="line">	<span class="built_in">document</span>.getElementById(<span class="string">&quot;ypos&quot;</span>).addEventListener(<span class="string">&quot;input&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (changePos === <span class="number">1</span>)</span><br><span class="line">			dy = <span class="built_in">this</span>.value;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (changePos === <span class="number">2</span>)</span><br><span class="line">			cy = <span class="built_in">this</span>.value;</span><br><span class="line">		buildModelViewProj();</span><br><span class="line">	&#125;);</span><br><span class="line">	<span class="built_in">document</span>.getElementById(<span class="string">&quot;zpos&quot;</span>).addEventListener(<span class="string">&quot;input&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (changePos === <span class="number">1</span>)</span><br><span class="line">			dz = <span class="built_in">this</span>.value;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (changePos === <span class="number">2</span>)</span><br><span class="line">			cz = <span class="built_in">this</span>.value;</span><br><span class="line">		buildModelViewProj();</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">document</span>.getElementById(<span class="string">&quot;xrot&quot;</span>).addEventListener(<span class="string">&quot;input&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (changePos === <span class="number">1</span>)</span><br><span class="line">			dxt = <span class="built_in">this</span>.value;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (changePos === <span class="number">2</span>)</span><br><span class="line">			cxt = <span class="built_in">this</span>.value;</span><br><span class="line">		buildModelViewProj();</span><br><span class="line">	&#125;);</span><br><span class="line">	<span class="built_in">document</span>.getElementById(<span class="string">&quot;yrot&quot;</span>).addEventListener(<span class="string">&quot;input&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (changePos === <span class="number">1</span>)</span><br><span class="line">			dyt = <span class="built_in">this</span>.value;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (changePos === <span class="number">2</span>)</span><br><span class="line">			cyt = <span class="built_in">this</span>.value;</span><br><span class="line">		buildModelViewProj();</span><br><span class="line">	&#125;);</span><br><span class="line">	<span class="built_in">document</span>.getElementById(<span class="string">&quot;zrot&quot;</span>).addEventListener(<span class="string">&quot;input&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (changePos === <span class="number">1</span>)</span><br><span class="line">			dzt = <span class="built_in">this</span>.value;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (changePos === <span class="number">2</span>)</span><br><span class="line">			czt = <span class="built_in">this</span>.value;</span><br><span class="line">		buildModelViewProj();</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> postypeRadio = <span class="built_in">document</span>.getElementsByName(<span class="string">&quot;posgrp&quot;</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; postypeRadio.length; i++) &#123;</span><br><span class="line">		postypeRadio[i].addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">			<span class="keyword">var</span> value = <span class="built_in">this</span>.value;</span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">this</span>.checked) &#123;</span><br><span class="line">				changePos = <span class="built_in">parseInt</span>(value);</span><br><span class="line">				restoreSliderValue(changePos);		<span class="comment">//这里是同步更新滑动条</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 下面也是添加事件</span></span><br><span class="line"><span class="comment">	 * 只不过是简化形式的,本质上和上面的一样的</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="built_in">document</span>.onkeydown = handleKeyDown;</span><br><span class="line">	<span class="built_in">document</span>.onkeyup = handleKeyUp;</span><br><span class="line"></span><br><span class="line">	canvas.onmousedown = handleMouseDown;</span><br><span class="line">	<span class="built_in">document</span>.onmouseup = handleMouseUp;</span><br><span class="line">	<span class="built_in">document</span>.onmousemove = handleMouseMove;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">buildMultiViewProj</span>(<span class="params">type</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (type[<span class="number">0</span>] === <span class="number">0</span>)</span><br><span class="line">		render();</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		rendermultiview();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 初始化obj</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">initObj</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 这里有个小bug</span></span><br><span class="line"><span class="comment">	 * 当最开始加载网页的时候,还没有选择任何obj文件,会一直不断的绘制空的文件</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="comment">//这里的mesh相当于vBuffer,只不过里面得到数据应该更加复杂</span></span><br><span class="line">	mesh = <span class="keyword">new</span> OBJ.Mesh(meshdata);</span><br><span class="line">	<span class="built_in">console</span>.log(mesh);</span><br><span class="line">	<span class="comment">// mesh.normalBuffer, mesh.textureBuffer, mesh.vertexBuffer, mesh.indexBuffer</span></span><br><span class="line">	OBJ.initMeshBuffers(gl, mesh);</span><br><span class="line"></span><br><span class="line">	gl.bindBuffer(gl.ARRAY_BUFFER, mesh.vertexBuffer);</span><br><span class="line">	</span><br><span class="line">	vPosition = gl.getAttribLocation(program, <span class="string">&quot;vPosition&quot;</span>);</span><br><span class="line">	gl.vertexAttribPointer(vPosition, mesh.vertexBuffer.itemSize, gl.FLOAT, <span class="literal">false</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">	gl.enableVertexAttribArray(vPosition);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 这里是根据网格的顶点向量的大小在bcolor中输入数据</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">var</span> bcolor = [];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; mesh.vertexBuffer.numItems; i++)&#123;</span><br><span class="line">		bcolor.push(currentColor[<span class="number">0</span>], currentColor[<span class="number">1</span>], currentColor[<span class="number">2</span>], currentColor[<span class="number">3</span>]);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (cBuffer === <span class="literal">null</span>)   &#123;</span><br><span class="line">		cBuffer = gl.createBuffer();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// setColors</span></span><br><span class="line">	gl.bindBuffer(gl.ARRAY_BUFFER, cBuffer);</span><br><span class="line">	gl.bufferData(gl.ARRAY_BUFFER, <span class="keyword">new</span> <span class="built_in">Float32Array</span>(bcolor), gl.STATIC_DRAW);</span><br><span class="line"></span><br><span class="line">	vColor = gl.getAttribLocation(program, <span class="string">&quot;vColor&quot;</span>);</span><br><span class="line">	gl.vertexAttribPointer(vColor, <span class="number">4</span>, gl.FLOAT, <span class="literal">false</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">	gl.enableVertexAttribArray(vColor);</span><br><span class="line"></span><br><span class="line">	dx = -<span class="number">1.0</span> * (<span class="built_in">parseFloat</span>(mesh.xmax) + <span class="built_in">parseFloat</span>(mesh.xmin)) / <span class="number">2.0</span>;</span><br><span class="line">	dy = -<span class="number">1.0</span> * (<span class="built_in">parseFloat</span>(mesh.ymax) + <span class="built_in">parseFloat</span>(mesh.ymin)) / <span class="number">2.0</span>;</span><br><span class="line">	dz = -<span class="number">1.0</span> * (<span class="built_in">parseFloat</span>(mesh.zmax) + <span class="built_in">parseFloat</span>(mesh.zmin)) / <span class="number">2.0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> maxScale;</span><br><span class="line">	<span class="keyword">var</span> scalex = <span class="built_in">Math</span>.abs(<span class="built_in">parseFloat</span>(mesh.xmax) - <span class="built_in">parseFloat</span>(mesh.xmin));</span><br><span class="line">	<span class="keyword">var</span> scaley = <span class="built_in">Math</span>.abs(<span class="built_in">parseFloat</span>(mesh.ymax) - <span class="built_in">parseFloat</span>(mesh.ymin));</span><br><span class="line">	<span class="keyword">var</span> scalez = <span class="built_in">Math</span>.abs(<span class="built_in">parseFloat</span>(mesh.zmax) - <span class="built_in">parseFloat</span>(mesh.zmin));</span><br><span class="line"></span><br><span class="line">	maxScale = <span class="built_in">Math</span>.max(scalex, scaley, scalez);</span><br><span class="line"></span><br><span class="line">	sx = <span class="number">2.0</span> / maxScale;</span><br><span class="line">	sy = <span class="number">2.0</span> / maxScale;</span><br><span class="line">	sz = <span class="number">2.0</span> / maxScale;</span><br><span class="line"></span><br><span class="line">	dx = <span class="number">0</span>;</span><br><span class="line">	dy = <span class="number">0</span>;</span><br><span class="line">	dz = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	updateModelData();</span><br><span class="line">	buildModelViewProj();</span><br><span class="line">	updateColor();</span><br><span class="line"></span><br><span class="line">	render();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateModelData</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (vBuffer === <span class="literal">null</span>)</span><br><span class="line">		vBuffer = gl.createBuffer();</span><br><span class="line">	gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, vBuffer);</span><br><span class="line">	lineIndex = [];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; mesh.indices.length; i += <span class="number">3</span>) &#123;</span><br><span class="line">		lineIndex.push(mesh.indices[i], mesh.indices[i + <span class="number">1</span>]);</span><br><span class="line">		lineIndex.push(mesh.indices[i + <span class="number">1</span>], mesh.indices[i + <span class="number">2</span>]);</span><br><span class="line">		lineIndex.push(mesh.indices[i + <span class="number">2</span>], mesh.indices[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, <span class="keyword">new</span> <span class="built_in">Uint16Array</span>(lineIndex), gl.STATIC_DRAW);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateColor</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> bcolor = [];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; mesh.vertexBuffer.numItems; i++)</span><br><span class="line">		bcolor.push(currentColor[<span class="number">0</span>], currentColor[<span class="number">1</span>], currentColor[<span class="number">2</span>], currentColor[<span class="number">3</span>]);</span><br><span class="line"></span><br><span class="line">	gl.bindBuffer(gl.ARRAY_BUFFER, cBuffer);</span><br><span class="line">	gl.bufferData(gl.ARRAY_BUFFER, <span class="keyword">new</span> <span class="built_in">Float32Array</span>(bcolor), gl.STATIC_DRAW);</span><br><span class="line"></span><br><span class="line">	vColor = gl.getAttribLocation(program, <span class="string">&quot;vColor&quot;</span>, );</span><br><span class="line">	gl.vertexAttribPointer(vColor, <span class="number">4</span>, gl.FLOAT, <span class="literal">false</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">	gl.enableVertexAttribArray(vColor);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">buildModelViewProj</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="comment">/* ModelViewMatrix &amp; ProjectionMatrix */</span></span><br><span class="line">	<span class="comment">//eye = vec3.fromValues(cx, cy, cz);</span></span><br><span class="line">	<span class="keyword">var</span> localRadius;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (projectionType == <span class="number">1</span>) &#123;</span><br><span class="line">		mat4.ortho(pMatrix, oleft, oright, oybottom, oytop, onear, ofar);</span><br><span class="line">		localRadius = oradius;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		aspect = <span class="number">1</span>;</span><br><span class="line">		mat4.perspective(pMatrix, fovy, aspect, pnear, pfar);</span><br><span class="line">		<span class="comment">//mat4.frustum( pMatrix, pleft, pright, pybottom, pytop, pnear, pfar );</span></span><br><span class="line">		localRadius = pradius;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> rthe = theta * <span class="built_in">Math</span>.PI / <span class="number">180.0</span>;</span><br><span class="line">	<span class="keyword">var</span> rphi = phi * <span class="built_in">Math</span>.PI / <span class="number">180.0</span>;</span><br><span class="line"></span><br><span class="line">	vec3.set(eye, localRadius * <span class="built_in">Math</span>.sin(rthe) * <span class="built_in">Math</span>.cos(rphi), localRadius * <span class="built_in">Math</span>.sin(rthe) * <span class="built_in">Math</span>.sin(rphi),</span><br><span class="line">		localRadius * <span class="built_in">Math</span>.cos(rthe));</span><br><span class="line"></span><br><span class="line">	mat4.lookAt(mvMatrix, eye, at, up);</span><br><span class="line"></span><br><span class="line">	mat4.translate(mvMatrix, mvMatrix, vec3.fromValues(dx, dy, dz));</span><br><span class="line"></span><br><span class="line">	mat4.rotateZ(mvMatrix, mvMatrix, dzt * <span class="built_in">Math</span>.PI / <span class="number">180.0</span>);</span><br><span class="line">	mat4.rotateY(mvMatrix, mvMatrix, dyt * <span class="built_in">Math</span>.PI / <span class="number">180.0</span>);</span><br><span class="line">	mat4.rotateX(mvMatrix, mvMatrix, dxt * <span class="built_in">Math</span>.PI / <span class="number">180.0</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//mat4.translate(mvMatrix, mvMatrix, vec3.fromValues(dx, dy, dz));</span></span><br><span class="line">	mat4.scale(mvMatrix, mvMatrix, vec3.fromValues(sx, sy, sz));</span><br><span class="line"></span><br><span class="line">	modelViewMatrix = gl.getUniformLocation(program, <span class="string">&quot;modelViewMatrix&quot;</span>);</span><br><span class="line">	gl.uniformMatrix4fv(modelViewMatrix, <span class="literal">false</span>, <span class="keyword">new</span> <span class="built_in">Float32Array</span>(mvMatrix));</span><br><span class="line">	projectionMatrix = gl.getUniformLocation(program, <span class="string">&quot;projectionMatrix&quot;</span>);</span><br><span class="line">	gl.uniformMatrix4fv(projectionMatrix, <span class="literal">false</span>, <span class="keyword">new</span> <span class="built_in">Float32Array</span>(pMatrix));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> interval = <span class="built_in">setInterval</span>(timerFunc, <span class="number">30</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">timerFunc</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	render();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	gl.viewport(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height);</span><br><span class="line">	aspect = canvas.width / canvas.height;</span><br><span class="line">	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);</span><br><span class="line">	renderType(drawType);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//根据指定的类型绘制??</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">renderType</span>(<span class="params">type</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (type == <span class="number">1</span>) &#123;</span><br><span class="line">		gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, vBuffer);</span><br><span class="line">		gl.drawElements(gl.LINES, lineIndex.length, gl.UNSIGNED_SHORT, <span class="number">0</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, mesh.indexBuffer);</span><br><span class="line">		gl.drawElements(gl.TRIANGLES, mesh.indexBuffer.numItems, gl.UNSIGNED_SHORT, <span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
+          
+          
+          <li class="next">
+            <a href="/my/mysql8-0安装/" data-toggle="tooltip" data-placement="top" title="mysql8.0安装">Next Post &rarr;</a>
+          </li>
+          
+        </ul>
+
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
+    
+      If you like this blog or find it useful for you, you are welcome to comment on it. You are also welcome to share this blog, so that more people can participate in it. If the images used in the blog infringe your copyright, please contact the author to delete them. Thank you !
+    
+  </p>
+</div>
+<!-- tip end -->
+
+        <!-- tip end -->
+        
+
+        
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+  <!-- gitalk start -->
+  <!-- Docs:https://github.com/gitalk/gitalk/blob/master/readme-cn.md -->
+
+  <div id="gitalk-container"></div>
+
+  
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.js"></script> -->
+    <script src="/js/comment/gitalk.js"></script>
+  
+
+  <script>
+    var gitalk = new Gitalk({
+      clientID: 'b8ec5eaa492aead3f896',
+      clientSecret: '8c6a11eb25e98c705bfc57f7a9c5ed92bcb1ce09',
+      repo: 'blog_comment',
+      owner: 'WANGKANG1717',
+      admin: 'WANGKANG1717',
+      id: 'Fri Nov 12 2021 19:55:47 GMT+0800', // Ensure uniqueness and length less than 50
+      distractionFreeMode: false, // Facebook-like distraction free mode
+      perPage: 10,
+      pagerDirection: 'last',
+      createIssueManually: false,
+      language: 'zh-CN',
+      proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token'
+    });
+    gitalk.render('gitalk-container');
+
+    var gtFolded = () => {
+      setTimeout(function () {
+        let markdownBody = document.getElementsByClassName("markdown-body");
+        let list = Array.from(markdownBody);
+        list.forEach(item => {
+          if (item.clientHeight > 250) {
+            item.classList.add('gt-comment-body-folded');
+            item.style.maxHeight = '250px';
+            item.title = 'Click to Expand';
+            item.onclick = function () {
+              item.classList.remove('gt-comment-body-folded');
+              item.style.maxHeight = '';
+              item.title = '';
+              item.onclick = null;
+            };
+          }
+        })
+      }, 800);
+    }
+  </script>
+
+  <!-- gitalk end -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="nav">none</ol>
+        
+        </div>
+      </aside>
+    
+
+
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+        <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">FEATURED TAGS</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#图形学" title="图形学">图形学</a>
+            
+          </div>
+        </section>
+        
+
+        <!-- Friends Blog -->
+        
+        <hr>
+        <h5>FRIENDS</h5>
+        <ul class="list-inline">
+
+          
+          <li>
+            <a href="https://blog.csdn.net/qq_44685940" target="_blank">myCSDN</a>
+          </li>
+          
+          <li>
+            <a href="https://blog.csdn.net/m0_50994219" target="_blank">curiostyhclzm</a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
+
+
+		<!-- Footer (contains ThemeColor、viewer) -->
+		<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center">
+          
+
+          
+            <li>
+              <a target="_blank" href="https://github.com/WANGKANG1717">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+        </ul>
+        <p class="copyright text-muted">
+          Copyright &copy;
+          WK
+          2021
+          <br>
+          <a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/">浙ICP备2021029629号</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a id="rocket" href="#top" class=""></a>
+
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <!-- Custom Theme JavaScript -->
+  <script type="text/javascript" src="/js/hux-blog.min.js"></script>
+  <!-- catalog -->
+  <script async="true" type="text/javascript" src="/js/catalog.js"></script>
+  <!-- totop(rocket) -->
+  <script async="true" type="text/javascript" src="/js/totop.js"></script>
+
+  
+    <!-- Busuanzi JavaScript -->
+    <script async="async" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <!-- Scroll start -->
+    <script async="async" type="text/javascript" src="/js/scroll.js"></script>
+    <!-- Scroll end -->
+  
+
+  
+
+  
+    <!-- Mouseclick -->
+    <script type="text/javascript" src="/js/mouseclick.js" content='The first step is as good as half over...,Laugh and grow fat...,Man proposes God disposes...,When all else is lost the future still remains...,Wasting time is robbing oneself...,Sharp tools make good work...,Cease to struggle and you cease to live...,A friend in need is a friend indeed...,Faith can move mountains...,If you gave me a chance I would take it,It&#39;s a shot in the dark but I&#39;ll make it,Know with all of your heart,you can&#39;t shake me,When I am with you,there&#39;s no place I&#39;d rather be' color='#9933CC,#339933,#66CCCC,#FF99CC,#CCCCFF,#6666CC,#663399,#66CC99,#FF0033,#9933CC,#339933,#66CCCC,#FF99CC,#FF0033,#66CC99'></script>
+  
+
+  
+    <!-- ribbon -->
+    <script type="text/javascript" src="/js/ribbonDynamic.js"></script>
+  
+
+  
+
+
+
+
+
+
+  <!-- viewer start -->
+  <!-- viewer start (Picture preview) -->
+  
+    <script async="async" type="text/javascript" src="/js/viewer/viewer.min.js"></script>
+    <script async="async" type="text/javascript" src="/js/viewer/pic-viewer.js"></script>
+  
+
+  <!-- viewer end -->
+
+
+<script>
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function (e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  // fastClick.js
+  async ("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function () {
+    var $nav = document.querySelector("nav");
+    if ($nav)
+      FastClick.attach($nav);
+    }
+  )
+</script>
+
+<!-- Because of the native support for backtick-style fenced code blocks right within the Markdown is landed in Github Pages, From V1.6, There is no need for Highlight.js, so Huxblog drops it officially. -
+https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0 - https://help.github.com/articles/creating-and-highlighting-code-blocks/ -->
+<!-- <script> async ("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function () { hljs.initHighlightingOnLoad(); }) </script> <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet"> -->
+
+<!-- jquery.tagcloud.js -->
+<!-- <script> // only load tagcloud.js in tag.html if ($('#tag_cloud').length !== 0) { async ("https://kang17.xyz/js/jquery.tagcloud.js", function () { $.fn.tagcloud.defaults = { // size: { start: 1, end: 1, unit: 'em' }, color: {
+start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </script> -->
+
+
+		<!-- Search -->
+		
+		<div class="popup search-popup local-search-popup">
+  <span class="popup-btn-close">
+    ESC
+  </span>
+  <div class="container">
+    <div class="row">
+      <!-- <div class="col-md-9 col-md-offset-1"> -->
+      <div class="col-lg-9 col-lg-offset-1 col-md-10 col-md-offset-1 local-search-content">
+
+        <div class="local-search-header clearfix">
+
+          <div class="local-search-input-wrapper">
+            <span class="search-icon">
+              <i class="fa fa-search fa-lg" style="margin: 25px 10px 25px 20px;"></i>
+            </span>
+            <input autocomplete="off" placeholder="SEARCH..." type="text" id="local-search-input">
+          </div>
+        </div>
+        <div id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+    <script src="/js/ziploader.js"></script>
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.json";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    // monitor main search box;
+    var onPopupClose = function (e) {
+      $('.popup').fadeOut(300);
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $('.popup').fadeIn(300);
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+    // get search zip version
+    $.get('/searchVersion.json?t=' + (+new Date()), function (res) {
+      if (localStorage.getItem('searchVersion') !== res) {
+        localStorage.setItem('searchVersion', res);
+        initSearchJson();
+      }
+    });
+
+    function initSearchJson() {
+      initLoad(['/search.flv'], {
+        loadOptions: {
+          success: function (obj) {
+            localStorage.setItem('searchJson', obj['search.json'])
+          },
+          error: function (e) {
+            return console.log(e)
+          }
+        },
+        returnOptions: {
+          'json': TYPE_TEXT
+        },
+        mimeOptions: {
+          'json': 'application/json'
+        }
+      })
+    }
+    // search function;
+    var searchFunc = function (search_id, content_id) {
+      'use strict';
+      isfetched = true;
+      var datas = JSON.parse(localStorage.getItem('searchJson'));
+      // console.log(search_id)
+      var input = document.getElementById(search_id);
+      var resultContent = document.getElementById(content_id);
+      var inputEventFunction = function () {
+        var searchText = input.value.trim().toLowerCase();
+        var keywords = searchText.split(/[\s\-]+/);
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        var resultItems = [];
+        if (searchText.length > 0) {
+          // perform local searching
+          datas.forEach(function (data) {
+            var isMatch = false;
+            var hitCount = 0;
+            var searchTextCount = 0;
+            var title = data.title
+              ? data.title.trim()
+              : '';
+            var titleInLowerCase = title.toLowerCase();
+            var content = data.content
+              ? data.content.trim().replace(/<[^>]+>/g, "")
+              : '';
+            var contentInLowerCase = content.toLowerCase();
+            var articleUrl = decodeURIComponent(data.url);
+
+            var date = data.date;
+            var dateTime = date.replace(/T/, " ").replace(/.000Z/, "");
+            var imgUrl = data.header_img;
+            
+
+
+            var indexOfTitle = [];
+            var indexOfContent = [];
+            // only match articles with not empty titles
+            keywords.forEach(function (keyword) {
+              function getIndexByWord(word, text, caseSensitive) {
+                var wordLen = word.length;
+                if (wordLen === 0) {
+                  return [];
+                }
+                var startPosition = 0,
+                  position = [],
+                  index = [];
+                if (!caseSensitive) {
+                  text = text.toLowerCase();
+                  word = word.toLowerCase();
+                }
+                while ((position = text.indexOf(word, startPosition)) > -1) {
+                  index.push({position: position, word: word});
+                  startPosition = position + wordLen;
+                }
+                return index;
+              }
+              indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+              indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+            });
+            if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+              isMatch = true;
+              hitCount = indexOfTitle.length + indexOfContent.length;
+            }
+            // show search results
+            if (isMatch) {
+              // sort index by position of keyword
+              [indexOfTitle, indexOfContent].forEach(function (index) {
+                index.sort(function (itemLeft, itemRight) {
+                  if (itemRight.position !== itemLeft.position) {
+                    return itemRight.position - itemLeft.position;
+                  } else {
+                    return itemLeft.word.length - itemRight.word.length;
+                  }
+                });
+              });
+              // merge hits into slices
+              function mergeIntoSlice(text, start, end, index) {
+                var item = index[index.length - 1];
+                var position = item.position;
+                var word = item.word;
+                var hits = [];
+                var searchTextCountInSlice = 0;
+                while (position + word.length <= end && index.length != 0) {
+                  if (word === searchText) {
+                    searchTextCountInSlice++;
+                  }
+                  hits.push({position: position, length: word.length});
+                  var wordEnd = position + word.length;
+                  // move to next position of hit
+                  index.pop();
+                  while (index.length != 0) {
+                    item = index[index.length - 1];
+                    position = item.position;
+                    word = item.word;
+                    if (wordEnd > position) {
+                      index.pop();
+                    } else {
+                      break;
+                    }
+                  }
+                }
+                searchTextCount += searchTextCountInSlice;
+                return {hits: hits, start: start, end: end, searchTextCount: searchTextCountInSlice};
+              }
+              var slicesOfTitle = [];
+              if (indexOfTitle.length != 0) {
+                slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+              }
+              var slicesOfContent = [];
+              while (indexOfContent.length != 0) {
+                var item = indexOfContent[indexOfContent.length - 1];
+                var position = item.position;
+                var word = item.word;
+                // cut out 100 characters
+                var start = position - 20;
+                var end = position + 80;
+                if (start < 0) {
+                  start = 0;
+                }
+                if (end < position + word.length) {
+                  end = position + word.length;
+                }
+                if (end > content.length) {
+                  end = content.length;
+                }
+                slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+              }
+              // sort slices in content by search text's count and hits' count
+              slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                  return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                  return sliceRight.hits.length - sliceLeft.hits.length;
+                } else {
+                  return sliceLeft.start - sliceRight.start;
+                }
+              });
+              // select top N slices in content
+              var upperBound = parseInt('1');
+              if (upperBound >= 0) {
+                slicesOfContent = slicesOfContent.slice(0, upperBound);
+              }
+              // highlight title and content
+              function highlightKeyword(text, slice) {
+                var result = '';
+                var prevEnd = slice.start;
+                slice.hits.forEach(function (hit) {
+                  result += text.substring(prevEnd, hit.position);
+                  var end = hit.position + hit.length;
+                  result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                  prevEnd = end;
+                });
+                result += text.substring(prevEnd, slice.end);
+                return result;
+              }
+              var resultItem = '';
+
+              // if (slicesOfTitle.length != 0) {   resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>"; } else {   resultItem += "<li><a target='_blank' href='" +
+              // articleUrl + "' class='search-result-title'>" + title + "</a>"; } slicesOfContent.forEach(function (slice) {   resultItem += "<a target='_blank' href='" + articleUrl + "'><p class=\"search-result\">" + highlightKeyword(content, slice) +
+              // "...</p></a>"; }); resultItem += "</li>";
+
+              if (slicesOfTitle.length != 0) {
+                resultItem += "<a target='_blank' href='" + articleUrl + "' class='search-result'><div class='search-result-left'><div class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</div><time class='search-result-date'>" + dateTime + "</time>";
+              } else {
+                resultItem += "<a target='_blank' href='" + articleUrl + "' class='search-result'><div class='search-result-left'><div class='search-result-title'>" + title + "</div><time class='search-result-date'>" + dateTime + "</time>";
+              }
+              slicesOfContent.forEach(function (slice) {
+                resultItem += "<p class=\"search-result-content\">" + highlightKeyword(content, slice) + "...</p>";
+              });
+              resultItem += "</div><div class='search-result-right'><img class='media-image' src='" + imgUrl + "' width='64px' height='48px'></img></div></a>";
+
+              resultItems.push({item: resultItem, searchTextCount: searchTextCount, hitCount: hitCount, id: resultItems.length});
+            }
+          })
+        };
+
+        if (keywords.length === 1 && keywords[0] === "") {
+          resultContent.innerHTML = '<div id="no-result"></div>'
+        } else if (resultItems.length === 0) {
+          resultContent.innerHTML = '<div id="no-result"></div>'
+        } else {
+          resultItems.sort(function (resultLeft, resultRight) {
+            if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+              return resultRight.searchTextCount - resultLeft.searchTextCount;
+            } else if (resultLeft.hitCount !== resultRight.hitCount) {
+              return resultRight.hitCount - resultLeft.hitCount;
+            } else {
+              return resultRight.id - resultLeft.id;
+            }
+          });
+          var searchResultList = '<div class=\"search-result-list\">';
+          resultItems.forEach(function (result) {
+            searchResultList += result.item;
+          })
+          searchResultList += "</div>";
+          resultContent.innerHTML = searchResultList;
+        }
+      }
+      if ('auto' === 'auto') {
+        input.addEventListener('input', inputEventFunction);
+      } else {
+        $('.search-icon').click(inputEventFunction);
+        input.addEventListener('keypress', function (event) {
+          if (event.keyCode === 13) {
+            inputEventFunction();
+          }
+        });
+      }
+      // remove loading animation
+      $('body').css('overflow', '');
+      proceedsearch();
+    }
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function (e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc('local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function (e) {
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 && $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+
+    document.addEventListener('mouseup', (e) => {
+      var _con = document.querySelector(".local-search-content");
+      if (_con) {
+        if (!_con.contains(e.target)) {
+          onPopupClose();
+        }
+      }
+    });
+  </script>
+
+
+		
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
