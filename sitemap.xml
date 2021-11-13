@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangkang.com/my/Lab5/</loc>
+    
+    <lastmod>2021-11-13</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangkang.com/my/Lab4/</loc>
     
     <lastmod>2021-10-25</lastmod>
@@ -74,7 +81,7 @@
 
   <url>
     <loc>http://wangkang.com/</loc>
-    <lastmod>2021-11-12</lastmod>
+    <lastmod>2021-11-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -82,7 +89,7 @@
   
   <url>
     <loc>http://wangkang.com/tags/%E5%AE%9E%E9%AA%8C/</loc>
-    <lastmod>2021-11-12</lastmod>
+    <lastmod>2021-11-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -91,7 +98,7 @@
   
   <url>
     <loc>http://wangkang.com/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%AE%9E%E9%AA%8C/</loc>
-    <lastmod>2021-11-12</lastmod>
+    <lastmod>2021-11-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
