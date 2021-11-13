@@ -115,10 +115,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="http://wangkang.com/about/">
+  <link rel="canonical" href="http://wangkang.com/my/Lab5/Lab5_a/">
   <title>
     
-      About - dead or alive
+      dead or alive
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -314,19 +314,19 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/newhome_bg.jpg');
-      --intro-header-background-image-url-post: url('img/scenery/about_bg.jpg');
-      --intro-header-background-image-url-page: url('/img/scenery/about_bg.jpg');
+      --intro-header-background-image-url-post: url('');
+      --intro-header-background-image-url-page: url('/img/header_img/archive_bg2.jpg');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/newhome_bg.jpg');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('img/scenery/about_bg.jpg');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/scenery/about_bg.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/archive_bg2.jpg');
     }
 
     header.intro-header {
-       /*page*/
-        background-image: var(--intro-header-background-image-url-page);
-        /* background-image: url('/img/scenery/about_bg.jpg'); */
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url(''); */
       
     }
 
@@ -348,10 +348,40 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-          <div class="site-heading">
-            <h1>About</h1>
-            <!--<hr class="small">-->
-            <span class="subheading">be yourself, keep going....</span>
+          <div class="post-heading">
+            <div class="tags">
+              
+            </div>
+            <h1></h1>
+            <h2 class="subheading"></h2>
+            <span class="meta">
+              Posted by WK on
+              2021-11-13
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">1</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">109</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- WordCount end -->
+            
+            
+            <!-- 不蒜子统计 start -->
+            <span class="meta" id="busuanzi_container_page_pv">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            
+
+
           </div>
           
         </div>
@@ -392,201 +422,292 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-		<!-- Main Content -->
-<div class="container">
-  <div class="row">
-    
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-    <!-- USE SIDEBAR -->
-    <!-- Post Container -->
-    <div class="
+        <!DOCTYPE html>
+<!-- 
+	kang
+	2021/11/7
+ -->
+<!-- 
+	一些英文缩写的解释
+		projtype: projection type 投影模式
+		ortho: orthographic projection 正交投影
+		persp: perspective 透视投影
+		wire: 线框模式
+		solid: 实体模式
+		objpos: 物体位置
+		campos: 相机位置
+		xyz-pos: 控制物体平移
+		xyz-rot: 控制物体旋转
+		posgrp: 作用的对象:相机/物体
+		//终于看懂这一页了
+		//还剩几百行的js文件和一个objloader库
+		//哭了
+  -->
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Lab5_a</title>
+		<!-- 顶点着色器 -->
+		<script id="vertex-shader">
+			attribute vec4 vPosition;
+			attribute vec4 vColor;
+			varying vec4 fColor;
+			//
+			uniform mat4 modelViewMatrix;
+			uniform mat4 projectionMatrix;
+			//
+			void main() {
+				gl_Position = projectionMatrix * modelViewMatrix * vPosition;
+				fColor = vColor;
+			}
+		</script>
+		<!-- 片元着色器 -->
+		<script id="fragment-shader">
+			precision mediump float;
+			varying vec4 fColor;
+
+			void main() {
+				gl_FragColor = fColor;
+			}
+		</script>
+		<script type="text/javascript" src="lib/webgl-utils.js"></script>
+		<script type="text/javascript" src="lib/initShaders.js"></script>
+		<script type="text/javascript" src="lib/gl-matrix-min.js"></script>
+		<script type="text/javascript" src="js/objloader.js"></script>
+
+		<script type="text/javascript" src="js/Lab5_a.js"></script>
+		<link type="text/css" rel="stylesheet" href="css/style.css" />
+	</head>
+
+	<body>
+		<div align="center">
+			<div style="height:50px; width: 435px;">
+				<a style="font-size: 30px; font-family: 楷体; background-color: aqua;">任务a</a>
+			</div>
+			<div align="left" id="DIV">
+				选择OBJ文件: <input type="file" id="fileInput"><br />
+				投影方式: <input type="radio" id="ortho" name="projtype" value="1" checked>正交投影&nbsp;
+							<input type="radio" id="persp" name="projtype" value="2">透视投影<br>
+				绘制方式: <input type="radio" id="wire" name="drawtype" value="1" checked>线框模式&nbsp;
+							<input type="radio" id="solid" name="drawtype" value="2">实体模式&nbsp;
+							<input type="color" id="objcolor" name="objcolor" value="#ff0000"><br />
+				对象位置: <input type="radio" id="objpos" name="posgrp" value="1" checked>物体位置&nbsp;
+							<input type="radio" id="campos" name="posgrp" value="2">相机位置<br />
+							<label>x pos</label><input type="range" id="xpos" name="xpos" min="-5.0" max="5.0" step="0.1"> &nbsp;
+							<label>x rot</label><input type="range" id="xrot" name="xrot" min="-360" max="360" step="1.0"><br>
+							<label>y pos</label><input type="range" id="ypos" name="ypos" min="-5.0" max="5.0" step="0.1"> &nbsp;
+							<label>y rot</label><input type="range" id="yrot" name="yrot" min="-360" max="360" step="1.0"><br>
+							<label>z pos</label><input type="range" id="zpos" name="zpos" min="-5.0" max="5.0" step="0.1"> &nbsp;
+							<label>z rot</label><input type="range" id="zrot" name="zrot" min="-360" max="360" step="1.0">
+			</div>
+			<div>
+				<canvas id="webgl" width="500" height="500">你的浏览器不支持HTML5 canvas元素</canvas>
+			</div>
+		</div>
+	</body>
+</html>
+
+
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/my/Lab5/js/objloader/" data-toggle="tooltip" data-placement="top" title="">&larr; Previous Post</a>
+          </li>
+          
+          
+          <li class="next">
+            <a href="/my/Lab5/" data-toggle="tooltip" data-placement="top" title="Lab5">Next Post &rarr;</a>
+          </li>
+          
+        </ul>
+
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
+    
+      If you like this blog or find it useful for you, you are welcome to comment on it. You are also welcome to share this blog, so that more people can participate in it. If the images used in the blog infringe your copyright, please contact the author to delete them. Thank you !
+    
+  </p>
+</div>
+<!-- tip end -->
+
+        <!-- tip end -->
+        
+
+        
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+  <!-- gitalk start -->
+  <!-- Docs:https://github.com/gitalk/gitalk/blob/master/readme-cn.md -->
+
+  <div id="gitalk-container"></div>
+
+  
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.js"></script> -->
+    <script src="/js/comment/gitalk.js"></script>
+  
+
+  <script>
+    var gitalk = new Gitalk({
+      clientID: 'b8ec5eaa492aead3f896',
+      clientSecret: '8c6a11eb25e98c705bfc57f7a9c5ed92bcb1ce09',
+      repo: 'blog_comment',
+      owner: 'WANGKANG1717',
+      admin: 'WANGKANG1717',
+      id: 'Sat Nov 13 2021 19:15:06 GMT+0800', // Ensure uniqueness and length less than 50
+      distractionFreeMode: false, // Facebook-like distraction free mode
+      perPage: 10,
+      pagerDirection: 'last',
+      createIssueManually: false,
+      language: 'zh-CN',
+      proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token'
+    });
+    gitalk.render('gitalk-container');
+
+    var gtFolded = () => {
+      setTimeout(function () {
+        let markdownBody = document.getElementsByClassName("markdown-body");
+        let list = Array.from(markdownBody);
+        list.forEach(item => {
+          if (item.clientHeight > 250) {
+            item.classList.add('gt-comment-body-folded');
+            item.style.maxHeight = '250px';
+            item.title = 'Click to Expand';
+            item.onclick = function () {
+              item.classList.remove('gt-comment-body-folded');
+              item.style.maxHeight = '';
+              item.title = '';
+              item.onclick = null;
+            };
+          }
+        })
+      }, 800);
+    }
+  </script>
+
+  <!-- gitalk end -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
+
+
+
+      <!-- Sidebar Container -->
+      <div class="
                 col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
+                col-md-10 col-md-offset-1
+                sidebar-container">
 
-      <h2 id="About-me"><a href="#About-me" class="headerlink" title="About me"></a><a target="_blank" rel="noopener" href="http://kang17.xyz">About me</a></h2><blockquote>
-<p><strong>姓名</strong>：WQK</p>
-<p><strong>性别</strong>：男</p>
-<p><strong>年龄</strong>：保密</p>
-<p><strong>专业</strong>：医学信息工程</p>
-<p><strong>学校</strong>：ZCMU</p>
-<p><strong>爱好</strong>：计算机、健身、跑步、骑行，music，<del>摄影</del></p>
-<p><strong>性格</strong>：时而奔放，时而内敛</p>
-<p><strong>思想</strong>：现实主义(90%)+理想主义(10%)</p>
-<p><strong>情商</strong>：什么？意思是我还有情商？（万年单身狗，情商为零，哭了🤣）</p>
-<p><strong>警言</strong>：难过的事要首先做，，</p>
-<p><strong>其他</strong>：<del>不知道该说什么，那就这样吧！</del></p>
-</blockquote>
-<h2 id="Contact-me"><a href="#Contact-me" class="headerlink" title="Contact me"></a>Contact me</h2><blockquote>
-<p>QQ：<img src="/img/avatar/qq.jpg" width="350" alt="qq.jpg"></img></p>
-<p>weixin：<img src="/img/avatar/weixin.png" width="350" alt="weixin.png"></img></p>
-</blockquote>
-
-
-      <!-- 如果开启评论功能 -->
-      
-      <hr>
-
-      
-
-      
-      
-    </div>
-
-    <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
         <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">FEATURED TAGS</a>
+          </h5>
+          <div class="tags">
+            
+          </div>
+        </section>
+        
 
-<section>
-  <h5><a href="/tags/">FEATURED TAGS</a></h5>
-  <div class="tags">
-    
-    
-    <a href="/tags/#实验" title="实验" rel="6">实验</a>
-    
-    
-  </div>
-</section>
-
-
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-  <h5><a href="/about/">ABOUT ME</a></h5>
-  <div class="short-about">
-
-    
-    <img id="avatar_pic" src="/img/avatar/morning.jpg" alt="avatar_pic" style="box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -moz-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);" />
-    
-
-    
-    <p>从错误中学习，在失败中崛起</p>
-    
-
-    <!-- SNS Link -->
-    <ul class="list-inline">
-      
-
-      
-      <li>
-        <a target="_blank" href="https://github.com/WANGKANG1717">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
-      </li>
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-    </ul>
-  </div>
-</section>
-
-        <hr>
-    
-        <!-- RECENT POSTS -->
-
-<h5><a href="/">RECENT POSTS</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="../my/Lab5/lib/webgl-utils/">
-      <li>(no title)</li>
-    </a>
-    
-    <a href="../my/Lab5/lib/initShaders/">
-      <li>(no title)</li>
-    </a>
-    
-    <a href="../my/Lab5/lib/gl-matrix-min/">
-      <li>(no title)</li>
-    </a>
-    
-    <a href="../my/Lab5/css/style/">
-      <li>(no title)</li>
-    </a>
-    
-    <a href="../my/Lab5/js/Lab5_a/">
-      <li>(no title)</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
         <!-- Friends Blog -->
-
-<h5><a href="/">FRIENDS</a></h5>
-<ul class="list-inline">
-  
-  <li><a href="https://blog.csdn.net/qq_44685940" target="_blank">myCSDN</a></li>
-  
-  <li><a href="https://blog.csdn.net/m0_50994219" target="_blank">curiostyhclzm</a></li>
-  
-</ul>
-
-
+        
         <hr>
-    
-        <!-- Archives -->
+        <h5>FRIENDS</h5>
+        <ul class="list-inline">
 
-<h5><a href="/archives/">archives</a></h5>
-<div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../archives/2021/11/">November 2021</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2021/10/">October 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2021/09/">September 2021</a><span class="archive-list-count">2</span></li></ul>
-</div>
-
-
-        <hr>
-    
-        <!-- Categories -->
-
-<h5><a href="/categories/">categories</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="/categories/#图形学实验">
-      <li>图形学实验</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
-</div>
-
-
-    
+          
+          <li>
+            <a href="https://blog.csdn.net/qq_44685940" target="_blank">myCSDN</a>
+          </li>
+          
+          <li>
+            <a href="https://blog.csdn.net/m0_50994219" target="_blank">curiostyhclzm</a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
   </div>
-</div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
 
 
 		<!-- Footer (contains ThemeColor、viewer) -->

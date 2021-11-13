@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://wangkang.com/my/Lab5/lib/webgl-utils/</loc>
+    <lastmod>2021-11-13</lastmod>
+  </url>
+  <url>
+    <loc>http://wangkang.com/my/Lab5/lib/initShaders/</loc>
+    <lastmod>2021-11-13</lastmod>
+  </url>
+  <url>
+    <loc>http://wangkang.com/my/Lab5/lib/gl-matrix-min/</loc>
+    <lastmod>2021-11-13</lastmod>
+  </url>
+  <url>
+    <loc>http://wangkang.com/my/Lab5/css/style/</loc>
+    <lastmod>2021-11-13</lastmod>
+  </url>
+  <url>
+    <loc>http://wangkang.com/my/Lab5/js/Lab5_a/</loc>
+    <lastmod>2021-11-13</lastmod>
+  </url>
+  <url>
+    <loc>http://wangkang.com/my/Lab5/js/objloader/</loc>
+    <lastmod>2021-11-13</lastmod>
+  </url>
+  <url>
+    <loc>http://wangkang.com/my/Lab5/Lab5_a/</loc>
+    <lastmod>2021-11-13</lastmod>
+  </url>
+  <url>
     <loc>http://wangkang.com/my/Lab5/</loc>
     <lastmod>2021-11-13</lastmod>
   </url>
