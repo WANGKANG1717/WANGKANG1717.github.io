@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <!-- 
-	kang
-	2021/11/7
+	@author WK
+	@Date 2021/11/16
+	@Email 1686617586@qq.com
  -->
-<!-- 
-	一些英文缩写的解释
-		projtype: projection type 投影模式
-		ortho: orthographic projection 正交投影
-		persp: perspective 透视投影
-		wire: 线框模式
-		solid: 实体模式
-		objpos: 物体位置
-		campos: 相机位置
-		xyz-pos: 控制物体平移
-		xyz-rot: 控制物体旋转
-		posgrp: 作用的对象:相机/物体
-		//终于看懂这一页了
-		//还剩几百行的js文件和一个objloader库
-		//哭了
-  -->
 <html>
 	<head>
 		<meta charset="utf-8">
 		<title>Lab5_a</title>
+	</head>
+	<body>
+	</body>
+</html>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>学习drawelement</title>
 		<!-- 顶点着色器 -->
 		<script id="vertex-shader">
 			attribute vec4 vPosition;
 			attribute vec4 vColor;
 			varying vec4 fColor;
-			//
+
 			uniform mat4 modelViewMatrix;
 			uniform mat4 projectionMatrix;
 			//
 			void main() {
+				gl_PointSize=20.0;
 				gl_Position = projectionMatrix * modelViewMatrix * vPosition;
 				fColor = vColor;
 			}
@@ -55,30 +59,31 @@
 		<link type="text/css" rel="stylesheet" href="css/style.css" />
 	</head>
 
-	<body>
+	<body onload="init()">
 		<div align="center">
 			<div style="height:50px; width: 435px;">
-				<a style="font-size: 30px; font-family: 楷体; background-color: aqua;">任务a</a>
+				<a style="font-size: 30px; font-family: 楷体; background-color: aqua;">Lab5_a</a>
 			</div>
 			<div align="left" id="DIV">
 				选择OBJ文件: <input type="file" id="fileInput"><br />
+				颜色选择器: &nbsp;&nbsp;<input type="color" id="objcolor" value="#aaaaff"><br />
 				投影方式: <input type="radio" id="ortho" name="projtype" value="1" checked>正交投影&nbsp;
-							<input type="radio" id="persp" name="projtype" value="2">透视投影<br>
-				绘制方式: <input type="radio" id="wire" name="drawtype" value="1" checked>线框模式&nbsp;
-							<input type="radio" id="solid" name="drawtype" value="2">实体模式&nbsp;
-							<input type="color" id="objcolor" name="objcolor" value="#ff0000"><br />
+						<input type="radio" id="persp" name="projtype" value="2">透视投影<br>
+				绘制方式: <input type="radio" id="wire" name="drawtype" value="1" checked>实体模式&nbsp;
+						<input type="radio" id="solid" name="drawtype" value="2">线框模式<br />
 				对象位置: <input type="radio" id="objpos" name="posgrp" value="1" checked>物体位置&nbsp;
-							<input type="radio" id="campos" name="posgrp" value="2">相机位置<br />
-							<label>x pos</label><input type="range" id="xpos" name="xpos" min="-5.0" max="5.0" step="0.1"> &nbsp;
-							<label>x rot</label><input type="range" id="xrot" name="xrot" min="-360" max="360" step="1.0"><br>
-							<label>y pos</label><input type="range" id="ypos" name="ypos" min="-5.0" max="5.0" step="0.1"> &nbsp;
-							<label>y rot</label><input type="range" id="yrot" name="yrot" min="-360" max="360" step="1.0"><br>
-							<label>z pos</label><input type="range" id="zpos" name="zpos" min="-5.0" max="5.0" step="0.1"> &nbsp;
-							<label>z rot</label><input type="range" id="zrot" name="zrot" min="-360" max="360" step="1.0">
+						<input type="radio" id="campos" name="posgrp" value="2">相机位置<br />
+				x pos<input type="range" id="xpos" min="-5.0" max="5.0" step="0.1"> &nbsp;
+				x rot<input type="range" id="xrot" min="-360" max="360" step="1.0"><br>
+				y pos<input type="range" id="ypos" min="-5.0" max="5.0" step="0.1"> &nbsp;
+				y rot<input type="range" id="yrot" min="-360" max="360" step="1.0"><br>
+				z pos<input type="range" id="zpos" min="-5.0" max="5.0" step="0.1"> &nbsp;
+				z rot<input type="range" id="zrot" min="-360" max="360" step="1.0"> <br />
+				添加: <input type="button" id="Cube" value="立方体"/>
+					<input type="button" id="Shoudian" value="手电"/>
+					<input type="button" id="Bunny" value="小兔子"/>
 			</div>
-			<div>
-				<canvas id="webgl" width="500" height="500">你的浏览器不支持HTML5 canvas元素</canvas>
-			</div>
+			<canvas id="webgl" width="600" height="600">你的浏览器不支持HTML5 canvas元素</canvas>
 		</div>
 	</body>
 </html>
