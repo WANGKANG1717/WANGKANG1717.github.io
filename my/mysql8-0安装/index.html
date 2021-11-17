@@ -221,6 +221,17 @@
           
           
           
+          <li>
+            <a href="/archive/">
+              
+              ARCHIVES
+              
+              
+            </a>
+          </li>
+          
+          
+          
           
           
           <li>
@@ -238,17 +249,6 @@
             <a href="/tags/">
               
               TAGS
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
-            <a href="/archive/">
-              
-              ARCHIVES
               
               
             </a>
@@ -436,31 +436,28 @@
 <p>不推荐msi版本的mysql，虽然可以傻瓜式的安装，但是，貌似最新版本的mysql8.0不支持你手动更改安装位置，在安装过程中还会向你的注册表中注入很多东西。。</p>
 <p>zip版本的mysql安装其实不难，没有必要按照网上的教程手动添加my.ini（事实证明，即使你添加了，不经过额外的设置，也不会起作用），所以我更加推荐安装zip版的mysql。</p>
 </blockquote>
-<h2 id="下载">下载</h2>
-<p>去官网，找到Download一栏，下载最新zip安装包即可。<br>
-<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">连接在此</a></p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>去官网，找到Download一栏，下载最新zip安装包即可。<br><a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">连接在此</a></p>
 <p>点击下面的这个即可</p>
-<img src="1.png" width="700px">
-<h2 id="安装">安装</h2>
-<p>1.首先解压mysql的zip包到你需要的安装目录</p>
+<p><img src="1.png" width="700px"></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>1.首先解压mysql的zip包到你需要的安装目录</p>
 <p>2.配置环境变量/bin</p>
-<p>3.执行初始化命令:</p>
+<p>3.执行初始化命令: </p>
 <figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">mysqld</span> --<span class="comment">initialize</span> --<span class="comment">console</span></span><br></pre></td></tr></table></figure>
 <p>成功执行后会生成初始密码，通常在最后一行，例如1*nByq7nEJtg</p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A <span class="keyword">temporary</span> <span class="keyword">password</span> <span class="keyword">is</span> <span class="keyword">generated</span> <span class="keyword">for</span> root@localhost: =xxxxx</span><br></pre></td></tr></table></figure>
-<p>4.安装mysql服务:</p>
+<p>4.安装mysql服务: </p>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqld <span class="comment">--install</span></span><br></pre></td></tr></table></figure>
 <p>安装成功会提示Service successfully installed!</p>
 <p>如果已经安装会提示The service already exists!</p>
 <p>如果提示安装服务被拒绝，说明没有用管理员身份打开CMD</p>
 <p>Install/Remove of the Service Denied!</p>
 <p>如果已经安装过mysql服务，再安装另一个版本时，在install之前应该remove之前的服务：mysqld -remove</p>
-<p>5.启动mysql服务:</p>
+<p>5.启动mysql服务: </p>
 <figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">net</span> <span class="built_in">start</span> mysql</span><br></pre></td></tr></table></figure>
 <p>6.更改密码</p>
 <p>登录mysql后可以更改密码</p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">USER</span> <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;新密码&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<p>7.安装过程中如果遇到问题:</p>
+<p>7.安装过程中如果遇到问题: </p>
 <p>​    1.MySQL 服务正在启动 . MySQL 服务无法启动。 服务没有报告任何错误。</p>
 <p>​        打开cmd 依次输入以下命令</p>
 <figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">mysqld</span> <span class="literal">-</span><span class="comment">remove</span></span><br><span class="line"><span class="comment">mysqld</span> <span class="literal">-</span><span class="comment">install</span></span><br><span class="line"><span class="comment">mysqld</span> --<span class="comment">initialize</span> --<span class="comment">console</span></span><br><span class="line"><span class="comment">net</span> <span class="comment">start</span> <span class="comment">mysql</span></span><br></pre></td></tr></table></figure>
