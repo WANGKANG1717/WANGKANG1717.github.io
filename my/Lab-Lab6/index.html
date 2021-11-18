@@ -115,10 +115,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="https://kang17.xyz/tags/maven/">
+  <link rel="canonical" href="https://kang17.xyz/my/Lab-Lab6/">
   <title>
     
-      dead or alive
+      Lab6 - dead or alive
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -314,19 +314,19 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/newhome_bg.jpg');
-      --intro-header-background-image-url-post: url('');
-      --intro-header-background-image-url-page: url('/img/header_img/archive_bg2.jpg');
+      --intro-header-background-image-url-post: url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: url('//img/header_img/lml_bg.jpg');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/newhome_bg.jpg');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/archive_bg2.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/header_img/lml_bg.jpg');
     }
 
     header.intro-header {
-       /*page*/
-        background-image: var(--intro-header-background-image-url-page);
-        /* background-image: url('/img/header_img/archive_bg2.jpg'); */
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url('/img/header_img/lml_bg.jpg'); */
       
     }
 
@@ -348,10 +348,42 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-          <div class="site-heading">
-            <h1>WK&#39;website</h1>
-            <!--<hr class="small">-->
-            <span class="subheading">Nice To Meet You！</span>
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#实验" title="实验">实验</a>
+              
+            </div>
+            <h1>Lab6</h1>
+            <h2 class="subheading">光照模型</h2>
+            <span class="meta">
+              Posted by WK on
+              2021-11-18
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">1</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">151</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- WordCount end -->
+            
+            
+            <!-- 不蒜子统计 start -->
+            <span class="meta" id="busuanzi_container_page_pv">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            
+
+
           </div>
           
         </div>
@@ -392,478 +424,226 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-		<!-- Main Content -->
-<div class="container">
-  <div class="row">
-    
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-    <!-- USE SIDEBAR -->
-    <!-- Post Container -->
-    <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
+        <h2 id="实验目的">实验目的</h2>
+<p>通过实验，熟悉Phong光照模型的着色器实现方法，理解WebGL中光照模型的实现原理及过程，并在此基础上袢现对物体模型的真实感光照模型展示</p>
+<h2 id="实验任务">实验任务</h2>
+<h3 id="画一个球">画一个球</h3>
+<h4 id="任务a">任务a</h4>
+<p>绘制空间中的一个球，基本思路参照教材描述。利用单位圆内接正四面体，以递归方式构建一个球体</p>
+<h4 id="任务b">任务b</h4>
+<p>以球体作为模型，实现Phong光照模型，其中各项参数自定</p>
+<h3 id="交互式物体对象展示应用二">交互式物体对象展示应用二</h3>
 
-      <!-- Main Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-0 col-md-10 col-md-offset-1">
-      <!-- 归档列表 -->
 
-      
-
-      <!-- 归档列表 -->
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2021">
-          <span class="tag-text">2021</span>
-        </span>
-        <ul>
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
           
-          <li>
-            11-18
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/my/Lab-Lab6/" style="color: #0085a1">
-              <span>
-                Lab6
-              </span>
-            </a>
-          </li>
           
-          <li>
-            11-13
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/my/Lab-Lab5/" style="color: #0085a1">
-              <span>
-                Lab5
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            11-12
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/my/demo5-3注释/" style="color: #0085a1">
-              <span>
-                demo5-3注释
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            11-06
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/my/mysql8-0安装/" style="color: #0085a1">
-              <span>
-                mysql8.0安装
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            11-03
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/my/JS-键盘事件详解/" style="color: #0085a1">
-              <span>
-                JS_键盘事件详解
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            10-25
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/my/Lab-Lab4/" style="color: #0085a1">
-              <span>
-                Lab4
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            10-23
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/my/Linux用户权限/" style="color: #0085a1">
-              <span>
-                Linux用户权限
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            10-16
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/my/今晚单纯的一点小想法/" style="color: #0085a1">
-              <span>
-                今晚单纯的一点小想法
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            10-14
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/my/Lab-Lab3/" style="color: #0085a1">
-              <span>
-                Lab3
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            10-13
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/my/通过Git将Hexo部署到自己的服务器上/" style="color: #0085a1">
-              <span>
-                通过Git将Hexo部署到自己的服务器上
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            10-09
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/my/Lab-Lab2/" style="color: #0085a1">
-              <span>
-                Lab2
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            10-08
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/my/学习日志1/" style="color: #0085a1">
-              <span>
-                学习日志1
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            10-06
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/my/风景很美/" style="color: #0085a1">
-              <span>
-                风景很美
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-28
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/my/Linxu增删用户操作/" style="color: #0085a1">
-              <span>
-                Linxu增删用户操作
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-25
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/my/今日份的晚霞/" style="color: #0085a1">
-              <span>
-                今日份的晚霞
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-25
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/my/IDEA切换maven仓库/" style="color: #0085a1">
-              <span>
-                IDEA切换maven仓库
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-24
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/my/Gitalk配置/" style="color: #0085a1">
-              <span>
-                Gitalk配置
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-23
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/my/moon/" style="color: #0085a1">
-              <span>
-                moon
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-23
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/my/小记/" style="color: #0085a1">
-              <span>
-                小记
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-21
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/my/Lab-Lab1/" style="color: #0085a1">
-              <span>
-                Lab1
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-21
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/my/Lab-Lab0/" style="color: #0085a1">
-              <span>
-                Lab0
-              </span>
-            </a>
+          <li class="next">
+            <a href="/my/Lab-Lab5/" data-toggle="tooltip" data-placement="top" title="Lab5">Next Post &rarr;</a>
           </li>
           
         </ul>
+
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
+    
+      If you like this blog or find it useful for you, you are welcome to comment on it. You are also welcome to share this blog, so that more people can participate in it. If the images used in the blog infringe your copyright, please contact the author to delete them. Thank you !
+    
+  </p>
+</div>
+<!-- tip end -->
+
+        <!-- tip end -->
+        
+
+        
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+  <!-- gitalk start -->
+  <!-- Docs:https://github.com/gitalk/gitalk/blob/master/readme-cn.md -->
+
+  <div id="gitalk-container"></div>
+
+  
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.js"></script> -->
+    <script src="/js/comment/gitalk.js"></script>
+  
+
+  <script>
+    var gitalk = new Gitalk({
+      clientID: 'b8ec5eaa492aead3f896',
+      clientSecret: '8c6a11eb25e98c705bfc57f7a9c5ed92bcb1ce09',
+      repo: 'blog_comment',
+      owner: 'WANGKANG1717',
+      admin: 'WANGKANG1717',
+      id: 'Thu Nov 18 2021 13:12:17 GMT+0800', // Ensure uniqueness and length less than 50
+      distractionFreeMode: false, // Facebook-like distraction free mode
+      perPage: 10,
+      pagerDirection: 'last',
+      createIssueManually: false,
+      language: 'zh-CN',
+      proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token'
+    });
+    gitalk.render('gitalk-container');
+
+    var gtFolded = () => {
+      setTimeout(function () {
+        let markdownBody = document.getElementsByClassName("markdown-body");
+        let list = Array.from(markdownBody);
+        list.forEach(item => {
+          if (item.clientHeight > 250) {
+            item.classList.add('gt-comment-body-folded');
+            item.style.maxHeight = '250px';
+            item.title = 'Click to Expand';
+            item.onclick = function () {
+              item.classList.remove('gt-comment-body-folded');
+              item.style.maxHeight = '';
+              item.title = '';
+              item.onclick = null;
+            };
+          }
+        })
+      }, 800);
+    }
+  </script>
+
+  <!-- gitalk end -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
       </div>
-      
-    </div>
-  </div>
-</div>
 
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
 
-      <!-- 如果开启评论功能 -->
-      
-    </div>
-
-    <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
     
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">实验目的</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AE%9E%E9%AA%8C%E4%BB%BB%E5%8A%A1"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">实验任务</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%94%BB%E4%B8%80%E4%B8%AA%E7%90%83"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">画一个球</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%BB%BB%E5%8A%A1a"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">任务a</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%BB%BB%E5%8A%A1b"><span class="toc-nav-number">2.1.2.</span> <span class="toc-nav-text">任务b</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%89%A9%E4%BD%93%E5%AF%B9%E8%B1%A1%E5%B1%95%E7%A4%BA%E5%BA%94%E7%94%A8%E4%BA%8C"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">交互式物体对象展示应用二</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
         <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">FEATURED TAGS</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#实验" title="实验">实验</a>
+            
+          </div>
+        </section>
+        
 
-<section>
-  <h5><a href="/tags/">FEATURED TAGS</a></h5>
-  <div class="tags">
-    
-    
-    <a href="/tags/#随笔" title="随笔" rel="1">随笔</a>
-    
-    
-    
-    <a href="/tags/#小记" title="小记" rel="1">小记</a>
-    
-    
-    
-    <a href="/tags/#maven" title="maven" rel="1">maven</a>
-    
-    
-    
-    <a href="/tags/#晚霞" title="晚霞" rel="1">晚霞</a>
-    
-    
-    
-    <a href="/tags/#linux" title="linux" rel="1">linux</a>
-    
-    
-    
-    <a href="/tags/#图形学" title="图形学" rel="2">图形学</a>
-    
-    
-    
-    <a href="/tags/#Gitalk" title="Gitalk" rel="1">Gitalk</a>
-    
-    
-    
-    <a href="/tags/#git" title="git" rel="1">git</a>
-    
-    
-    
-    <a href="/tags/#tips" title="tips" rel="1">tips</a>
-    
-    
-    
-    <a href="/tags/#风景" title="风景" rel="1">风景</a>
-    
-    
-    
-    <a href="/tags/#Linux" title="Linux" rel="1">Linux</a>
-    
-    
-    
-    <a href="/tags/#JavaScript" title="JavaScript" rel="1">JavaScript</a>
-    
-    
-    
-    <a href="/tags/#mysql" title="mysql" rel="1">mysql</a>
-    
-    
-    
-    <a href="/tags/#实验" title="实验" rel="7">实验</a>
-    
-    
-  </div>
-</section>
-
-
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-  <h5><a href="/about/">ABOUT ME</a></h5>
-  <div class="short-about">
-
-    
-    <img id="avatar_pic" src="/img/avatar/morning.jpg" alt="avatar_pic" style="box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -moz-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);" />
-    
-
-    
-    <p>从错误中学习，在失败中崛起</p>
-    
-
-    <!-- SNS Link -->
-    <ul class="list-inline">
-      
-
-      
-      <li>
-        <a target="_blank" href="https://github.com/WANGKANG1717">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
-      </li>
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-    </ul>
-  </div>
-</section>
-
-        <hr>
-    
-        <!-- RECENT POSTS -->
-
-<h5><a href="/">RECENT POSTS</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="../../my/Lab-Lab6/">
-      <li>Lab6</li>
-    </a>
-    
-    <a href="../../my/Lab-Lab5/">
-      <li>Lab5</li>
-    </a>
-    
-    <a href="../../my/demo5-3%E6%B3%A8%E9%87%8A/">
-      <li>demo5-3注释</li>
-    </a>
-    
-    <a href="../../my/mysql8-0%E5%AE%89%E8%A3%85/">
-      <li>mysql8.0安装</li>
-    </a>
-    
-    <a href="../../my/JS-%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6%E8%AF%A6%E8%A7%A3/">
-      <li>JS_键盘事件详解</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
         <!-- Friends Blog -->
-
-<h5><a href="/">FRIENDS</a></h5>
-<ul class="list-inline">
-  
-  <li><a href="https://blog.csdn.net/qq_44685940" target="_blank">myCSDN</a></li>
-  
-  <li><a href="https://blog.csdn.net/m0_50994219" target="_blank">curiostyhclzm</a></li>
-  
-</ul>
-
-
+        
         <hr>
-    
-        <!-- Archives -->
+        <h5>FRIENDS</h5>
+        <ul class="list-inline">
 
-<h5><a href="/archives/">archives</a></h5>
-<div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">November 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">October 2021</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">September 2021</a><span class="archive-list-count">8</span></li></ul>
-</div>
-
-
-        <hr>
-    
-        <!-- Categories -->
-
-<h5><a href="/categories/">categories</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="/categories/#随笔">
-      <li>随笔</li>
-    </a>
-    
-    <a href="/categories/#技术">
-      <li>技术</li>
-    </a>
-    
-    <a href="/categories/#日记">
-      <li>日记</li>
-    </a>
-    
-    <a href="/categories/#学习">
-      <li>学习</li>
-    </a>
-    
-    <a href="/categories/#图形学实验">
-      <li>图形学实验</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
-</div>
-
-
-    
+          
+          <li>
+            <a href="https://blog.csdn.net/qq_44685940" target="_blank">myCSDN</a>
+          </li>
+          
+          <li>
+            <a href="https://blog.csdn.net/m0_50994219" target="_blank">curiostyhclzm</a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
   </div>
-</div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
 
 
 		<!-- Footer (contains ThemeColor、viewer) -->
