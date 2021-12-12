@@ -213,9 +213,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              ARCHIVES
+              ABOUT
               
               
             </a>
@@ -235,9 +235,9 @@
           
           
           <li>
-            <a href="/tags/">
+            <a href="/archive/">
               
-              TAGS
+              ARCHIVES
               
               
             </a>
@@ -246,9 +246,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/tags/">
               
-              ABOUT
+              TAGS
               
               
             </a>
@@ -403,19 +403,79 @@
       <!-- 标签云 -->
       <div id='tag_cloud' class="tags">
         
-        <a href="#技术" title="技术" rel="7">技术</a>
-        
         <a href="#随笔" title="随笔" rel="3">随笔</a>
+        
+        <a href="#技术" title="技术" rel="7">技术</a>
         
         <a href="#日记" title="日记" rel="2">日记</a>
         
-        <a href="#图形学实验" title="图形学实验" rel="7">图形学实验</a>
-        
         <a href="#学习" title="学习" rel="2">学习</a>
+        
+        <a href="#图形学实验" title="图形学实验" rel="7">图形学实验</a>
         
       </div>
 
       <!-- 标签列表 -->
+      
+      <div class="one-tag-list">
+        <span class="fa fa-tag listing-seperator" id="随笔">
+          <span class="tag-text">随笔</span>
+        </span>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/my/moon/">
+            <h2 class="post-title">
+              moon
+            </h2>
+            
+            <h3 class="post-subtitle">
+              今夜我也文艺风😆
+            </h3>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/my/小记/">
+            <h2 class="post-title">
+              小记
+            </h2>
+            
+            <h3 class="post-subtitle">
+              持续努力中。。
+            </h3>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/my/今晚单纯的一点小想法/">
+            <h2 class="post-title">
+              今晚单纯的一点小想法
+            </h2>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+      </div>
       
       <div class="one-tag-list">
         <span class="fa fa-tag listing-seperator" id="技术">
@@ -446,10 +506,14 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/my/Linxu增删用户操作/">
+          <a href="/my/IDEA切换maven仓库/">
             <h2 class="post-title">
-              Linxu增删用户操作
+              IDEA切换maven仓库
             </h2>
+            
+            <h3 class="post-subtitle">
+              阿里大法好
+            </h3>
             
           </a>
           <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
@@ -461,14 +525,10 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/my/IDEA切换maven仓库/">
+          <a href="/my/Linxu增删用户操作/">
             <h2 class="post-title">
-              IDEA切换maven仓库
+              Linxu增删用户操作
             </h2>
-            
-            <h3 class="post-subtitle">
-              阿里大法好
-            </h3>
             
           </a>
           <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
@@ -550,69 +610,28 @@
       </div>
       
       <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="随笔">
-          <span class="tag-text">随笔</span>
-        </span>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/my/小记/">
-            <h2 class="post-title">
-              小记
-            </h2>
-            
-            <h3 class="post-subtitle">
-              持续努力中。。
-            </h3>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/my/moon/">
-            <h2 class="post-title">
-              moon
-            </h2>
-            
-            <h3 class="post-subtitle">
-              今夜我也文艺风😆
-            </h3>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/my/今晚单纯的一点小想法/">
-            <h2 class="post-title">
-              今晚单纯的一点小想法
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-      </div>
-      
-      <div class="one-tag-list">
         <span class="fa fa-tag listing-seperator" id="日记">
           <span class="tag-text">日记</span>
         </span>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/my/今日份的晚霞/">
+            <h2 class="post-title">
+              今日份的晚霞
+            </h2>
+            
+            <h3 class="post-subtitle">
+              高清大图，注意流量！！
+            </h3>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
         
         <!-- <li class="listing-item">
                   <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
@@ -629,18 +648,40 @@
         </div>
         <hr>
         
+      </div>
+      
+      <div class="one-tag-list">
+        <span class="fa fa-tag listing-seperator" id="学习">
+          <span class="tag-text">学习</span>
+        </span>
+        
         <!-- <li class="listing-item">
                   <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/my/今日份的晚霞/">
+          <a href="/my/学习日志1/">
             <h2 class="post-title">
-              今日份的晚霞
+              学习日志1
+            </h2>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/my/demo5-3注释/">
+            <h2 class="post-title">
+              demo5-3注释
             </h2>
             
             <h3 class="post-subtitle">
-              高清大图，注意流量！！
+              学习日志2
             </h3>
             
           </a>
@@ -781,47 +822,6 @@
             
             <h3 class="post-subtitle">
               光照模型
-            </h3>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-      </div>
-      
-      <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="学习">
-          <span class="tag-text">学习</span>
-        </span>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/my/学习日志1/">
-            <h2 class="post-title">
-              学习日志1
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/my/demo5-3注释/">
-            <h2 class="post-title">
-              demo5-3注释
-            </h2>
-            
-            <h3 class="post-subtitle">
-              学习日志2
             </h3>
             
           </a>
