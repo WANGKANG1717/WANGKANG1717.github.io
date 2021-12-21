@@ -193,7 +193,7 @@
 
   
   <url>
-    <loc>https://kang17.xyz/tags/Gitalk/</loc>
+    <loc>https://kang17.xyz/tags/%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2021-12-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -207,14 +207,7 @@
   </url>
   
   <url>
-    <loc>https://kang17.xyz/tags/%E6%99%9A%E9%9C%9E/</loc>
-    <lastmod>2021-12-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://kang17.xyz/tags/%E9%9A%8F%E7%AC%94/</loc>
+    <loc>https://kang17.xyz/tags/Gitalk/</loc>
     <lastmod>2021-12-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -222,6 +215,13 @@
   
   <url>
     <loc>https://kang17.xyz/tags/%E5%B0%8F%E8%AE%B0/</loc>
+    <lastmod>2021-12-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kang17.xyz/tags/%E6%99%9A%E9%9C%9E/</loc>
     <lastmod>2021-12-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -293,6 +293,13 @@
 
   
   <url>
+    <loc>https://kang17.xyz/categories/%E9%9A%8F%E7%AC%94/</loc>
+    <lastmod>2021-12-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://kang17.xyz/categories/%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2021-12-21</lastmod>
     <changefreq>daily</changefreq>
@@ -301,13 +308,6 @@
   
   <url>
     <loc>https://kang17.xyz/categories/%E6%97%A5%E8%AE%B0/</loc>
-    <lastmod>2021-12-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://kang17.xyz/categories/%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2021-12-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

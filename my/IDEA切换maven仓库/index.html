@@ -224,9 +224,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/categories/">
               
-              ARCHIVES
+              CATEGORIES
               
               
             </a>
@@ -235,9 +235,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/archive/">
               
-              CATEGORIES
+              ARCHIVES
               
               
             </a>
@@ -370,7 +370,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">184</span> In Total
+              Words <span class="post-count">185</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -432,16 +432,19 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <p> IEAD默认的maven库下载太慢，于是乎有必要换一个更快的maven库</p>
-<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a><strong>方法</strong></h4><h5 id="一：找到Maven的settings-xml文件"><a href="#一：找到Maven的settings-xml文件" class="headerlink" title="一：找到Maven的settings.xml文件"></a>一：找到Maven的settings.xml文件</h5><p>settings.xml默认存放地址为IDEA安装路劲下的：</p>
-<p>JetBrains\IntelliJ IDEA xxx.xxx\plugins\maven\lib\maven3\conf</p>
+        <p>IEAD默认的maven库下载太慢，于是乎有必要换一个更快的maven库</p>
+<h4 id="方法"><strong>方法</strong></h4>
+<h5 id="一：找到Maven的settings-xml文件">一：找到Maven的settings.xml文件</h5>
+<p>settings.xml默认存放地址为IDEA安装路劲下的：</p>
+<p>JetBrains\IntelliJ IDEA <a target="_blank" rel="noopener" href="http://xxx.xxx">xxx.xxx</a>\plugins\maven\lib\maven3\conf</p>
 <p>复制一份settings.xml 到：C:\Users\You user.m2/</p>
-<h5 id="二：修改settings-xml-文件"><a href="#二：修改settings-xml-文件" class="headerlink" title="二：修改settings.xml 文件"></a>二：修改settings.xml 文件</h5><p>找到 </p>
+<h5 id="二：修改settings-xml-文件">二：修改settings.xml 文件</h5>
+<p>找到</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">&lt;mirrors&gt;</span> <span class="section">&lt;/mirrors&gt;</span></span><br></pre></td></tr></table></figure>
-<p> 标签，并添加如下阿里maven仓库配置：</p>
+<p>标签，并添加如下阿里maven仓库配置：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>     </span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p><img src="1.png" width="500" alt="1.png"></img></p>
-<p>最后修改 IDEA 中的配置File——&gt; settings —&gt; Build,Executon,Deployment —&gt; Maven：找到下图位置，选择你settings.xml文件路径，勾选 Override 便可。</p>
+<p>最后修改 IDEA 中的配置File----&gt; settings --&gt; Build,Executon,Deployment --&gt; Maven：找到下图位置，选择你settings.xml文件路径，勾选 Override 便可。</p>
 <p><img src="2.png" width="500" alt="2.png"></img></p>
 <p>大功告成！</p>
 
