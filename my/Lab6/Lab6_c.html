@@ -8,7 +8,7 @@
 		<script type="text/javascript" src="lib/gl-matrix-min.js"></script>
 		<script type="text/javascript" src="lib/objloader.js"></script>
 
-		<script type="text/javascript" src="js/Lab6_b.js"></script>
+		<script type="text/javascript" src="js/Lab6_c.js"></script>
 		<link type="text/css" rel="stylesheet" href="css/style.css" />
 		<!-- 顶点着色器 -->
 		<textarea id="vertex-shader" style="display: none;">
@@ -27,6 +27,64 @@
 				vertexPos = modelViewMatrix * vPosition;
 				normalInterp = normalize(normalMatrix * vNormal.xyz);
 				gl_Position = projectionMatrix * vertexPos;
+			}
+		</textarea>
+		<textarea id="vertex-shader2" style="display: none;">
+			attribute vec4 vPosition;
+			attribute vec4 vNormal;
+			
+			uniform mat4 modelViewMatrix;
+			uniform mat4 projectionMatrix;
+			uniform mat3 normalMatrix;
+			
+			uniform vec4 lightPosition;
+			
+			uniform float shininess;
+			uniform float materialKa, materialKd, materialKs;
+			
+			// material
+			uniform vec4 ambientProduct;
+			uniform vec4 diffuseProduct;
+			uniform vec4 specularProduct;
+			
+			varying vec3 normalInterp;
+			varying vec4 fColor;
+			
+			void main(){
+				vec4 pos = modelViewMatrix * vPosition;
+				normalInterp = normalize(normalMatrix * vNormal.xyz);
+			
+				gl_Position = projectionMatrix * pos;
+			
+				vec4 ambient = ambientProduct;
+			
+				vec3 N = normalize( normalInterp );
+				vec3 L;
+			
+				if( lightPosition.w == 0.0 )
+				{
+					L = normalize( lightPosition.xyz );
+				}
+				else
+				{
+					L = normalize( lightPosition.xyz - pos.xyz );
+				}
+			
+				float Kd = max( dot( L, N ), 0.0 );
+				vec4 diffuse = Kd * diffuseProduct;
+			
+				float Ks = 0.0;
+				if( Kd > 0.0 )
+				{
+					vec3 R = reflect( -L, N );
+					vec3 E = -normalize( pos.xyz );
+					float specAngle = max( dot( R, E ), 0.0 );
+					Ks = pow( specAngle, shininess );
+				}
+				vec4 specular = Ks * specularProduct;
+			
+				fColor = materialKa * ambient + materialKd * diffuse + materialKs * specular;
+				fColor.a = 1.0;
 			}
 		</textarea>
 		<!-- 片元着色器 -->
@@ -71,6 +129,17 @@
 				gl_FragColor = materialKa * ambient + materialKd * diffuse + materialKs * specular;
 			}
 		</textarea>
+		<textarea id="fragment-shader2" style="display: none;">
+			precision mediump float;
+			
+			varying vec4 fColor;
+			
+			void main()
+			{
+				gl_FragColor = fColor;
+			}
+	
+		</textarea>
 		<script type="text/javascript">
 			var renderer = 0;
 
@@ -92,6 +161,22 @@
 				renderer.initModel();
 				setInterval(timerFunc, 30)
 			}
+
+			function shaderMethodChange() {
+				var d = parseInt(document.getElementById("select_shader_id").value);
+				var vertSrc;
+				var fragSrc;
+				if(d==1) {
+					vertSrc = document.getElementById("vertex-shader").value;
+					fragSrc = document.getElementById("fragment-shader").value;
+				}
+				else if(d==2) {
+					vertSrc = document.getElementById("vertex-shader2").value;
+					fragSrc = document.getElementById("fragment-shader2").value;
+				}
+				renderer.updateShader(vertSrc, fragSrc);
+				renderer.display();
+			}
 		</script>
 	</head>
 
@@ -101,6 +186,10 @@
 				<a style="font-size: 30px; font-family: 楷体; background-color: aqua;">Lab6_b</a>
 			</div>
 			<div align="left" id="DIV">
+				&diams; <select onchange="shaderMethodChange()" id="select_shader_id">
+					<option value="1" selected="selected">Phong Shading</option>
+					<option value="2">Gouraud Shading</option>
+				</select><br />
 				&diams; <input type="file" id="modelFileInput" onchange="modelChanged()"><br />
 				&diams; Ambient reflection (ka): &nbsp;&nbsp;<span class="span1" id="slider-ka-value">0.50</span>
 				<input type="range" id="slider-ka" name="ka" min="0" max="1" step="0.01">

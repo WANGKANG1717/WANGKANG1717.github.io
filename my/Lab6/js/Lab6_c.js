@@ -260,6 +260,17 @@ function Renderer(canvasName, vertSrc, fragSrc) {
 		});
 	}
 
+	this.updateShader = function(newVertSrc, newFragSrc) {
+		vertSrc = newVertSrc;
+		fragSrc = newFragSrc;
+
+		gl.deleteProgram(progID);
+		gl.deleteShader(vertID);
+		gl.deleteShader(fragID);
+
+		setupShaders();
+	}
+
 	function setupShaders() {
 		// create shader
 		vertID = gl.createShader(gl.VERTEX_SHADER);
