@@ -370,7 +370,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">545</span> In Total
+              Words <span class="post-count">537</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -432,31 +432,18 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h2 id="简介">简介</h2>
-<p>关于键盘事件，分为三种，其中keydown事件发生在键盘的键被按下的时候，接下来触发keypress事件，最后在按键被释放时触发keyup事件。</p>
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>关于键盘事件，分为三种，其中keydown事件发生在键盘的键被按下的时候，接下来触发keypress事件，最后在按键被释放时触发keyup事件。</p>
 <p>用法如下</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">&#x27;keyup&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;&#125;);</span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">&#x27;keypress&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;&#125;);</span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">&#x27;keyup&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;&#125;);</span><br></pre></td></tr></table></figure>
 <p>特殊按键如PrScrn键是不会被捕获到的，其他的键盘事件请注意：</p>
-<h2 id="keydown、keyup事件">keydown、keyup事件</h2>
-<p>keydown触发后，不一定立即触发keyup，可以按下不松手持续一段时间得到多个keydown事件，或者当keydown按下后，拖动鼠标，那么将不会触发keyup事件。<br>
-keydown和keyup区分小键盘和主键盘的数字字符，这两种输入得到的keyCode是不同的。<br>
-keydown和keyup不区分单个字符大小写情况，这两种输入得到的keyCode是相同的。</p>
-<h2 id="keypress事件">keypress事件</h2>
-<p>KeyPress主要用来捕获数字(注意：包括Shift+数字的符号)、字母（注意：包括大小写）、小键盘等除了F1-12、SHIFT、Alt、Ctrl、Insert、Home、PgUp、Delete、End、PgDn、ScrollLock、Pause、NumLock、{菜单键}、{开始键}和方向键外的ANSI字符<br>
-KeyPress 可以捕获单个字符的大小写，得到的keyCode值是符合ascii码表里对应的大小写字母值。<br>
-KeyPress 不区分小键盘和主键盘的数字字符，得到的keyCode相同。</p>
-<h2 id="keydown和keyup的keyCode说明">keydown和keyup的keyCode说明</h2>
-<p>注意keypress的按键keyCode和ascii码表值相同。</p>
-<img src="1.png" width="800px">
-<h2 id="捕获正常的字母和数字">捕获正常的字母和数字</h2>
-<p>如果不希望匹配到如ctrl+c这样的组合键里的c，则需要使用keypress事件。</p>
+<h2 id="keydown、keyup事件"><a href="#keydown、keyup事件" class="headerlink" title="keydown、keyup事件"></a>keydown、keyup事件</h2><p>keydown触发后，不一定立即触发keyup，可以按下不松手持续一段时间得到多个keydown事件，或者当keydown按下后，拖动鼠标，那么将不会触发keyup事件。<br>keydown和keyup区分小键盘和主键盘的数字字符，这两种输入得到的keyCode是不同的。<br>keydown和keyup不区分单个字符大小写情况，这两种输入得到的keyCode是相同的。</p>
+<h2 id="keypress事件"><a href="#keypress事件" class="headerlink" title="keypress事件"></a>keypress事件</h2><p>KeyPress主要用来捕获数字(注意：包括Shift+数字的符号)、字母（注意：包括大小写）、小键盘等除了F1-12、SHIFT、Alt、Ctrl、Insert、Home、PgUp、Delete、End、PgDn、ScrollLock、Pause、NumLock、{菜单键}、{开始键}和方向键外的ANSI字符<br>KeyPress 可以捕获单个字符的大小写，得到的keyCode值是符合ascii码表里对应的大小写字母值。<br>KeyPress 不区分小键盘和主键盘的数字字符，得到的keyCode相同。</p>
+<h2 id="keydown和keyup的keyCode说明"><a href="#keydown和keyup的keyCode说明" class="headerlink" title="keydown和keyup的keyCode说明"></a>keydown和keyup的keyCode说明</h2><p>注意keypress的按键keyCode和ascii码表值相同。</p>
+<p><img src="1.png" width="800px"></p>
+<h2 id="捕获正常的字母和数字"><a href="#捕获正常的字母和数字" class="headerlink" title="捕获正常的字母和数字"></a>捕获正常的字母和数字</h2><p>如果不希望匹配到如ctrl+c这样的组合键里的c，则需要使用keypress事件。</p>
 <figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">document.addEventListener(<span class="string">&#x27;keypress&#x27;</span>, function (e) &#123;</span><br><span class="line">    <span class="keyword">if</span> (e.<span class="built_in">keyCode</span> &gt;= <span class="number">48</span> &amp;&amp; e.<span class="built_in">keyCode</span> &lt;= <span class="number">57</span> ||</span><br><span class="line">        e.<span class="built_in">keyCode</span> &gt;= <span class="number">65</span> &amp;&amp; e.<span class="built_in">keyCode</span> &lt;= <span class="number">90</span> ||</span><br><span class="line">        e.<span class="built_in">keyCode</span> &gt;= <span class="number">97</span> &amp;&amp; e.<span class="built_in">keyCode</span> &lt;= <span class="number">122</span>) &#123;</span><br><span class="line">        console.<span class="built_in">log</span>(e.<span class="built_in">keyCode</span>);    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="捕获ctrl-c组合键">捕获ctrl+c组合键</h2>
-<p>捕获组合键注意mac和windows的差异，控制键有以下四种，对应键盘事件event的以下四个属性</p>
-<p>ctrlKey — Ctrl键<br>
-shiftKey — Shift键<br>
-altKey — Alt键<br>
-metaKey — command键（Mac下），此属性只能在mac中需要keydown事件才能得到正确的值。</p>
+<h2 id="捕获ctrl-c组合键"><a href="#捕获ctrl-c组合键" class="headerlink" title="捕获ctrl+c组合键"></a>捕获ctrl+c组合键</h2><p>捕获组合键注意mac和windows的差异，控制键有以下四种，对应键盘事件event的以下四个属性</p>
+<p>ctrlKey —- Ctrl键<br>shiftKey —- Shift键<br>altKey —- Alt键<br>metaKey —- command键（Mac下），此属性只能在mac中需要keydown事件才能得到正确的值。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">&#x27;keydown&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (e.keyCode === <span class="number">67</span> &amp;&amp; (e.ctrlKey || e.metaKey)) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;ctrl + c&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
 
 
