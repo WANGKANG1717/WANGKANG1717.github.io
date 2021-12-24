@@ -5,236 +5,49 @@
 		<title>
 			Flappy Bird
 		</title>
+		<!--  -->
+		<link rel="stylesheet" href="lib/bootstrap.min.css">
+		<script src="lib/jquery.min.js"></script>
+		<script src="lib/bootstrap.min.js"></script>
+		<!--  -->
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script type="text/javascript" src="lib/three.js"></script>
+		<script type="text/javascript" src="js/Flappy_bird.js"></script>
 	</head>
 	<body>
-		<script src="lib/three.js"></script>
-		<script>
-			var px = 390;
-			var py = 30;
-			var pz = 0;
-			var camera, scene, renderer, controls, mixer;
-
-			var velocity = new THREE.Vector3();
-			var birdmesh;
-			var objects = [];
-			init();
-			animate();
-
-			function init() {
-				//添加div块，用作画布
-				container = document.createElement('div');
-				document.body.appendChild(container);
-				//
-				document.body.onkeydown = function(event) {
-					var e = event.keyCode;
-					console.log(e);
-					if (e == 87) {
-						py += 10;
-					} else if (e == 83) {
-						py -= 10;
-					} else if (e == 65) {
-						px += 10;
-					} else if (e == 68) {
-						px -= 10;
-					} else if (e == 90) {
-						pz += 10;
-					} else if (e == 88) {
-						pz -= 10;
-					}
-					console.log(px + " " + py + " " + pz);
-				};
-
-				//渲染器初始化
-				renderer = new THREE.WebGLRenderer({
-					antialias: true //设置为抗锯齿
-				});
-				renderer.setPixelRatio(window.devicePixelRatio); //设置设备像素比。
-				renderer.setSize(window.innerWidth-25, window.innerHeight-25);
-				container.appendChild(renderer.domElement);
-
-				//场景初始化
-				scene = new THREE.Scene();
-				scene.add(new THREE.HemisphereLight(0x443333, 0x222233)); //半球光
-				var light = new THREE.DirectionalLight(0xffffff, 1);
-				light.position.set(1, 1, 1);
-				scene.add(light);
-
-				//相机初始化
-				camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 100000);
-				camera.up.set(0, 1, 0);
-				camera.lookAt(new THREE.Vector3(0, 1, 0));
-				camera.rotateY(Math.PI / 2);
-				//添加地板
-				AddFloor();
-				//天空盒
-				AddSkybox();
-				//连续障碍物
-				AddBarrier();
-				//鸟
-				AddBird();
-			}
-
-			function AddFloor() {
-				var geometry = new THREE.PlaneGeometry(200, 100000);
-
-				var texture = new THREE.TextureLoader().load('img/floor.jpg');
-				texture.wrapS = THREE.RepeatWrapping;
-				texture.wrapT = THREE.RepeatWrapping;
-				texture.repeat.set(5, 200)
-				var material = new THREE.MeshBasicMaterial({
-					map: texture
-				});
-
-				var mesh = new THREE.Mesh(geometry, material);
-				mesh.position.set(0, 0, 0);
-				scene.add(mesh);
-				objects.push(mesh);
-			}
-
-			function AddSkybox() {
-				var directions = ["px", "nx", "py", "ny", "pz", "nz"]; //获取对象
-				var format = ".jpg"; //格式
-				//创建盒子，并设置盒子的大小为
-				var skyGeometry = new THREE.BoxGeometry(100000, 100000, 100000, 7, 7, 7);
-				//设置盒子材质
-				var materialArray = [];
-				var ImageUtils = new THREE.TextureLoader();
-				for (var i = 0; i < 6; i++)
-					materialArray.push(new THREE.MeshBasicMaterial({
-						map: THREE.ImageUtils.loadTexture("img/" + directions[i] + format), //将图片纹理贴上
-						side: THREE.BackSide /*镜像翻转，如果设置镜像翻转，那么只会看到黑漆漆的一片，因为你身处在盒子的内部，所以一定要设置镜像翻转。*/
-					}));
-				var skyMaterial = new THREE.MultiMaterial(materialArray);
-				var skyBox = new THREE.Mesh(skyGeometry, skyMaterial); //创建一个完整的天空盒，填入几何模型和材质的参数
-				skyBox.rotateX(Math.PI/2);
-				scene.add(skyBox); //在场景中加入天空盒
-			}
-
-			function AddBarrier() {
-				var ImageUtils = new THREE.TextureLoader();
-				for (var i = 0; i < 95; i++) {
-					var ht = Math.random() * 500;
-					var barrier = new THREE.CylinderGeometry(50, 50, ht, 40, 40);
-					barrier.rotateX(Math.PI / 2);
-					var p = parseInt(Math.random() * 10 + 1);
-					console.log(p);
-					var material = new THREE.MeshBasicMaterial({
-						map: THREE.ImageUtils.loadTexture("img/barrier/" + p + ".jpg")
-					});
-					var mesh = new THREE.Mesh(barrier, material);
-
-					mesh.position.x = 0;
-					mesh.position.y = (i + 1) * 500;
-					mesh.position.z = ht / 2;
-					scene.add(mesh);
-
-					objects.push(mesh);
-
-					barrier = new THREE.CylinderGeometry(50, 50, 500 - ht, 40, 40);
-					barrier.rotateX(Math.PI / 2);
-					mesh = new THREE.Mesh(barrier, material);
-					mesh.position.x = 0;
-					mesh.position.y = (i + 1) * 500;
-					mesh.position.z = ht + 150 + (450 - ht) / 2;
-					scene.add(mesh);
-
-					objects.push(mesh);
-				}
-			}
-
-			function AddBird() {
-				var loader = new THREE.JSONLoader();
-
-				loader.load("src/flamingo.js", function(geometry) {
-					geometry.computeMorphNormals();
-					var material = new THREE.MeshPhongMaterial({
-						color: 0xffffff,
-						morphTargets: true,
-						morphNormals: true,
-						vertexColors: THREE.FaceColors,
-						shading: THREE.SmoothShading
-					});
-					birdmesh = new THREE.Mesh(geometry, material);
-					birdmesh.position.x = 0;
-					birdmesh.position.y = 0;
-					birdmesh.position.z = 200;
-					birdmesh.scale.set(0.2, 0.2, 0.2);
-					birdmesh.rotateX(-Math.PI / 2);
-					birdmesh.rotateZ(Math.PI);
-					//放大；
-					birdmesh.scale.x=0.5;
-					birdmesh.scale.y=0.5;
-					birdmesh.scale.z=0.5;
-					scene.add(birdmesh);
-					mixer = new THREE.AnimationMixer(birdmesh);
-					//
-					var clip = THREE.AnimationClip.CreateFromMorphTargetSequence('bird', geometry.morphTargets, 30);
-					mixer.clipAction(clip).setDuration(1).play();
-
-					window.addEventListener('mousedown', function(event) {
-						velocity.z = 500;
-						mixer.clipAction(clip).setDuration(0.2).play();
-					}, false);
-
-					window.addEventListener('mouseup', function(event) {
-						mixer.clipAction(clip).setDuration(1).play();
-					}, false);
-				});
-			}
-			//
-			function animate() {
-				requestAnimationFrame(animate);
-				render();
-			}
-			//
-			function render() {
-				//这里100就是速度的一个因子，数值越大，重力效果越明显
-				velocity.z -= 9.8 * 100 * 0.017;
-
-				birdmesh.position.z += velocity.z * 0.017;
-				birdmesh.position.y += velocity.y * 0.017;
-
-				// console.log(birdmesh.position.y);
-				if (birdmesh.position.y >= 48500) {
-					alert("你赢了！");
-					birdmesh.position.y = 0;
-				}
-
-				velocity.y = 200;
-
-				var raycaster1 = new THREE.Raycaster(birdmesh.position, new THREE.Vector3(0, 1, 0), 0, 45)
-				var raycaster2 = new THREE.Raycaster(birdmesh.position, new THREE.Vector3(0, 0, 1), 0, 10)
-				var raycaster3 = new THREE.Raycaster(birdmesh.position, new THREE.Vector3(0, 0, -1), 0, 10)
-				//
-				var intersections1 = raycaster1.intersectObjects(objects);
-				var intersections2 = raycaster2.intersectObjects(objects);
-				var intersections3 = raycaster3.intersectObjects(objects);
-				//是否检测到
-				if (intersections1.length > 0) {
-					alert('你输了！');
-					birdmesh.position.y = 0;
-				}
-				if (intersections2.length > 0) {
-					if (velocity.z > 0) {
-						velocity.z = 0;
-					}
-				}
-				if (intersections3.length > 0) {
-					if (velocity.z < 0) {
-						velocity.z = 0;
-					}
-				}
-				if (birdmesh.position.z < 10) {
-					birdmesh.position.z = 10;
-				}
-				if (birdmesh.position.z > 590) {
-					birdmesh.position.z = 590;
-				}
-				mixer.update(0.017);
-				camera.position.set(birdmesh.position.x + px, birdmesh.position.y + py, birdmesh.position.z + pz);
-				renderer.clear();
-				renderer.render(scene, camera);
-			}
-		</script>
+		<div class="center-in-center" id="div1" style="display: block;" align="center">
+			<input type="button" value="开始游戏" id="start" onclick="Loading()" class="btn1" />
+		</div>
+		<div class="center-in-center" id="div2" style="display: none;" align="center">
+			<div class="card">You Are Lost!<br>
+				Game Score:<p id="score"></p>
+				Try Again?
+			</div>
+			<br />
+			<input type="button" value="YES" id="yes" onclick="again()" class="btn2" /> &nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="button" value="NO" id="no" onclick="gameover()" class="btn2" />
+		</div>
+		<div class="center-in-center" id="div3" style="display: none;" align="center">
+			<div class="card">Game Over!</div>
+		</div>
+		<div class="center-in-center" id="div4" style="display: none;" align="center">
+			<div class="card">Congratulations!<br>
+				Game Score:<p id="score"></p>
+				Try Again?</div><br />
+			<br />
+			<input type="button" value="YES" id="yes" onclick="again()" class="btn2" /> &nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="button" value="NO" id="no" onclick="gameover()" class="btn2" />
+		</div>
+		<div class="footer">
+			<div class="progress progress-striped active"
+				style="width: 80%; height: 40px; border-radius: 20px; align: center;">
+				<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+					style="width: 0%;" id="Loading"></div>
+				<div id="LoadingMessage">0% 已完成</div>
+			</div>
+		</div>
+		<div id="bird">
+			
+		</div>
 	</body>
 </html>
