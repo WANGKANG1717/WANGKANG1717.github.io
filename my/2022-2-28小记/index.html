@@ -370,7 +370,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">29</span> In Total
+              Words <span class="post-count">97</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -432,8 +432,11 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <p>我宣布:<br>
-我要从头制作自己的动态博客，技术栈目前决定使用vue+spingboot。</p>
+        <p>我宣布:</p>
+<p>​	我要从头制作自己的动态博客，技术栈目前决定使用vue+spingboot。<br>
+​    用Hexo写博客每次都要编译，麻烦的很，而且只能电脑端使用。<br>
+​    虽然自己写博客维护成本比较高，但处于学习及高度的个性化，这就够了。<br>
+​    这学期期中（第8周）要完成初步demo</p>
 <p>就JIANG</p>
 
 
@@ -1103,5 +1106,20 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
