@@ -210,16 +210,16 @@
 
           
           
-          
-          
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              ARCHIVES
+              ABOUT
               
               
             </a>
           </li>
+          
+          
           
           
           
@@ -246,9 +246,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/archive/">
               
-              ABOUT
+              ARCHIVES
               
               
             </a>
@@ -435,8 +435,10 @@
         <blockquote>
 <p>以下操作都在git中完成，如果你在cmd或者别的win终端中进行，你会发现一些命令你无法使用</p>
 </blockquote>
-<h1 id="基本准备"><a href="#基本准备" class="headerlink" title="基本准备"></a>基本准备</h1><p>1.服务器安装了Nginx和git，具体方法略</p>
-<h1 id="准备（建立SSH信任关系）"><a href="#准备（建立SSH信任关系）" class="headerlink" title="准备（建立SSH信任关系）"></a>准备（建立SSH信任关系）</h1><p>1.在本地生成公钥和密钥：</p>
+<h1>基本准备</h1>
+<p>1.服务器安装了Nginx和git，具体方法略</p>
+<h1>准备（建立SSH信任关系）</h1>
+<p>1.在本地生成公钥和密钥：</p>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ssh-keygen -t rsa</span> </span><br></pre></td></tr></table></figure>
 <p>2.将本机生成的公钥发送到服务器上（建立信任关系）：</p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-<span class="keyword">copy</span>-id -i C:<span class="regexp">/Users/U</span>serName<span class="regexp">/.ssh/i</span>d_rsa.pub root@server_ip </span><br></pre></td></tr></table></figure>
@@ -444,13 +446,14 @@
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh <span class="symbol">root@</span>server_ip </span><br></pre></td></tr></table></figure>
 <p>这里如果不在提示输入密码，即证明本机与web服务器建立了ssh信任关系</p>
 <p>4.注意：因为这里是本机与服务器的root用户建立关系，后面部署hexo用的是git用户，因此在后面服务器配置时还需要重复此步骤，进行本机与服务器的git用户建立ssh信任关系</p>
-<h1 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h1><p>1.新建git用户并设置密码：</p>
+<h1>服务端配置</h1>
+<p>1.新建git用户并设置密码：</p>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">adduser git</span>       </span><br></pre></td></tr></table></figure>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">passwd git</span></span><br></pre></td></tr></table></figure>
 <p>2.编辑配置文件，加入git到sudo用户组：</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi  <span class="regexp">/etc/</span>sudoers</span><br></pre></td></tr></table></figure>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## Allow root <span class="keyword">to</span> run <span class="keyword">any</span> commands anywhere </span><br><span class="line">root    <span class="keyword">ALL</span>=(<span class="keyword">ALL</span>)     <span class="keyword">ALL</span></span><br><span class="line">git   <span class="keyword">ALL</span>=(<span class="keyword">ALL</span>)  <span class="keyword">ALL</span>       ##新增这一行</span><br></pre></td></tr></table></figure>
-<p> 3.配置Git仓库：</p>
+<p>3.配置Git仓库：</p>
 <p>将网站目录放到/home/git/</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir <span class="regexp">/home/gi</span>t/blog</span><br><span class="line">mkdir -p <span class="regexp">/home/gi</span>t<span class="regexp">/blog/</span>hexo.git <span class="comment">#Git仓库，不存储网站文件</span></span><br><span class="line">mkdir <span class="regexp">/home/gi</span>t<span class="regexp">/blog/</span>hexo <span class="comment">#实际存储网站文件目录</span></span><br></pre></td></tr></table></figure>
 <p>初始化空的Git仓库：</p>
@@ -469,7 +472,8 @@
 <p>修改配置文件:</p>
 <p>将root改为你的hexo主目录</p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> server &#123;</span><br><span class="line">   ......</span><br><span class="line">   \# root <span class="regexp">/var/</span>www/html;</span><br><span class="line">   root <span class="regexp">/home/gi</span>t<span class="regexp">/blog/</span>hexo;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="本地配置"><a href="#本地配置" class="headerlink" title="本地配置"></a>本地配置</h1><p>编辑_config.yml文件，找到deploy项目，修改如下：</p>
+<h1>本地配置</h1>
+<p>编辑_config.yml文件，找到deploy项目，修改如下：</p>
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">deploy:</span></span><br><span class="line">   <span class="symbol">type:</span> git   <span class="comment">#用户名</span></span><br><span class="line">   <span class="symbol">repository:</span> git<span class="variable">@server_ip</span><span class="symbol">:/home/git/blog/hexo</span>.git  <span class="comment">#仓库地址</span></span><br><span class="line">   <span class="symbol">branch:</span> master  <span class="comment">#分支</span></span><br></pre></td></tr></table></figure>
 <p>保存</p>
 <p>使用命令：<strong>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</strong>测试是否能够成功部署</p>
@@ -582,7 +586,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%87%86%E5%A4%87"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">基本准备</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%87%86%E5%A4%87%EF%BC%88%E5%BB%BA%E7%AB%8BSSH%E4%BF%A1%E4%BB%BB%E5%85%B3%E7%B3%BB%EF%BC%89"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">准备（建立SSH信任关系）</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%85%8D%E7%BD%AE"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">服务端配置</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%9C%AC%E5%9C%B0%E9%85%8D%E7%BD%AE"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">本地配置</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">基本准备</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">准备（建立SSH信任关系）</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">服务端配置</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">本地配置</span></a></li></ol>
         
         </div>
       </aside>
