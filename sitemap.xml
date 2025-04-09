@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://wangkang1717.github.io/my/TheadLocal/</loc>
+    
+    <lastmod>2025-04-09</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wangkang1717.github.io/my/java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/</loc>
     
     <lastmod>2025-04-09</lastmod>
@@ -270,7 +277,7 @@
 
   
   <url>
-    <loc>https://wangkang1717.github.io/tags/Gitalk/</loc>
+    <loc>https://wangkang1717.github.io/tags/%E5%B0%8F%E8%AE%B0/</loc>
     <lastmod>2025-04-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -284,14 +291,14 @@
   </url>
   
   <url>
-    <loc>https://wangkang1717.github.io/tags/%E5%B0%8F%E8%AE%B0/</loc>
+    <loc>https://wangkang1717.github.io/tags/Gitalk/</loc>
     <lastmod>2025-04-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://wangkang1717.github.io/tags/%E9%A3%8E%E6%99%AF/</loc>
+    <loc>https://wangkang1717.github.io/tags/linux/</loc>
     <lastmod>2025-04-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -312,14 +319,14 @@
   </url>
   
   <url>
-    <loc>https://wangkang1717.github.io/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/</loc>
+    <loc>https://wangkang1717.github.io/tags/%E9%A3%8E%E6%99%AF/</loc>
     <lastmod>2025-04-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://wangkang1717.github.io/tags/linux/</loc>
+    <loc>https://wangkang1717.github.io/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/</loc>
     <lastmod>2025-04-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -354,6 +361,13 @@
   </url>
   
   <url>
+    <loc>https://wangkang1717.github.io/tags/%E6%97%A5%E8%AE%B0/</loc>
+    <lastmod>2025-04-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://wangkang1717.github.io/tags/IDEA%E4%B9%B1%E7%A0%81/</loc>
     <lastmod>2025-04-09</lastmod>
     <changefreq>daily</changefreq>
@@ -368,14 +382,7 @@
   </url>
   
   <url>
-    <loc>https://wangkang1717.github.io/tags/%E6%97%A5%E8%AE%B0/</loc>
-    <lastmod>2025-04-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://wangkang1717.github.io/tags/java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/</loc>
+    <loc>https://wangkang1717.github.io/tags/java/</loc>
     <lastmod>2025-04-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -383,6 +390,13 @@
   
   <url>
     <loc>https://wangkang1717.github.io/tags/java%E5%9F%BA%E7%A1%80/</loc>
+    <lastmod>2025-04-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wangkang1717.github.io/tags/java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2025-04-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -412,14 +426,14 @@
 
   
   <url>
-    <loc>https://wangkang1717.github.io/categories/%E6%8A%80%E6%9C%AF/</loc>
+    <loc>https://wangkang1717.github.io/categories/%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2025-04-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://wangkang1717.github.io/categories/%E9%9A%8F%E7%AC%94/</loc>
+    <loc>https://wangkang1717.github.io/categories/%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2025-04-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
