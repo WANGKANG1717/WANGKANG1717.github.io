@@ -115,10 +115,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="https://wangkang1717.github.io/my/学习日志1/">
+  <link rel="canonical" href="https://wangkang1717.github.io/my/面试总结20250421—2/">
   <title>
     
-      学习日志1 - dead or alive
+      面试总结20250421—2 - dead or alive
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -351,14 +351,14 @@
           <div class="post-heading">
             <div class="tags">
               
-              <a class="tag" href="/tags/#图形学" title="图形学">图形学</a>
+              <a class="tag" href="/tags/#操作系统" title="操作系统">操作系统</a>
               
             </div>
-            <h1>学习日志1</h1>
+            <h1>面试总结20250421—2</h1>
             <h2 class="subheading"></h2>
             <span class="meta">
               Posted by WK on
-              2021-10-08
+              2025-04-21
             </span>
 
 
@@ -366,11 +366,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">4</span> Minutes
+              Estimated Reading Time <span class="post-count">13</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">1.1k</span> In Total
+              Words <span class="post-count">3.6k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -432,21 +432,268 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h5 id="超级详细的图形学js文件的注释">超级详细的图形学js文件的注释</h5>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * kang</span></span><br><span class="line"><span class="comment"> * 2021/10/8</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">&quot;use strict&quot;</span>;</span><br><span class="line"><span class="comment">//定义两个变量</span></span><br><span class="line"><span class="keyword">var</span> gl;</span><br><span class="line"><span class="keyword">var</span> points;</span><br><span class="line"><span class="comment">//init函数</span></span><br><span class="line"><span class="comment">//window.onload() 方法用于在网页加载完毕后立刻执行的操作，即当 HTML 文档加载完毕后，立刻执行某个方法。</span></span><br><span class="line"><span class="comment">//window.onload() 通常用于 &lt;body&gt; 元素，在页面完全载入后(包括图片、css文件等等)执行脚本代码。</span></span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="comment">//使用document.getElementById来获取html中特定id1的canvas画布</span></span><br><span class="line">	<span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">&quot;triangle-canvas&quot;</span>);</span><br><span class="line">	<span class="comment">//WebGLUtils.setupWebGL()这个函数返回一个WebGL上下文对象，该对象包含了所有的WebGL函数及参数</span></span><br><span class="line">	<span class="comment">//可以通过&quot;gl.&quot;来调用</span></span><br><span class="line">	gl = WebGLUtils.setupWebGL(canvas);</span><br><span class="line">	<span class="built_in">console</span>.log(gl);</span><br><span class="line">	<span class="comment">//这里用来进一步验证是够获取到WebGL的各种信息</span></span><br><span class="line">	<span class="keyword">if</span> (!gl) &#123;</span><br><span class="line">		alert(<span class="string">&quot;WebGL isn&#x27;t available&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//坐标/点，每两个为一组</span></span><br><span class="line">	<span class="keyword">var</span> vertices = [</span><br><span class="line">		-<span class="number">1.0</span>, -<span class="number">1.0</span>,</span><br><span class="line">		<span class="number">0.0</span>, <span class="number">1.0</span>,</span><br><span class="line">		<span class="number">1.0</span>, -<span class="number">1.0</span>,</span><br><span class="line">	];</span><br><span class="line"></span><br><span class="line">	<span class="comment">//用来设置视口，即指定从标准设备到窗口坐标的x、y仿射变换。</span></span><br><span class="line">	<span class="comment">//x用来设定视口的左下角水平坐标。默认值：0。</span></span><br><span class="line">	<span class="comment">//y用来设定视口的左下角垂直坐标。默认值：0。</span></span><br><span class="line">	<span class="comment">//width(非负数)用来设定视口的宽度。默认值：canvas的宽度。</span></span><br><span class="line">	<span class="comment">//height(非负数)用来设定视口的高度。默认值：canvas的高度</span></span><br><span class="line">	gl.viewport(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height);</span><br><span class="line">	<span class="comment">//用于设置清空颜色缓冲时的颜色值。</span></span><br><span class="line">	gl.clearColor(<span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>);</span><br><span class="line">	<span class="comment">//这一部分作用时在GPU上创建一个顶点缓存区对象buffer，之后将数据放入其中</span></span><br><span class="line">	<span class="comment">//Vertex Buffer Obbject    /    VBO</span></span><br><span class="line">	<span class="keyword">var</span> buffer = gl.createBuffer();</span><br><span class="line">	gl.bindBuffer(gl.ARRAY_BUFFER, buffer);			<span class="comment">//gl.ARRAY_BUFFER表示缓冲区中的数据时顶点属性数据，而不是数据的索引</span></span><br><span class="line">	gl.bufferData(gl.ARRAY_BUFFER, <span class="keyword">new</span> <span class="built_in">Float32Array</span>(vertices), gl.STATIC_DRAW); <span class="comment">//将数据存放到VBO中</span></span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	<span class="comment">//这里记录一下为什么要这样写</span></span><br><span class="line">	<span class="comment">//摘抄自课本61页</span></span><br><span class="line">	<span class="comment">//初始化代码、创建几何信息的代码以及绘制代码都用javaScript编写，而着色器却是用GLSL编写的程序</span></span><br><span class="line">	<span class="comment">//为了得到可执行的模块，必须将这些代码连接起来，还过程涉及的步骤有：从文件中把源代码读入到着色器中，</span></span><br><span class="line">	<span class="comment">//编译每个独立的部分，以及把所有的部分库连接起来。</span></span><br><span class="line">	<span class="comment">//以下为第一个步骤：创建程序对象，并使用程序对象并保存着色器和两个着色器对象</span></span><br><span class="line">	<span class="keyword">var</span> program = initShaders(gl, <span class="string">&quot;vertex-shader&quot;</span>, <span class="string">&quot;fragment-shader&quot;</span>);</span><br><span class="line">	gl.useProgram(program);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//将着色器连接到程序对象的过程中会产生一个表，着色器中的变量名会与表中得到索引相关联。</span></span><br><span class="line">	<span class="comment">//gl.getAttribLocation函数返回着色器中的属性变量的索引（列如我们编写的顶点着色器中的顶点位置属性vPosition）</span></span><br><span class="line">	<span class="comment">//得到索引后，我们需要做两件事</span></span><br><span class="line">	<span class="keyword">var</span> vPosition = gl.getAttribLocation(program, <span class="string">&quot;vPosition&quot;</span>);</span><br><span class="line">	<span class="comment">//1、使用gl.vertexAttribPointer函数描述定点数组中的数据形式</span></span><br><span class="line">	<span class="comment">//参数说明：</span></span><br><span class="line">		<span class="comment">//1：索引 2，3：说明pointsArray数组的每个元素都包含两个浮点数 4：说明不需要将数据归一化至（0.0， 1.0）这个范围</span></span><br><span class="line">		<span class="comment">//5：说明数组中的值是连续的</span></span><br><span class="line">		<span class="comment">//6：说明缓冲区中数据的起始位置</span></span><br><span class="line">	gl.vertexAttribPointer(vPosition, <span class="number">2</span>, gl.FLOAT, <span class="literal">false</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">	<span class="comment">//2、使用enableVertexAttribArray函数开启着色器中的顶点属性</span></span><br><span class="line">	gl.enableVertexAttribArray(vPosition);</span><br><span class="line"></span><br><span class="line">	render();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="comment">//使用预设值来清空缓冲</span></span><br><span class="line">	<span class="comment">//这里的COLOR_BUFFER_BIT正好对应上面的37行</span></span><br><span class="line">	gl.clear(gl.COLOR_BUFFER_BIT);</span><br><span class="line">	<span class="comment">//drawArrays()方法用于从向量数组中绘制图元。</span></span><br><span class="line">	<span class="comment">//语法 void gl.drawArrays(mode, first, count);</span></span><br><span class="line">	<span class="comment">//参数</span></span><br><span class="line">	<span class="comment">//mode:GLenum (en-US) 类型，指定绘制图元的方式，可能值如下。</span></span><br><span class="line">	<span class="comment">////gl.POINTS: 绘制一系列点。</span></span><br><span class="line">	<span class="comment">////gl.LINE_STRIP: 绘制一个线条。 即， 绘制一系列线段， 上一点连接下一点。</span></span><br><span class="line">	<span class="comment">////gl.LINE_LOOP: 绘制一个线圈。 即， 绘制一系列线段， 上一点连接下一点， 并且最后一点与第一个点相连。</span></span><br><span class="line">	<span class="comment">////gl.LINES: 绘制一系列单独线段。 每两个点作为端点， 线段之间不连接。</span></span><br><span class="line">	<span class="comment">////gl.TRIANGLE_STRIP： 绘制一个三角带。</span></span><br><span class="line">	<span class="comment">////gl.TRIANGLE_FAN： 绘制一个三角扇。</span></span><br><span class="line">	<span class="comment">////gl.TRIANGLES: 绘制一系列三角形。 每三个点作为顶点。</span></span><br><span class="line">	<span class="comment">//first:GLint(en - US) 类型， 指定从哪个点开始绘制。</span></span><br><span class="line">	<span class="comment">//count:GLsizei(en - US) 类型， 指定绘制需要使用到多少个点。</span></span><br><span class="line">	<span class="comment">// gl.drawArrays(gl.POINTS, 0, 3);</span></span><br><span class="line">	<span class="comment">// gl.drawArrays(gl.LINE_STRIP, 0, 3);</span></span><br><span class="line">	<span class="comment">// gl.drawArrays(gl.LINE_LOOP, 0, 3);</span></span><br><span class="line">	<span class="comment">// gl.drawArrays(gl.LINES, 0, 4);</span></span><br><span class="line">	<span class="comment">// gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);</span></span><br><span class="line">	<span class="comment">// gl.drawArrays(gl.TRIANGLE_FAN, 0, 4);</span></span><br><span class="line">	gl.drawArrays(gl.TRIANGLES, <span class="number">0</span>, <span class="number">3</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="jdk8-开始，hashmap-底层原理？">jdk8 开始，hashmap 底层原理？</h2>
+<ol>
+<li>数据+链表+红黑树：每个 HashMap 实例都有一个默认大小的数组（桶），初始容量为 16，默认加载因子(load factor)为 0.75。当向 HashMap 中添加键值对时，首先根据键的哈希值计算出该键值对应该存放的桶的位置。如果发生哈希冲突（即多个键值对映射到同一个桶），则这些冲突的元素会以链表的形式链接起来。一旦某个桶中的链表长度超过特定阈值（默认为 8），并且 HashMap 的容量至少为 64，则这个链表会被转换成一棵红黑树，以此来提高查找效率。</li>
+<li>引入红黑树解决哈希冲突：
+<ol>
+<li>在 JDK 8 之前，处理哈希冲突的方式仅通过链表实现。当出现大量的哈希冲突时，查找时间复杂度可能退化至 O(n)。</li>
+<li>引入红黑树后，在最坏的情况下（即存在大量哈希冲突）查找时间复杂度降低到了 O(log n)，大大提高了性能。</li>
+</ol>
+</li>
+<li>扩容机制：当 HashMap 中的元素数量超过了负载因子与当前容量的乘积时，会发生扩容操作，即将数组的容量扩大一倍，并重新计算每个元素的新位置（rehashing）。此过程有助于保持较低的哈希冲突率和良好的性能。</li>
+<li>哈希操作：
+<ol>
+<li>判断是否为 null 键：如果键为 null，则返回哈希值 0。HashMap 允许 null 作为键，并将其固定存储在数组的第一个位置（索引为 0 的桶中）。</li>
+<li>获取原始哈希码：调用键对象的 hashCode() 方法，得到原始哈希码 h。</li>
+<li>高位与低位异或运算：将原始哈希码 h 的高 16 位与低 16 位进行异或运算：(h &gt;&gt;&gt; 16) 表示将哈希码无符号右移 16 位，然后与原哈希码进行异或操作。</li>
+<li>这种扰动操作的目的是让高位的信息参与到最终的哈希值计算中，从而提高哈希分布的均匀性。</li>
+</ol>
+</li>
+</ol>
+<h2 id="mysql-最佳左匹配原则是什么？">mysql 最佳左匹配原则是什么？</h2>
+<ol>
+<li><strong>从最左边的列开始使用</strong>：当使用复合索引时，查询条件必须从索引的最左边的列开始使用才能利用到该索引。这意味着如果有一个索引是(col1, col2, col3)，那么查询条件中至少要包含 col1 才能用到这个索引。仅仅使用 col2 或 col3 作为查询条件无法直接利用这个复合索引。</li>
+<li><strong>连续性</strong>：一旦跳过了某个索引列，后面的列也无法利用此索引。例如，在上面提到的索引结构下，WHERE col1 = ? AND col2 = ?可以有效利用索引，但是 WHERE col1 = ? AND col3 = ?则不能完全利用该索引，因为跳过了 col2。</li>
+<li><strong>部分使用</strong>：如果查询条件包含了复合索引的前几列，即使没有涵盖所有列，也可以部分地利用该索引。例如，对于索引(col1, col2, col3)，查询 WHERE col1 = ?可以直接使用该索引来过滤数据；而 WHERE col1 = ? AND col2 = ?能更精确地缩小搜索范围。</li>
+<li><strong>范围查询的影响</strong>：一旦在查询条件中出现了范围查询（如 BETWEEN, &lt;, &gt;等），后续的列将不能再使用索引进行精确查找。比如，在索引(col1, col2, col3)中，WHERE col1 = ? AND col2 BETWEEN ? AND ?只能有效利用到 col1 和 col2 上的索引，col3 将无法再利用该索引进行优化。</li>
+</ol>
+<h2 id="select-年龄，姓名，id-，-from-表-where-年龄-xx，走全表扫描了吗？">select(年龄，姓名，id)， from 表 where 年龄=xx，走全表扫描了吗？</h2>
+<ol>
+<li>全表扫描：如果查询条件没有任何索引，则会进行全表扫描，扫描整个表，然后再应用查询条件进行过滤。</li>
+<li>索引扫描：如果查询条件有索引，则会使用索引进行快速定位，然后根据索引返回的结果进行过滤。</li>
+<li>索引失效：如果查询条件有索引，但是索引失效了，则会进行全表扫描。</li>
+</ol>
+<h2 id="慢查询分析，怎么优化-sql？">慢查询分析，怎么优化 sql？</h2>
+<ol>
+<li>使用 EXPLAIN 分析查询计划
+<ul>
+<li>type：访问类型（如 ALL 表示全表扫描，ref 表示索引查找）。</li>
+<li>key：实际使用的索引。</li>
+<li>rows：扫描的行数（越少越好）。</li>
+<li>Extra：额外信息（如 Using filesort 或 Using temporary 表示可能有性能问题）。</li>
+</ul>
+</li>
+<li>优化索引：添加合适的索引、避免冗余索引、覆盖索引</li>
+<li>优化查询语句：避免全表扫描、减少返回的数据量、避免不必要的排序和分组</li>
+<li>优化表结构：选择合适的数据类型、拆分大表、归档历史数据</li>
+<li>优化 JOIN 操作：确保 JOIN 列上有索引、避免笛卡尔积、减少 JOIN 表的数量</li>
+<li>使用缓存：应用层缓存、MySQL 查询缓存</li>
+</ol>
+<h2 id="SELECT-怎么优化？">SELECT *怎么优化？</h2>
+<h3 id="为什么需要优化-SELECT-？">为什么需要优化 SELECT *？</h3>
+<ol>
+<li>返回不必要的数据：SELECT * 会返回表中的所有列，即使你只需要其中的一部分字段。这会增加网络传输的开销，并占用更多的内存。</li>
+<li>无法使用覆盖索引：如果查询的所有字段都包含在索引中（即覆盖索引），MySQL 可以直接从索引中获取数据，而无需回表查询。使用 SELECT * 通常会导致 MySQL 需要访问数据表本身，从而降低性能。</li>
+<li>影响 JOIN 性能：在多表连接时，SELECT * 会返回所有表的所有字段，可能导致大量的冗余数据传输和更高的计算开销。</li>
+<li>维护困难：使用 SELECT * 会使代码可读性变差，难以清楚地知道具体需要哪些字段。如果表结构发生变化（如新增或删除字段），可能引发意外问题。</li>
+</ol>
+<h3 id="如何优化-SELECT-？">如何优化 SELECT *？</h3>
+<ol>
+<li>
+<p>明确指定需要的字段</p>
+</li>
+<li>
+<p>利用覆盖索引</p>
+</li>
+<li>
+<p>避免 SELECT COUNT(*)：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">FROM</span> table_name;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> <span class="number">1</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> age <span class="operator">&gt;</span> <span class="number">30</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>分页查询优化:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 优化前</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">ORDER</span> <span class="keyword">BY</span> id LIMIT <span class="number">10000</span>, <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 优化后</span></span><br><span class="line"><span class="keyword">SELECT</span> id, name, email</span><br><span class="line"><span class="keyword">FROM</span> users</span><br><span class="line"><span class="keyword">WHERE</span> id <span class="operator">&gt;</span> last_seen_id</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> id</span><br><span class="line">LIMIT <span class="number">10</span>;</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>减少大字段的影响:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">-- 优化前</span></span><br><span class="line"> <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> articles;</span><br><span class="line"></span><br><span class="line"> <span class="comment">-- 优化后</span></span><br><span class="line"> <span class="keyword">SELECT</span> id, title, author <span class="keyword">FROM</span> articles;</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>联合查询优化：在多表连接时，避免使用 SELECT *，只选择需要的字段。</p>
+</li>
+<li>
+<p>使用视图或存储过程</p>
+</li>
+<li>
+<p>动态生成查询语句</p>
+</li>
+</ol>
+<h2 id="分页怎么分，什么语句？">分页怎么分，什么语句？</h2>
+<ol>
+<li>使用 LIMIT 和 OFFSET</li>
+<li>使用主键或唯一索引优化：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> id, name, email</span><br><span class="line">     <span class="keyword">FROM</span> users</span><br><span class="line">     <span class="keyword">WHERE</span> id <span class="operator">&gt;</span> last_seen_id</span><br><span class="line">     <span class="keyword">ORDER</span> <span class="keyword">BY</span> id</span><br><span class="line">     LIMIT <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li>使用覆盖索引</li>
+</ol>
+<h2 id="LIMIT-深分页怎么处理">LIMIT 深分页怎么处理?</h2>
+<p>在处理大数据量的分页查询时，使用 LIMIT 和 OFFSET 的方式（即深分页）会导致性能问题。这是因为即使你只需要少量的数据，数据库仍然需要扫描并跳过前面的所有行。例如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">ORDER</span> <span class="keyword">BY</span> id LIMIT <span class="number">10</span> <span class="keyword">OFFSET</span> <span class="number">100000</span>;</span><br></pre></td></tr></table></figure>
+<p>在这种情况下，数据库需要扫描前 100,000 行数据才能返回第 100,001 到 100,010 行的数据，这显然是低效的。</p>
+<ol>
+<li>
+<p>使用主键或唯一索引进行分页:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> id, name, email</span><br><span class="line">     <span class="keyword">FROM</span> users</span><br><span class="line">     <span class="keyword">WHERE</span> id <span class="operator">&gt;</span> last_seen_id</span><br><span class="line">     <span class="keyword">ORDER</span> <span class="keyword">BY</span> id</span><br><span class="line">     LIMIT <span class="number">10</span>, <span class="number">100000</span>;</span><br></pre></td></tr></table></figure>
+<p>这种方式可以利用索引进行快速定位，并只返回需要的数据。</p>
+</li>
+<li>
+<p>使用覆盖索引: <code>CREATE INDEX idx_id_name_email ON users(id, name, email);</code></p>
+</li>
+<li>
+<p>使用延迟关联（Deferred Join）/子查询：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 先通过索引快速定位需要的主键</span></span><br><span class="line"> <span class="keyword">SELECT</span> id</span><br><span class="line"> <span class="keyword">FROM</span> users</span><br><span class="line"> <span class="keyword">ORDER</span> <span class="keyword">BY</span> id</span><br><span class="line"> LIMIT <span class="number">10</span> <span class="keyword">OFFSET</span> <span class="number">100000</span>;</span><br><span class="line"></span><br><span class="line"> <span class="comment">-- 再根据主键回表查询完整数据</span></span><br><span class="line"> <span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"> <span class="keyword">FROM</span> users</span><br><span class="line"> <span class="keyword">WHERE</span> id <span class="keyword">IN</span> (<span class="comment">/* 上一步的结果 */</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="mysql-隔离级别哪些？">mysql 隔离级别哪些？</h2>
+<table>
+<thead>
+<tr>
+<th>隔离级别</th>
+<th>脏读</th>
+<th>不可重复读</th>
+<th>幻读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>READ-UNCOMMITTED</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>READ-COMMITTED</td>
+<td>×</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>REPEATABLE-READ</td>
+<td>×</td>
+<td>×</td>
+<td>√</td>
+</tr>
+<tr>
+<td>SERIALIZABLE</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+</tbody>
+</table>
+<h2 id="事务-acid-特性？">事务 acid 特性？</h2>
+<ol>
+<li>A: Atomicity（原子性）</li>
+</ol>
+<p>事务的原子性是指事务是一个不可分割的工作单位，事务中包括的诸操作要么全部完成，要么全部不完成，事务的操作不受其他操作的影响。</p>
+<ol start="2">
+<li>C: Consistency（一致性）</li>
+</ol>
+<p>事务的一致性是指事务必须是数据库从一个一致性状态变到另一个一致性状态。一致性与原子性是密切相关的。</p>
+<ol start="3">
+<li>I: Isolation（隔离性）</li>
+</ol>
+<p>事务的隔离性是指一个事务的执行不能被其他事务干扰。即一个事务内部的操作及使用的数据对并发的其他事务是隔离的，并发执行的各个事务之间不能互相干扰。</p>
+<ol start="4">
+<li>D: Durability（持久性）</li>
+</ol>
+<p>事务的持久性是指一个事务一旦提交，它对数据库中数据的改变就应该是永久性的。接下来的其他操作或故障不应该对其有任何影响。</p>
+<h2 id="反向代理-正向代理？">反向代理 / 正向代理？</h2>
+<ul>
+<li>正向代理：从客户端的角度出发，帮助客户端访问外部资源，隐藏客户端的身份。</li>
+<li>反向代理：从服务器的角度出发，保护后端服务器，隐藏后端服务器的身份，并提供负载均衡、缓存等功能。</li>
+</ul>
+<h2 id="mysql-存储引擎？">mysql 存储引擎？</h2>
+<ol>
+<li>InnoDB</li>
+</ol>
+<ul>
+<li>支持事务（ACID 特性）。</li>
+<li>支持行级锁（Row-Level Locking），适合高并发环境。</li>
+<li>支持外键约束（Foreign Key）。</li>
+<li>提供崩溃恢复能力（Crash Recovery）。</li>
+<li>使用聚簇索引（Clustered Index），主键查询性能优异。</li>
+<li>数据存储在表空间中，支持大表和高并发操作。</li>
+<li>适用场景：</li>
+<li>需要事务支持的应用（如银行系统、电商系统）。</li>
+<li>高并发读写场景。</li>
+<li>数据完整性和一致性要求较高的场景。</li>
+</ul>
+<ol>
+<li>MyISAM</li>
+</ol>
+<ul>
+<li>不支持事务。</li>
+<li>支持表级锁（Table-Level Locking），并发性能较差。</li>
+<li>查询速度快，尤其适合以读为主的场景。</li>
+<li>支持全文索引（Full-Text Index），但在 MySQL 5.6 之后，InnoDB 也支持全文索引。</li>
+<li>数据存储在 .MYD（数据文件）和 .MYI（索引文件）中。</li>
+<li>不支持外键。</li>
+<li>适用场景：</li>
+<li>以读为主的应用（如日志系统、数据仓库）。</li>
+<li>不需要事务支持的场景。</li>
+</ul>
+<h2 id="InnoDB-行锁实现？">InnoDB 行锁实现？</h2>
+<p>略</p>
+<h2 id="数据库主从复制原理？">数据库主从复制原理？</h2>
+<ol>
+<li>主服务器（Master）：处理所有的写操作（如 INSERT、UPDATE、DELETE），并记录这些操作到二进制日志（Binary Log）中。</li>
+<li>从服务器（Slave）：负责读取主服务器的二进制日志，并将其应用到自己的数据库中，从而保持与主服务器的数据同步。</li>
+</ol>
+<h2 id="redis-的持久化方式？">redis 的持久化方式？</h2>
+<ol>
+<li>RDB 持久化：RDB 持久化是指在指定的时间间隔内将内存中的数据集快照写入磁盘，它恢复时是将快照文件直接读到内存里。RDB 持久化可以配置，默认配置是每隔 10 分钟执行一次，可以根据需要修改。RDB 持久化是 Redis 默认的持久化方式，但它不支持 AOF 持久化。</li>
+<li>AOF 持久化：AOF 持久化是指将写操作命令记录到文件中，并在 Redis 启动时，从文件中读取并重新执行这些命令，AOF 持久化可以配置，默认配置是每秒钟执行一次，可以根据需要修改。AOF 持久化支持多种同步策略，如 always、everysec、noappendfsync。AOF 持久化比 RDB 持久化更加安全，因为 AOF 持久化可以记录更多的命令，即使 Redis 发生故障也只会丢失一秒钟的数据。</li>
+</ol>
+<h2 id="简单说，缓存穿透，击穿，雪崩是什么，怎么解决">简单说，缓存穿透，击穿，雪崩是什么，怎么解决</h2>
+<ol>
+<li>缓存穿透：指查询一个一定不存在的数据，由于缓存是不命中时被动写到数据库，并且出于容错考虑，如果从数据库查询不到对应的数据，则不写入缓存，这将导致这个不存在的数据每次请求都要到数据库去查询，失去了缓存的意义。</li>
+<li>缓存击穿：指缓存中有某个热点数据，当大量的请求访问这个热点数据时，缓存失效，大量请求直接访问数据库，数据库压力过大，甚至导致雪崩。</li>
+<li>缓存雪崩：指缓存服务器重启或者大量缓存集中失效，所有请求都直接访问数据库，数据库瘫痪，甚至宕机。</li>
+<li>解决方案：
+<ol>
+<li>缓存空值：当缓存和数据库中都没有数据时，直接返回空值，避免缓存穿透。</li>
+<li>缓存永不过期：当缓存和数据库中都有数据时，设置一个较短的过期时间，避免缓存击穿。</li>
+<li>缓存更新策略：当缓存和数据库中都有数据时，更新缓存，避免缓存雪崩。</li>
+<li>缓存预热：将热点数据提前加载到缓存中，避免缓存穿透和缓存雪崩。</li>
+</ol>
+</li>
+</ol>
+<h1>以下待整理</h1>
+<h2 id="分布式锁除了-redis-还有什么方法">分布式锁除了 redis 还有什么方法</h2>
+<h2 id="假如有一组数据，有序的，增删多，用什么集合">假如有一组数据，有序的，增删多，用什么集合</h2>
+<h2 id="jvm-内存">jvm 内存</h2>
+<h2 id="垃圾回收算法哪几种">垃圾回收算法哪几种</h2>
+<h2 id="你用的什么垃圾回收算法，为什么">你用的什么垃圾回收算法，为什么</h2>
+<h2 id="threallocal-原理">threallocal 原理</h2>
+<h2 id="ThreadLocalMap-防止内存泄漏">ThreadLocalMap 防止内存泄漏</h2>
+<h2 id="classloader-方法重写了会怎么样">classloader 方法重写了会怎么样</h2>
+<h2 id="springboot-用到了哪些设计模式？">springboot 用到了哪些设计模式？</h2>
+<ul>
+<li>工厂设计模式 : Spring 使用工厂模式通过 BeanFactory、ApplicationContext 创建 bean 对象。</li>
+<li>代理设计模式 : Spring AOP 功能的实现。</li>
+<li>单例设计模式 : Spring 中的 Bean 默认都是单例的。</li>
+<li>模板方法模式 : Spring 中 jdbcTemplate、hibernateTemplate 等以 Template 结尾的对数据库操作的类，它们就使用到了模板模式。</li>
+<li>包装器设计模式 : 我们的项目需要连接多个数据库，而且不同的客户在每次访问中根据需要会去访问不同的数据库。这种模式让我们可以根据客户的需求能够动态切换不同的数据源。</li>
+<li>观察者模式: Spring 事件驱动模型就是观察者模式很经典的一个应用。</li>
+<li>适配器模式 : Spring AOP 的增强或通知(Advice)使用到了适配器模式、spring MVC 中也是用到了适配器模式适配 Controller。</li>
+</ul>
+<h2 id="工厂方法模式一般用在哪">工厂方法模式一般用在哪</h2>
+<h2 id="简单说，mysql-慢查询分析举例子，索引失效情况">简单说，mysql 慢查询分析举例子，索引失效情况</h2>
+<h2 id="redis-怎么保证原子操作">redis 怎么保证原子操作</h2>
+<h2 id="redis-大-key-怎么处理，简单说">redis 大 key 怎么处理，简单说</h2>
+<h2 id="简单说，饭店老板餐馆-20-个桌子，设计用户点餐，怎么设计系统">简单说，饭店老板餐馆 20 个桌子，设计用户点餐，怎么设计系统</h2>
+<h2 id="购物车怎么实现">购物车怎么实现</h2>
+<h2 id="如果-2-个人一起点，怎么让两个人相互看到对方点的，">如果 2 个人一起点，怎么让两个人相互看到对方点的，</h2>
+<h2 id="redis-怎么设计数据结构">redis 怎么设计数据结构</h2>
 
 
         <hr>
         <!-- Pager -->
         <ul class="pager">
           
-          <li class="previous">
-            <a href="/my/Lab-Lab2/" data-toggle="tooltip" data-placement="top" title="Lab2">&larr; Previous Post</a>
-          </li>
-          
           
           <li class="next">
-            <a href="/my/风景很美/" data-toggle="tooltip" data-placement="top" title="风景很美">Next Post &rarr;</a>
+            <a href="/my/面试总结20250421/" data-toggle="tooltip" data-placement="top" title="面试总结20250421">Next Post &rarr;</a>
           </li>
           
         </ul>
@@ -490,7 +737,7 @@
       repo: 'blog_comment',
       owner: 'WANGKANG1717',
       admin: 'WANGKANG1717',
-      id: 'Fri Oct 08 2021 14:15:47 GMT+0800', // Ensure uniqueness and length less than 50
+      id: 'Mon Apr 21 2025 11:09:53 GMT+0800', // Ensure uniqueness and length less than 50
       distractionFreeMode: false, // Facebook-like distraction free mode
       perPage: 10,
       pagerDirection: 'last',
@@ -543,7 +790,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E8%B6%85%E7%BA%A7%E8%AF%A6%E7%BB%86%E7%9A%84%E5%9B%BE%E5%BD%A2%E5%AD%A6js%E6%96%87%E4%BB%B6%E7%9A%84%E6%B3%A8%E9%87%8A"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">超级详细的图形学js文件的注释</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#jdk8-%E5%BC%80%E5%A7%8B%EF%BC%8Chashmap-%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%EF%BC%9F"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">jdk8 开始，hashmap 底层原理？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#mysql-%E6%9C%80%E4%BD%B3%E5%B7%A6%E5%8C%B9%E9%85%8D%E5%8E%9F%E5%88%99%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">mysql 最佳左匹配原则是什么？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#select-%E5%B9%B4%E9%BE%84%EF%BC%8C%E5%A7%93%E5%90%8D%EF%BC%8Cid-%EF%BC%8C-from-%E8%A1%A8-where-%E5%B9%B4%E9%BE%84-xx%EF%BC%8C%E8%B5%B0%E5%85%A8%E8%A1%A8%E6%89%AB%E6%8F%8F%E4%BA%86%E5%90%97%EF%BC%9F"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">select(年龄，姓名，id)， from 表 where 年龄&#x3D;xx，走全表扫描了吗？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%85%A2%E6%9F%A5%E8%AF%A2%E5%88%86%E6%9E%90%EF%BC%8C%E6%80%8E%E4%B9%88%E4%BC%98%E5%8C%96-sql%EF%BC%9F"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">慢查询分析，怎么优化 sql？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#SELECT-%E6%80%8E%E4%B9%88%E4%BC%98%E5%8C%96%EF%BC%9F"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">SELECT *怎么优化？</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E4%BC%98%E5%8C%96-SELECT-%EF%BC%9F"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">为什么需要优化 SELECT *？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96-SELECT-%EF%BC%9F"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text">如何优化 SELECT *？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%88%86%E9%A1%B5%E6%80%8E%E4%B9%88%E5%88%86%EF%BC%8C%E4%BB%80%E4%B9%88%E8%AF%AD%E5%8F%A5%EF%BC%9F"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">分页怎么分，什么语句？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#LIMIT-%E6%B7%B1%E5%88%86%E9%A1%B5%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">LIMIT 深分页怎么处理?</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#mysql-%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">mysql 隔离级别哪些？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BA%8B%E5%8A%A1-acid-%E7%89%B9%E6%80%A7%EF%BC%9F"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">事务 acid 特性？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86-%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%EF%BC%9F"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">反向代理 &#x2F; 正向代理？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#mysql-%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%EF%BC%9F"><span class="toc-nav-number">11.</span> <span class="toc-nav-text">mysql 存储引擎？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#InnoDB-%E8%A1%8C%E9%94%81%E5%AE%9E%E7%8E%B0%EF%BC%9F"><span class="toc-nav-number">12.</span> <span class="toc-nav-text">InnoDB 行锁实现？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%8E%9F%E7%90%86%EF%BC%9F"><span class="toc-nav-number">13.</span> <span class="toc-nav-text">数据库主从复制原理？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#redis-%E7%9A%84%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F%EF%BC%9F"><span class="toc-nav-number">14.</span> <span class="toc-nav-text">redis 的持久化方式？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%80%E5%8D%95%E8%AF%B4%EF%BC%8C%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%EF%BC%8C%E5%87%BB%E7%A9%BF%EF%BC%8C%E9%9B%AA%E5%B4%A9%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3"><span class="toc-nav-number">15.</span> <span class="toc-nav-text">简单说，缓存穿透，击穿，雪崩是什么，怎么解决</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number"></span> <span class="toc-nav-text">以下待整理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E9%99%A4%E4%BA%86-redis-%E8%BF%98%E6%9C%89%E4%BB%80%E4%B9%88%E6%96%B9%E6%B3%95"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">分布式锁除了 redis 还有什么方法</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%81%87%E5%A6%82%E6%9C%89%E4%B8%80%E7%BB%84%E6%95%B0%E6%8D%AE%EF%BC%8C%E6%9C%89%E5%BA%8F%E7%9A%84%EF%BC%8C%E5%A2%9E%E5%88%A0%E5%A4%9A%EF%BC%8C%E7%94%A8%E4%BB%80%E4%B9%88%E9%9B%86%E5%90%88"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">假如有一组数据，有序的，增删多，用什么集合</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#jvm-%E5%86%85%E5%AD%98"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">jvm 内存</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95%E5%93%AA%E5%87%A0%E7%A7%8D"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">垃圾回收算法哪几种</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BD%A0%E7%94%A8%E7%9A%84%E4%BB%80%E4%B9%88%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">你用的什么垃圾回收算法，为什么</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#threallocal-%E5%8E%9F%E7%90%86"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">threallocal 原理</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#ThreadLocalMap-%E9%98%B2%E6%AD%A2%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">ThreadLocalMap 防止内存泄漏</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#classloader-%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E4%BA%86%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">classloader 方法重写了会怎么样</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#springboot-%E7%94%A8%E5%88%B0%E4%BA%86%E5%93%AA%E4%BA%9B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9F"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">springboot 用到了哪些设计模式？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E4%B8%80%E8%88%AC%E7%94%A8%E5%9C%A8%E5%93%AA"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">工厂方法模式一般用在哪</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%80%E5%8D%95%E8%AF%B4%EF%BC%8Cmysql-%E6%85%A2%E6%9F%A5%E8%AF%A2%E5%88%86%E6%9E%90%E4%B8%BE%E4%BE%8B%E5%AD%90%EF%BC%8C%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E6%83%85%E5%86%B5"><span class="toc-nav-number">11.</span> <span class="toc-nav-text">简单说，mysql 慢查询分析举例子，索引失效情况</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#redis-%E6%80%8E%E4%B9%88%E4%BF%9D%E8%AF%81%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C"><span class="toc-nav-number">12.</span> <span class="toc-nav-text">redis 怎么保证原子操作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#redis-%E5%A4%A7-key-%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86%EF%BC%8C%E7%AE%80%E5%8D%95%E8%AF%B4"><span class="toc-nav-number">13.</span> <span class="toc-nav-text">redis 大 key 怎么处理，简单说</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%80%E5%8D%95%E8%AF%B4%EF%BC%8C%E9%A5%AD%E5%BA%97%E8%80%81%E6%9D%BF%E9%A4%90%E9%A6%86-20-%E4%B8%AA%E6%A1%8C%E5%AD%90%EF%BC%8C%E8%AE%BE%E8%AE%A1%E7%94%A8%E6%88%B7%E7%82%B9%E9%A4%90%EF%BC%8C%E6%80%8E%E4%B9%88%E8%AE%BE%E8%AE%A1%E7%B3%BB%E7%BB%9F"><span class="toc-nav-number">14.</span> <span class="toc-nav-text">简单说，饭店老板餐馆 20 个桌子，设计用户点餐，怎么设计系统</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%B4%AD%E7%89%A9%E8%BD%A6%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0"><span class="toc-nav-number">15.</span> <span class="toc-nav-text">购物车怎么实现</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A6%82%E6%9E%9C-2-%E4%B8%AA%E4%BA%BA%E4%B8%80%E8%B5%B7%E7%82%B9%EF%BC%8C%E6%80%8E%E4%B9%88%E8%AE%A9%E4%B8%A4%E4%B8%AA%E4%BA%BA%E7%9B%B8%E4%BA%92%E7%9C%8B%E5%88%B0%E5%AF%B9%E6%96%B9%E7%82%B9%E7%9A%84%EF%BC%8C"><span class="toc-nav-number">16.</span> <span class="toc-nav-text">如果 2 个人一起点，怎么让两个人相互看到对方点的，</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#redis-%E6%80%8E%E4%B9%88%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-nav-number">17.</span> <span class="toc-nav-text">redis 怎么设计数据结构</span></a></li></ol>
         
         </div>
       </aside>
@@ -566,7 +813,7 @@
           </h5>
           <div class="tags">
             
-            <a class="tag" href="/tags/#图形学" title="图形学">图形学</a>
+            <a class="tag" href="/tags/#操作系统" title="操作系统">操作系统</a>
             
           </div>
         </section>
