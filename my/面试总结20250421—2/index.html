@@ -235,9 +235,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/tags/">
               
-              ARCHIVES
+              TAGS
               
               
             </a>
@@ -246,9 +246,9 @@
           
           
           <li>
-            <a href="/tags/">
+            <a href="/archive/">
               
-              TAGS
+              ARCHIVES
               
               
             </a>
@@ -366,11 +366,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">13</span> Minutes
+              Estimated Reading Time <span class="post-count">20</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">3.6k</span> In Total
+              Words <span class="post-count">5.6k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -644,7 +644,7 @@
 <li>RDB 持久化：RDB 持久化是指在指定的时间间隔内将内存中的数据集快照写入磁盘，它恢复时是将快照文件直接读到内存里。RDB 持久化可以配置，默认配置是每隔 10 分钟执行一次，可以根据需要修改。RDB 持久化是 Redis 默认的持久化方式，但它不支持 AOF 持久化。</li>
 <li>AOF 持久化：AOF 持久化是指将写操作命令记录到文件中，并在 Redis 启动时，从文件中读取并重新执行这些命令，AOF 持久化可以配置，默认配置是每秒钟执行一次，可以根据需要修改。AOF 持久化支持多种同步策略，如 always、everysec、noappendfsync。AOF 持久化比 RDB 持久化更加安全，因为 AOF 持久化可以记录更多的命令，即使 Redis 发生故障也只会丢失一秒钟的数据。</li>
 </ol>
-<h2 id="简单说，缓存穿透，击穿，雪崩是什么，怎么解决">简单说，缓存穿透，击穿，雪崩是什么，怎么解决</h2>
+<h2 id="简单说，缓存穿透，击穿，雪崩是什么，怎么解决">简单说，缓存穿透，击穿，雪崩是什么，怎么解决?</h2>
 <ol>
 <li>缓存穿透：指查询一个一定不存在的数据，由于缓存是不命中时被动写到数据库，并且出于容错考虑，如果从数据库查询不到对应的数据，则不写入缓存，这将导致这个不存在的数据每次请求都要到数据库去查询，失去了缓存的意义。</li>
 <li>缓存击穿：指缓存中有某个热点数据，当大量的请求访问这个热点数据时，缓存失效，大量请求直接访问数据库，数据库压力过大，甚至导致雪崩。</li>
@@ -658,15 +658,78 @@
 </ol>
 </li>
 </ol>
-<h1>以下待整理</h1>
-<h2 id="分布式锁除了-redis-还有什么方法">分布式锁除了 redis 还有什么方法</h2>
-<h2 id="假如有一组数据，有序的，增删多，用什么集合">假如有一组数据，有序的，增删多，用什么集合</h2>
-<h2 id="jvm-内存">jvm 内存</h2>
+<h2 id="分布式锁除了-redis-还有什么方法">分布式锁除了 redis 还有什么方法?</h2>
+<ol>
+<li>数据库锁：可以通过数据库的唯一约束或事务来实现分布式锁。例如，在一个表中插入一条记录，这条记录的存在就代表了锁的状态。这种方法简单易懂，但性能通常不如专门的分布式锁服务。</li>
+<li>Zookeeper：Apache Zookeeper 是一个分布式的协调服务，可以用来实现分布式锁。通过创建临时顺序节点，可以确保同一时间只有一个客户端能够获取到锁。Zookeeper 提供了强大的一致性和可靠性保障，但是它的性能可能比不上基于内存的解决方案（如 Redis）。</li>
+</ol>
+<h2 id="假如有一组数据，有序的，增删多，用什么集合">假如有一组数据，有序的，增删多，用什么集合?</h2>
+<ol>
+<li>TreeSet
+<ul>
+<li>特点: 基于红黑树实现，元素天然有序（默认升序），支持快速插入、删除和查找。</li>
+<li>时间复杂度: 插入、删除和查找的时间复杂度为 O(log n)。</li>
+<li>适用场景: 如果需要维护一个动态有序集合，并且频繁进行增删操作，TreeSet 是一个很好的选择。</li>
+</ul>
+</li>
+<li>LinkedList
+<ul>
+<li>特点: 基于双向链表实现，支持快速的头尾插入和删除（O(1)），但中间插入和删除需要先找到位置（O(n)）。</li>
+<li>适用场景: 如果数据量较小或者主要对头部或尾部进行操作，LinkedList 是可选方案。</li>
+</ul>
+</li>
+</ol>
+<h2 id="jvm-内存结构">jvm 内存结构</h2>
+<ol>
+<li>堆: 存放对象实例，是垃圾收集器管理的主要区域，也是 Java 内存管理的核心区域。</li>
+<li>方法区: 存放类信息、常量、静态变量、即时编译器编译后的代码等数据。</li>
+<li>虚拟机栈: 存放局部变量表、操作栈、动态链接、返回地址等信息。</li>
+<li>本地方法栈: 存放 native 方法信息。</li>
+<li>程序计数器: 存放当前线程执行的字节码的地址。</li>
+<li>直接内存: 直接内存并不是虚拟机运行时数据区的一部分，而是通过 Native 函数库直接分配堆外内存。</li>
+</ol>
 <h2 id="垃圾回收算法哪几种">垃圾回收算法哪几种</h2>
-<h2 id="你用的什么垃圾回收算法，为什么">你用的什么垃圾回收算法，为什么</h2>
+<ol>
+<li>标记-清除算法：首先标记出所有需要回收的对象，标记完成后统一回收。</li>
+<li>复制算法：将内存分为两块，每次只使用其中一块，当这一块内存用完时，就将还存活的对象复制到另一块内存上，然后再把使用过的内存空间一次清理掉。</li>
+<li>标记-整理算法：标记-清除算法的基础上，再进行一次碎片整理。</li>
+<li>分代收集算法：根据对象存活周期不同，将内存分为几块，不同块采用不同的算法进行垃圾回收。</li>
+</ol>
 <h2 id="threallocal-原理">threallocal 原理</h2>
+<p>ThreadLocal 是 Java 提供的一种用于实现线程本地存储的机制，它允许每个线程拥有某个变量的独立副本，从而避免线程间的共享和竞争。简单来说，ThreadLocal 的核心作用是为每个线程提供一个独立的变量副本，确保线程之间的数据隔离。</p>
+<ul>
+<li>线程隔离：每个线程都有自己独立的变量副本，线程之间互不干扰。</li>
+<li>无需同步：由于每个线程操作的是自己的副本，因此不需要使用锁来保证线程安全。</li>
+<li>生命周期绑定到线程：ThreadLocal 中存储的数据与线程的生命周期绑定，当线程结束时，存储在 ThreadLocal 中的数据也会被回收（前提是正确清理）。</li>
+</ul>
+<p>工作原理:</p>
+<ul>
+<li>每个线程（Thread）内部都有一个名为 threadLocals 的 ThreadLocalMap 对象。</li>
+<li>当调用 ThreadLocal 的 set() 方法时，会将当前线程作为键，要存储的值作为值，存入该线程的 threadLocals 映射中。</li>
+<li>当调用 get() 方法时，会从当前线程的 threadLocals 中查找对应的值。</li>
+<li>如果没有调用过 set() 方法，则会返回 initialValue() 方法提供的默认值（默认为 null）。</li>
+</ul>
 <h2 id="ThreadLocalMap-防止内存泄漏">ThreadLocalMap 防止内存泄漏</h2>
+<p>ThreadLocalMap 是 ThreadLocal 的核心实现，它负责存储每个线程的变量副本。然而，由于其特殊的存储机制（键是弱引用，值是强引用），如果使用不当，可能会导致内存泄漏问题。</p>
+<h3 id="为什么会有内存泄漏的风险？">为什么会有内存泄漏的风险？</h3>
+<ul>
+<li>键是弱引用：在 ThreadLocalMap 中，键（ThreadLocal 实例）是通过弱引用（WeakReference）存储的。这意味着当没有其他强引用指向 ThreadLocal 实例时，垃圾回收器会回收该实例。</li>
+<li>值是强引用：值（存储的数据）是强引用，即使 ThreadLocal 实例被回收了，值仍然会被 ThreadLocalMap 强引用着，不会被垃圾回收。</li>
+<li>线程长期存活：如果线程长时间运行（例如线程池中的线程），而 ThreadLocal 实例被回收后没有及时清理对应的值，那么这些值会一直占用内存，无法释放。</li>
+</ul>
+<h3 id="如何防止内存泄漏？">如何防止内存泄漏？</h3>
+<ol>
+<li>显式调用 remove() 方法</li>
+<li>垃圾回收时自动清理</li>
+</ol>
 <h2 id="classloader-方法重写了会怎么样">classloader 方法重写了会怎么样</h2>
+<p>在 Java 中，ClassLoader 是负责加载类的核心组件。它定义了几个关键方法，用于实现类的加载逻辑。如果重写这些方法，可能会影响类加载的行为。</p>
+<ol>
+<li>findClass(String name): 该方法用于加载指定类。如果重写该方法，则会导致自定义类的加载方式。从文件系统、网络或其他非标准位置加载类。</li>
+<li>loadClass(String name):默认双亲委派机制，重写此方法并跳过父类加载器，可能会破坏双亲委派机制，导致核心类库被重复加载或出现类冲突。</li>
+<li>defineClass(String name, byte[] b, int off, int len)：默认行为：将字节数组转换为 Class 对象，是类加载的核心步骤。通常不建议重写此方法，因为它是 JVM 内部实现的一部分。</li>
+<li>findResource(String name) 和 findResources(String name)：默认用于查找类路径中的资源文件，可以通过重写这些方法来自定义资源加载逻辑，例如从网络或数据库中加载资源。</li>
+</ol>
 <h2 id="springboot-用到了哪些设计模式？">springboot 用到了哪些设计模式？</h2>
 <ul>
 <li>工厂设计模式 : Spring 使用工厂模式通过 BeanFactory、ApplicationContext 创建 bean 对象。</li>
@@ -677,10 +740,49 @@
 <li>观察者模式: Spring 事件驱动模型就是观察者模式很经典的一个应用。</li>
 <li>适配器模式 : Spring AOP 的增强或通知(Advice)使用到了适配器模式、spring MVC 中也是用到了适配器模式适配 Controller。</li>
 </ul>
-<h2 id="工厂方法模式一般用在哪">工厂方法模式一般用在哪</h2>
+<h2 id="工厂方法模式一般用在哪？">工厂方法模式一般用在哪？</h2>
+<ol>
+<li>
+<p>当一个类不知道它所必须创建的对象的类的时候</p>
+</li>
+<li>
+<p>当一个类希望它的子类来指定它所创建的对象的时候</p>
+</li>
+<li>
+<p>类将创建对象的职责委托给多个帮助子类中的某一个，并且你希望将哪一个帮助子类是代理者这一信息局部化的时候</p>
+</li>
+<li>
+<p>应用：框架开发、图形用户界面(GUI)工具包、支持多样的文件格式处理</p>
+</li>
+</ol>
 <h2 id="简单说，mysql-慢查询分析举例子，索引失效情况">简单说，mysql 慢查询分析举例子，索引失效情况</h2>
+<ol>
+<li>慢查询通常指的是那些执行时间超过预设阈值的 SQL 查询</li>
+<li>索引失效情况分析：
+<ul>
+<li>隐式类型转换：如果 department_id 列定义为整数类型，而查询条件使用了字符串（例如 WHERE department_id = ‘10’），MySQL 可能需要进行隐式类型转换，这会导致索引失效。</li>
+<li>函数使用：如果在索引列上使用了函数，如 WHERE YEAR(hire_date) &gt; 2010，MySQL 将无法有效利用 hire_date 上的索引，因为索引不能用于函数计算的结果。</li>
+<li>范围查询后的索引使用：在这个查询中，虽然 department_id 上有索引，但是由于 hire_date 也参与了查询条件，且是一个范围查询，根据 MySQL 索引最左前缀原则，可能会导致后续的索引部分（如果有）失效或效率降低。</li>
+<li>不等于和 NULL 检查：!=, NOT IN, IS NULL, IS NOT NULL 等操作符可能导致索引失效或仅部分使用索引，因为这些操作通常需要扫描整个索引树。</li>
+</ul>
+</li>
+</ol>
 <h2 id="redis-怎么保证原子操作">redis 怎么保证原子操作</h2>
+<ul>
+<li>单线程模型：天然保证了简单命令的原子性。</li>
+<li>原子性命令：许多内置命令本身就是原子操作。</li>
+<li>事务（MULTI/EXEC）：将多个命令打包成一个事务，保证按顺序执行。</li>
+<li>Lua 脚本：在服务器端以原子方式执行复杂逻辑。</li>
+<li>分布式锁：通过锁机制协调多个客户端对共享资源的访问。</li>
+<li>乐观锁（WATCH/MULTI/EXEC）：通过监控键的变化来避免并发冲突。</li>
+</ul>
 <h2 id="redis-大-key-怎么处理，简单说">redis 大 key 怎么处理，简单说</h2>
+<ol>
+<li>设置过期时间</li>
+<li>逐步删除</li>
+<li>设计数据结构时考虑将大数据分散存储到多个较小的 key 中</li>
+<li>使用 redis-cli --bigkeys 命令，它可以快速扫描并报告数据库中最大的 key。</li>
+</ol>
 <h2 id="简单说，饭店老板餐馆-20-个桌子，设计用户点餐，怎么设计系统">简单说，饭店老板餐馆 20 个桌子，设计用户点餐，怎么设计系统</h2>
 <h2 id="购物车怎么实现">购物车怎么实现</h2>
 <h2 id="如果-2-个人一起点，怎么让两个人相互看到对方点的，">如果 2 个人一起点，怎么让两个人相互看到对方点的，</h2>
@@ -790,7 +892,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#jdk8-%E5%BC%80%E5%A7%8B%EF%BC%8Chashmap-%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%EF%BC%9F"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">jdk8 开始，hashmap 底层原理？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#mysql-%E6%9C%80%E4%BD%B3%E5%B7%A6%E5%8C%B9%E9%85%8D%E5%8E%9F%E5%88%99%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">mysql 最佳左匹配原则是什么？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#select-%E5%B9%B4%E9%BE%84%EF%BC%8C%E5%A7%93%E5%90%8D%EF%BC%8Cid-%EF%BC%8C-from-%E8%A1%A8-where-%E5%B9%B4%E9%BE%84-xx%EF%BC%8C%E8%B5%B0%E5%85%A8%E8%A1%A8%E6%89%AB%E6%8F%8F%E4%BA%86%E5%90%97%EF%BC%9F"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">select(年龄，姓名，id)， from 表 where 年龄&#x3D;xx，走全表扫描了吗？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%85%A2%E6%9F%A5%E8%AF%A2%E5%88%86%E6%9E%90%EF%BC%8C%E6%80%8E%E4%B9%88%E4%BC%98%E5%8C%96-sql%EF%BC%9F"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">慢查询分析，怎么优化 sql？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#SELECT-%E6%80%8E%E4%B9%88%E4%BC%98%E5%8C%96%EF%BC%9F"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">SELECT *怎么优化？</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E4%BC%98%E5%8C%96-SELECT-%EF%BC%9F"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">为什么需要优化 SELECT *？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96-SELECT-%EF%BC%9F"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text">如何优化 SELECT *？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%88%86%E9%A1%B5%E6%80%8E%E4%B9%88%E5%88%86%EF%BC%8C%E4%BB%80%E4%B9%88%E8%AF%AD%E5%8F%A5%EF%BC%9F"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">分页怎么分，什么语句？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#LIMIT-%E6%B7%B1%E5%88%86%E9%A1%B5%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">LIMIT 深分页怎么处理?</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#mysql-%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">mysql 隔离级别哪些？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BA%8B%E5%8A%A1-acid-%E7%89%B9%E6%80%A7%EF%BC%9F"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">事务 acid 特性？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86-%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%EF%BC%9F"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">反向代理 &#x2F; 正向代理？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#mysql-%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%EF%BC%9F"><span class="toc-nav-number">11.</span> <span class="toc-nav-text">mysql 存储引擎？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#InnoDB-%E8%A1%8C%E9%94%81%E5%AE%9E%E7%8E%B0%EF%BC%9F"><span class="toc-nav-number">12.</span> <span class="toc-nav-text">InnoDB 行锁实现？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%8E%9F%E7%90%86%EF%BC%9F"><span class="toc-nav-number">13.</span> <span class="toc-nav-text">数据库主从复制原理？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#redis-%E7%9A%84%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F%EF%BC%9F"><span class="toc-nav-number">14.</span> <span class="toc-nav-text">redis 的持久化方式？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%80%E5%8D%95%E8%AF%B4%EF%BC%8C%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%EF%BC%8C%E5%87%BB%E7%A9%BF%EF%BC%8C%E9%9B%AA%E5%B4%A9%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3"><span class="toc-nav-number">15.</span> <span class="toc-nav-text">简单说，缓存穿透，击穿，雪崩是什么，怎么解决</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number"></span> <span class="toc-nav-text">以下待整理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E9%99%A4%E4%BA%86-redis-%E8%BF%98%E6%9C%89%E4%BB%80%E4%B9%88%E6%96%B9%E6%B3%95"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">分布式锁除了 redis 还有什么方法</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%81%87%E5%A6%82%E6%9C%89%E4%B8%80%E7%BB%84%E6%95%B0%E6%8D%AE%EF%BC%8C%E6%9C%89%E5%BA%8F%E7%9A%84%EF%BC%8C%E5%A2%9E%E5%88%A0%E5%A4%9A%EF%BC%8C%E7%94%A8%E4%BB%80%E4%B9%88%E9%9B%86%E5%90%88"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">假如有一组数据，有序的，增删多，用什么集合</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#jvm-%E5%86%85%E5%AD%98"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">jvm 内存</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95%E5%93%AA%E5%87%A0%E7%A7%8D"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">垃圾回收算法哪几种</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BD%A0%E7%94%A8%E7%9A%84%E4%BB%80%E4%B9%88%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">你用的什么垃圾回收算法，为什么</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#threallocal-%E5%8E%9F%E7%90%86"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">threallocal 原理</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#ThreadLocalMap-%E9%98%B2%E6%AD%A2%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">ThreadLocalMap 防止内存泄漏</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#classloader-%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E4%BA%86%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">classloader 方法重写了会怎么样</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#springboot-%E7%94%A8%E5%88%B0%E4%BA%86%E5%93%AA%E4%BA%9B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9F"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">springboot 用到了哪些设计模式？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E4%B8%80%E8%88%AC%E7%94%A8%E5%9C%A8%E5%93%AA"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">工厂方法模式一般用在哪</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%80%E5%8D%95%E8%AF%B4%EF%BC%8Cmysql-%E6%85%A2%E6%9F%A5%E8%AF%A2%E5%88%86%E6%9E%90%E4%B8%BE%E4%BE%8B%E5%AD%90%EF%BC%8C%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E6%83%85%E5%86%B5"><span class="toc-nav-number">11.</span> <span class="toc-nav-text">简单说，mysql 慢查询分析举例子，索引失效情况</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#redis-%E6%80%8E%E4%B9%88%E4%BF%9D%E8%AF%81%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C"><span class="toc-nav-number">12.</span> <span class="toc-nav-text">redis 怎么保证原子操作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#redis-%E5%A4%A7-key-%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86%EF%BC%8C%E7%AE%80%E5%8D%95%E8%AF%B4"><span class="toc-nav-number">13.</span> <span class="toc-nav-text">redis 大 key 怎么处理，简单说</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%80%E5%8D%95%E8%AF%B4%EF%BC%8C%E9%A5%AD%E5%BA%97%E8%80%81%E6%9D%BF%E9%A4%90%E9%A6%86-20-%E4%B8%AA%E6%A1%8C%E5%AD%90%EF%BC%8C%E8%AE%BE%E8%AE%A1%E7%94%A8%E6%88%B7%E7%82%B9%E9%A4%90%EF%BC%8C%E6%80%8E%E4%B9%88%E8%AE%BE%E8%AE%A1%E7%B3%BB%E7%BB%9F"><span class="toc-nav-number">14.</span> <span class="toc-nav-text">简单说，饭店老板餐馆 20 个桌子，设计用户点餐，怎么设计系统</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%B4%AD%E7%89%A9%E8%BD%A6%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0"><span class="toc-nav-number">15.</span> <span class="toc-nav-text">购物车怎么实现</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A6%82%E6%9E%9C-2-%E4%B8%AA%E4%BA%BA%E4%B8%80%E8%B5%B7%E7%82%B9%EF%BC%8C%E6%80%8E%E4%B9%88%E8%AE%A9%E4%B8%A4%E4%B8%AA%E4%BA%BA%E7%9B%B8%E4%BA%92%E7%9C%8B%E5%88%B0%E5%AF%B9%E6%96%B9%E7%82%B9%E7%9A%84%EF%BC%8C"><span class="toc-nav-number">16.</span> <span class="toc-nav-text">如果 2 个人一起点，怎么让两个人相互看到对方点的，</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#redis-%E6%80%8E%E4%B9%88%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-nav-number">17.</span> <span class="toc-nav-text">redis 怎么设计数据结构</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#jdk8-%E5%BC%80%E5%A7%8B%EF%BC%8Chashmap-%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%EF%BC%9F"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">jdk8 开始，hashmap 底层原理？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#mysql-%E6%9C%80%E4%BD%B3%E5%B7%A6%E5%8C%B9%E9%85%8D%E5%8E%9F%E5%88%99%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">mysql 最佳左匹配原则是什么？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#select-%E5%B9%B4%E9%BE%84%EF%BC%8C%E5%A7%93%E5%90%8D%EF%BC%8Cid-%EF%BC%8C-from-%E8%A1%A8-where-%E5%B9%B4%E9%BE%84-xx%EF%BC%8C%E8%B5%B0%E5%85%A8%E8%A1%A8%E6%89%AB%E6%8F%8F%E4%BA%86%E5%90%97%EF%BC%9F"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">select(年龄，姓名，id)， from 表 where 年龄&#x3D;xx，走全表扫描了吗？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%85%A2%E6%9F%A5%E8%AF%A2%E5%88%86%E6%9E%90%EF%BC%8C%E6%80%8E%E4%B9%88%E4%BC%98%E5%8C%96-sql%EF%BC%9F"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">慢查询分析，怎么优化 sql？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#SELECT-%E6%80%8E%E4%B9%88%E4%BC%98%E5%8C%96%EF%BC%9F"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">SELECT *怎么优化？</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E4%BC%98%E5%8C%96-SELECT-%EF%BC%9F"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">为什么需要优化 SELECT *？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96-SELECT-%EF%BC%9F"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text">如何优化 SELECT *？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%88%86%E9%A1%B5%E6%80%8E%E4%B9%88%E5%88%86%EF%BC%8C%E4%BB%80%E4%B9%88%E8%AF%AD%E5%8F%A5%EF%BC%9F"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">分页怎么分，什么语句？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#LIMIT-%E6%B7%B1%E5%88%86%E9%A1%B5%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">LIMIT 深分页怎么处理?</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#mysql-%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">mysql 隔离级别哪些？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BA%8B%E5%8A%A1-acid-%E7%89%B9%E6%80%A7%EF%BC%9F"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">事务 acid 特性？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86-%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%EF%BC%9F"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">反向代理 &#x2F; 正向代理？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#mysql-%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%EF%BC%9F"><span class="toc-nav-number">11.</span> <span class="toc-nav-text">mysql 存储引擎？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#InnoDB-%E8%A1%8C%E9%94%81%E5%AE%9E%E7%8E%B0%EF%BC%9F"><span class="toc-nav-number">12.</span> <span class="toc-nav-text">InnoDB 行锁实现？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%8E%9F%E7%90%86%EF%BC%9F"><span class="toc-nav-number">13.</span> <span class="toc-nav-text">数据库主从复制原理？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#redis-%E7%9A%84%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F%EF%BC%9F"><span class="toc-nav-number">14.</span> <span class="toc-nav-text">redis 的持久化方式？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%80%E5%8D%95%E8%AF%B4%EF%BC%8C%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%EF%BC%8C%E5%87%BB%E7%A9%BF%EF%BC%8C%E9%9B%AA%E5%B4%A9%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3"><span class="toc-nav-number">15.</span> <span class="toc-nav-text">简单说，缓存穿透，击穿，雪崩是什么，怎么解决?</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E9%99%A4%E4%BA%86-redis-%E8%BF%98%E6%9C%89%E4%BB%80%E4%B9%88%E6%96%B9%E6%B3%95"><span class="toc-nav-number">16.</span> <span class="toc-nav-text">分布式锁除了 redis 还有什么方法?</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%81%87%E5%A6%82%E6%9C%89%E4%B8%80%E7%BB%84%E6%95%B0%E6%8D%AE%EF%BC%8C%E6%9C%89%E5%BA%8F%E7%9A%84%EF%BC%8C%E5%A2%9E%E5%88%A0%E5%A4%9A%EF%BC%8C%E7%94%A8%E4%BB%80%E4%B9%88%E9%9B%86%E5%90%88"><span class="toc-nav-number">17.</span> <span class="toc-nav-text">假如有一组数据，有序的，增删多，用什么集合?</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#jvm-%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84"><span class="toc-nav-number">18.</span> <span class="toc-nav-text">jvm 内存结构</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95%E5%93%AA%E5%87%A0%E7%A7%8D"><span class="toc-nav-number">19.</span> <span class="toc-nav-text">垃圾回收算法哪几种</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#threallocal-%E5%8E%9F%E7%90%86"><span class="toc-nav-number">20.</span> <span class="toc-nav-text">threallocal 原理</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#ThreadLocalMap-%E9%98%B2%E6%AD%A2%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F"><span class="toc-nav-number">21.</span> <span class="toc-nav-text">ThreadLocalMap 防止内存泄漏</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E6%9C%89%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E7%9A%84%E9%A3%8E%E9%99%A9%EF%BC%9F"><span class="toc-nav-number">21.1.</span> <span class="toc-nav-text">为什么会有内存泄漏的风险？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%EF%BC%9F"><span class="toc-nav-number">21.2.</span> <span class="toc-nav-text">如何防止内存泄漏？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#classloader-%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E4%BA%86%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7"><span class="toc-nav-number">22.</span> <span class="toc-nav-text">classloader 方法重写了会怎么样</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#springboot-%E7%94%A8%E5%88%B0%E4%BA%86%E5%93%AA%E4%BA%9B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9F"><span class="toc-nav-number">23.</span> <span class="toc-nav-text">springboot 用到了哪些设计模式？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E4%B8%80%E8%88%AC%E7%94%A8%E5%9C%A8%E5%93%AA%EF%BC%9F"><span class="toc-nav-number">24.</span> <span class="toc-nav-text">工厂方法模式一般用在哪？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%80%E5%8D%95%E8%AF%B4%EF%BC%8Cmysql-%E6%85%A2%E6%9F%A5%E8%AF%A2%E5%88%86%E6%9E%90%E4%B8%BE%E4%BE%8B%E5%AD%90%EF%BC%8C%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E6%83%85%E5%86%B5"><span class="toc-nav-number">25.</span> <span class="toc-nav-text">简单说，mysql 慢查询分析举例子，索引失效情况</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#redis-%E6%80%8E%E4%B9%88%E4%BF%9D%E8%AF%81%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C"><span class="toc-nav-number">26.</span> <span class="toc-nav-text">redis 怎么保证原子操作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#redis-%E5%A4%A7-key-%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86%EF%BC%8C%E7%AE%80%E5%8D%95%E8%AF%B4"><span class="toc-nav-number">27.</span> <span class="toc-nav-text">redis 大 key 怎么处理，简单说</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%80%E5%8D%95%E8%AF%B4%EF%BC%8C%E9%A5%AD%E5%BA%97%E8%80%81%E6%9D%BF%E9%A4%90%E9%A6%86-20-%E4%B8%AA%E6%A1%8C%E5%AD%90%EF%BC%8C%E8%AE%BE%E8%AE%A1%E7%94%A8%E6%88%B7%E7%82%B9%E9%A4%90%EF%BC%8C%E6%80%8E%E4%B9%88%E8%AE%BE%E8%AE%A1%E7%B3%BB%E7%BB%9F"><span class="toc-nav-number">28.</span> <span class="toc-nav-text">简单说，饭店老板餐馆 20 个桌子，设计用户点餐，怎么设计系统</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%B4%AD%E7%89%A9%E8%BD%A6%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0"><span class="toc-nav-number">29.</span> <span class="toc-nav-text">购物车怎么实现</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A6%82%E6%9E%9C-2-%E4%B8%AA%E4%BA%BA%E4%B8%80%E8%B5%B7%E7%82%B9%EF%BC%8C%E6%80%8E%E4%B9%88%E8%AE%A9%E4%B8%A4%E4%B8%AA%E4%BA%BA%E7%9B%B8%E4%BA%92%E7%9C%8B%E5%88%B0%E5%AF%B9%E6%96%B9%E7%82%B9%E7%9A%84%EF%BC%8C"><span class="toc-nav-number">30.</span> <span class="toc-nav-text">如果 2 个人一起点，怎么让两个人相互看到对方点的，</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#redis-%E6%80%8E%E4%B9%88%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-nav-number">31.</span> <span class="toc-nav-text">redis 怎么设计数据结构</span></a></li></ol>
         
         </div>
       </aside>
