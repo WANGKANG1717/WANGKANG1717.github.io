@@ -115,10 +115,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="https://wangkang1717.github.io/my/moon/">
+  <link rel="canonical" href="https://wangkang1717.github.io/my/面试总结20250423/">
   <title>
     
-      moon - dead or alive
+      面试总结20250423 - dead or alive
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -314,19 +314,19 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/newhome_bg.jpg');
-      --intro-header-background-image-url-post: url('/img/header_img/lml_bg.jpg');
-      --intro-header-background-image-url-page: url('//img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-post: url('/img/header_img/archive_bg3.jpg');
+      --intro-header-background-image-url-page: url('//img/header_img/archive_bg3.jpg');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/newhome_bg.jpg');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/lml_bg.jpg');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/archive_bg3.jpg');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/header_img/archive_bg3.jpg');
     }
 
     header.intro-header {
        /*post*/
         background-image: var(--intro-header-background-image-url-post);
-        /* background-image: url('/img/header_img/lml_bg.jpg'); */
+        /* background-image: url('/img/header_img/archive_bg3.jpg'); */
       
     }
 
@@ -351,14 +351,14 @@
           <div class="post-heading">
             <div class="tags">
               
-              <a class="tag" href="/tags/#随笔" title="随笔">随笔</a>
+              <a class="tag" href="/tags/#面试" title="面试">面试</a>
               
             </div>
-            <h1>moon</h1>
-            <h2 class="subheading">今夜我也文艺风😆</h2>
+            <h1>面试总结20250423</h1>
+            <h2 class="subheading"></h2>
             <span class="meta">
               Posted by WK on
-              2021-09-23
+              2025-04-23
             </span>
 
 
@@ -370,7 +370,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">0</span> In Total
+              Words <span class="post-count">164</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -432,20 +432,23 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <p><img src="moon.jpg" width="500" alt="moon.jpg"></img></p>
+        <h2 id="给一个无序数组，统计数组中-a-i-a-j-某个-k，且-i-j-的对数，要求时间复杂度小于-nlogn">给一个无序数组，统计数组中 a[i]+a[j]&gt;某个 k，且 i&lt;j 的对数，要求时间复杂度小于 nlogn</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">countPairs</span>(<span class="params">arr, k</span>) </span>&#123;</span><br><span class="line">  arr.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a - b);</span><br><span class="line">  <span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> left = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> right = arr.length - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">    <span class="keyword">if</span> (arr[left] + arr[right] &gt; k) &#123;</span><br><span class="line">      count += right - left;</span><br><span class="line">      right--;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      left++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="如何判断两个单向链表是否有交点，除了哈希表保存全部节点值">如何判断两个单向链表是否有交点，除了哈希表保存全部节点值</h2>
+<ol>
+<li>首先计算出 A，B 链表的长度</li>
+<li>将指针指向 A，B 相同长度的未知</li>
+<li>遍历一遍，找到第一个相交的点？有的话说明有交点，否则没有</li>
+</ol>
 
 
         <hr>
         <!-- Pager -->
         <ul class="pager">
           
-          <li class="previous">
-            <a href="/my/Gitalk配置/" data-toggle="tooltip" data-placement="top" title="Gitalk配置">&larr; Previous Post</a>
-          </li>
-          
           
           <li class="next">
-            <a href="/my/小记/" data-toggle="tooltip" data-placement="top" title="小记">Next Post &rarr;</a>
+            <a href="/my/面试总结20250421—2/" data-toggle="tooltip" data-placement="top" title="面试总结20250421—2">Next Post &rarr;</a>
           </li>
           
         </ul>
@@ -489,7 +492,7 @@
       repo: 'blog_comment',
       owner: 'WANGKANG1717',
       admin: 'WANGKANG1717',
-      id: 'Thu Sep 23 2021 19:08:33 GMT+0800', // Ensure uniqueness and length less than 50
+      id: 'Wed Apr 23 2025 09:45:25 GMT+0800', // Ensure uniqueness and length less than 50
       distractionFreeMode: false, // Facebook-like distraction free mode
       perPage: 10,
       pagerDirection: 'last',
@@ -542,7 +545,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="nav">none</ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%BB%99%E4%B8%80%E4%B8%AA%E6%97%A0%E5%BA%8F%E6%95%B0%E7%BB%84%EF%BC%8C%E7%BB%9F%E8%AE%A1%E6%95%B0%E7%BB%84%E4%B8%AD-a-i-a-j-%E6%9F%90%E4%B8%AA-k%EF%BC%8C%E4%B8%94-i-j-%E7%9A%84%E5%AF%B9%E6%95%B0%EF%BC%8C%E8%A6%81%E6%B1%82%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%B0%8F%E4%BA%8E-nlogn"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">给一个无序数组，统计数组中 a[i]+a[j]&gt;某个 k，且 i&lt;j 的对数，要求时间复杂度小于 nlogn</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E6%9C%89%E4%BA%A4%E7%82%B9%EF%BC%8C%E9%99%A4%E4%BA%86%E5%93%88%E5%B8%8C%E8%A1%A8%E4%BF%9D%E5%AD%98%E5%85%A8%E9%83%A8%E8%8A%82%E7%82%B9%E5%80%BC"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">如何判断两个单向链表是否有交点，除了哈希表保存全部节点值</span></a></li></ol>
         
         </div>
       </aside>
@@ -565,7 +568,7 @@
           </h5>
           <div class="tags">
             
-            <a class="tag" href="/tags/#随笔" title="随笔">随笔</a>
+            <a class="tag" href="/tags/#面试" title="面试">面试</a>
             
           </div>
         </section>
