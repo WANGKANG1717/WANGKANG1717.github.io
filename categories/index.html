@@ -213,17 +213,6 @@
           
           
           <li>
-            <a href="/categories/">
-              
-              CATEGORIES
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
             <a href="/about/">
               
               ABOUT
@@ -235,9 +224,9 @@
           
           
           <li>
-            <a href="/tags/">
+            <a href="/archive/">
               
-              TAGS
+              ARCHIVES
               
               
             </a>
@@ -246,9 +235,20 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/categories/">
               
-              ARCHIVES
+              CATEGORIES
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/tags/">
+              
+              TAGS
               
               
             </a>
@@ -403,9 +403,9 @@
       <!-- 标签云 -->
       <div id='tag_cloud' class="tags">
         
-        <a href="#技术" title="技术" rel="8">技术</a>
-        
         <a href="#随笔" title="随笔" rel="2">随笔</a>
+        
+        <a href="#技术" title="技术" rel="8">技术</a>
         
         <a href="#日记" title="日记" rel="3">日记</a>
         
@@ -422,6 +422,51 @@
       </div>
 
       <!-- 标签列表 -->
+      
+      <div class="one-tag-list">
+        <span class="fa fa-tag listing-seperator" id="随笔">
+          <span class="tag-text">随笔</span>
+        </span>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/my/小记/">
+            <h2 class="post-title">
+              小记
+            </h2>
+            
+            <h3 class="post-subtitle">
+              持续努力中。。
+            </h3>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/my/moon/">
+            <h2 class="post-title">
+              moon
+            </h2>
+            
+            <h3 class="post-subtitle">
+              今夜我也文艺风😆
+            </h3>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+      </div>
       
       <div class="one-tag-list">
         <span class="fa fa-tag listing-seperator" id="技术">
@@ -452,14 +497,10 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/my/IDEA切换maven仓库/">
+          <a href="/my/Linxu增删用户操作/">
             <h2 class="post-title">
-              IDEA切换maven仓库
+              Linxu增删用户操作
             </h2>
-            
-            <h3 class="post-subtitle">
-              阿里大法好
-            </h3>
             
           </a>
           <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
@@ -471,10 +512,14 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/my/Linxu增删用户操作/">
+          <a href="/my/IDEA切换maven仓库/">
             <h2 class="post-title">
-              Linxu增删用户操作
+              IDEA切换maven仓库
             </h2>
+            
+            <h3 class="post-subtitle">
+              阿里大法好
+            </h3>
             
           </a>
           <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
@@ -562,51 +607,6 @@
             <h2 class="post-title">
               随机数生成工具
             </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-      </div>
-      
-      <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="随笔">
-          <span class="tag-text">随笔</span>
-        </span>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/my/moon/">
-            <h2 class="post-title">
-              moon
-            </h2>
-            
-            <h3 class="post-subtitle">
-              今夜我也文艺风😆
-            </h3>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/my/小记/">
-            <h2 class="post-title">
-              小记
-            </h2>
-            
-            <h3 class="post-subtitle">
-              持续努力中。。
-            </h3>
             
           </a>
           <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
@@ -741,21 +741,6 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/my/2022-3-15小记/">
-            <h2 class="post-title">
-              2022/3/15小记
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
           <a href="/my/20220302小记/">
             <h2 class="post-title">
               2022/03/02小记
@@ -774,6 +759,21 @@
           <a href="/my/2022-4-16小记/">
             <h2 class="post-title">
               2022/4/16小记
+            </h2>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/my/2022-3-15小记/">
+            <h2 class="post-title">
+              2022/3/15小记
             </h2>
             
           </a>
@@ -860,9 +860,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/my/java集合/">
+          <a href="/my/java基础/">
             <h2 class="post-title">
-              java集合
+              java基础
             </h2>
             
           </a>
@@ -875,9 +875,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/my/java基础/">
+          <a href="/my/java集合/">
             <h2 class="post-title">
-              java基础
+              java集合
             </h2>
             
           </a>
@@ -995,21 +995,6 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/my/面试总结20250425/">
-            <h2 class="post-title">
-              面试总结20250425
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
           <a href="/my/面试总结20250421-2/">
             <h2 class="post-title">
               面试总结20250421—2
@@ -1040,6 +1025,21 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
+          <a href="/my/面试总结20250423-2/">
+            <h2 class="post-title">
+              面试总结20250423-2
+            </h2>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
           <a href="/my/面试总结20250423/">
             <h2 class="post-title">
               面试总结20250423
@@ -1055,9 +1055,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/my/面试总结20250423-2/">
+          <a href="/my/面试总结20250425/">
             <h2 class="post-title">
-              面试总结20250423-2
+              面试总结20250425
             </h2>
             
           </a>
@@ -1096,13 +1096,13 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/my/Lab-Lab0/">
+          <a href="/my/Lab-Lab1/">
             <h2 class="post-title">
-              Lab0
+              Lab1
             </h2>
             
             <h3 class="post-subtitle">
-              绘制一副图，要求有明确的主题
+              绘制三角形
             </h3>
             
           </a>
@@ -1115,13 +1115,13 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/my/Lab-Lab1/">
+          <a href="/my/Lab-Lab0/">
             <h2 class="post-title">
-              Lab1
+              Lab0
             </h2>
             
             <h3 class="post-subtitle">
-              绘制三角形
+              绘制一副图，要求有明确的主题
             </h3>
             
           </a>
