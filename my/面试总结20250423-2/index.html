@@ -210,12 +210,10 @@
 
           
           
-          
-          
           <li>
-            <a href="/categories/">
+            <a href="/archive/">
               
-              CATEGORIES
+              ARCHIVES
               
               
             </a>
@@ -234,6 +232,8 @@
           
           
           
+          
+          
           <li>
             <a href="/tags/">
               
@@ -246,9 +246,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/categories/">
               
-              ARCHIVES
+              CATEGORIES
               
               
             </a>
@@ -366,11 +366,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">29</span> Minutes
+              Estimated Reading Time <span class="post-count">41</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">8.3k</span> In Total
+              Words <span class="post-count">11.9k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -961,11 +961,392 @@ HashMap 通过键的 hashCode()方法计算哈希值，并通过(n - 1) &amp; ha
 <li>添加缓存等</li>
 </ol>
 <h1>简单说 redis 用过的数据结构和底层实现</h1>
+<ol>
+<li>字符串（String）：<br>
+底层实现：简单动态字符串（SDS）。SDS 是一种二进制安全的字符串实现，不仅保存了字符数组，还保存了字符数组的长度等信息，方便进行长度计算和修改操作。</li>
+<li>列表（List）：<br>
+底层实现：双端链表或压缩列表。在元素数量较少且内容较小时，Redis 使用压缩列表来节省空间；当列表变大时，转为使用双端链表以提高性能。</li>
+<li>集合（Set）：<br>
+底层实现：哈希表。通过哈希表保证集合中元素的唯一性，并支持快速的插入、删除和查找操作。</li>
+<li>有序集合（Sorted Set）：<br>
+底层实现：跳跃表（Skip List）和哈希表。跳跃表允许快速查询排序元素，而哈希表用于维护成员到分数的映射，以便快速更新分数。</li>
+<li>哈希（Hash）：<br>
+底层实现：哈希表或压缩列表。对于少量元素，Redis 可能使用压缩列表来减少内存使用；而对于较大的哈希，则使用哈希表来优化性能。</li>
+<li>位图（Bitmaps）：<br>
+实际上是字符串类型的特殊应用方式，可以将字符串看作是一个由二进制位组成的数组，适用于需要逐位操作的场景。</li>
+<li>HyperLogLog：<br>
+用于基数估计，即估算一个集合中不同元素的数量。虽然不是严格意义上的数据结构，但它提供了一种高效的方法来解决特定类型的问题。</li>
+</ol>
 <h1>list 怎么作为消息队列</h1>
+<ul>
+<li>入队（生产者）：可以使用 LPUSH 或 RPUSH 命令将消息添加到列表的一端。通常，生产者会使用 LPUSH 将新消息推送到列表的左侧。</li>
+<li>出队（消费者）：使用 RPOP 或 LPOP 从列表的另一端移除并获取消息。消费者通常会用 RPOP 来从列表右侧获取最新加入的消息。</li>
+<li>阻塞操作：如果列表为空且暂时没有可用消息时，您可以使用 BRPOP 或 BLPOP 进行阻塞等待，直到有新的消息进入队列或达到指定的超时时间。</li>
+</ul>
 <h1>redis 双写一致性问题，怎么解决的</h1>
+<p>Redis 双写一致性问题通常指的是在使用 Redis 作为缓存层时，如何保证缓存（Redis）和数据库（如 MySQL、PostgreSQL 等）之间的数据一致性。双写一致性问题是分布式系统中常见的挑战，尤其是在高并发场景下。</p>
+<p>以下是解决 Redis 双写一致性问题的常见方法：</p>
+<hr>
+<h3 id="1-先更新数据库，再更新缓存"><strong>1. 先更新数据库，再更新缓存</strong></h3>
+<p>这是最常见的做法之一：</p>
+<ul>
+<li><strong>步骤</strong>：
+<ol>
+<li>更新数据库。</li>
+<li>删除缓存中的旧数据（或直接更新缓存）。</li>
+</ol>
+</li>
+<li><strong>原因</strong>：
+<ul>
+<li>缓存是临时存储，优先保证数据库的数据是最新的。</li>
+<li>删除缓存后，下次访问时会重新从数据库加载最新数据到缓存中。</li>
+</ul>
+</li>
+<li><strong>优点</strong>：
+<ul>
+<li>实现简单。</li>
+<li>数据最终一致。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：
+<ul>
+<li>在高并发场景下，可能存在短暂的不一致窗口（例如，删除缓存后，另一个请求读取了旧的缓存数据）。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="2-先删除缓存，再更新数据库"><strong>2. 先删除缓存，再更新数据库</strong></h3>
+<p>另一种常见的策略：</p>
+<ul>
+<li><strong>步骤</strong>：
+<ol>
+<li>删除缓存中的旧数据。</li>
+<li>更新数据库。</li>
+<li>下次读取时，缓存未命中，从数据库加载最新数据并更新缓存。</li>
+</ol>
+</li>
+<li><strong>优点</strong>：
+<ul>
+<li>避免缓存中出现过期数据。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：
+<ul>
+<li>如果删除缓存后，更新数据库失败，会导致缓存缺失，且数据无法及时恢复。</li>
+<li>在高并发场景下，可能有其他请求在缓存被删除后但数据库更新前，读取到旧数据并将其写回缓存，导致缓存污染。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="3-延迟双删"><strong>3. 延迟双删</strong></h3>
+<p>一种改进方案，用于解决高并发下的缓存污染问题：</p>
+<ul>
+<li><strong>步骤</strong>：
+<ol>
+<li>删除缓存。</li>
+<li>更新数据库。</li>
+<li>延迟一段时间后，再次删除缓存。</li>
+</ol>
+</li>
+<li><strong>原因</strong>：
+<ul>
+<li>第二次删除缓存是为了防止其他线程在缓存被删除后，但数据库更新前，将旧数据重新写入缓存。</li>
+</ul>
+</li>
+<li><strong>优点</strong>：
+<ul>
+<li>能够有效减少缓存污染。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：
+<ul>
+<li>增加了操作复杂性。</li>
+<li>延迟时间需要根据业务场景进行调整。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="4-使用分布式锁"><strong>4. 使用分布式锁</strong></h3>
+<p>在高并发场景下，可以通过分布式锁来确保操作的顺序性：</p>
+<ul>
+<li><strong>步骤</strong>：
+<ol>
+<li>获取分布式锁。</li>
+<li>更新数据库。</li>
+<li>删除缓存。</li>
+<li>释放分布式锁。</li>
+</ol>
+</li>
+<li><strong>优点</strong>：
+<ul>
+<li>能够避免并发操作导致的数据不一致问题。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：
+<ul>
+<li>引入了额外的性能开销。</li>
+<li>分布式锁本身可能会成为瓶颈。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="5-订阅数据库变更事件"><strong>5. 订阅数据库变更事件</strong></h3>
+<p>利用数据库的变更日志（如 MySQL 的 Binlog 或 PostgreSQL 的 Logical Replication），实时同步数据到 Redis：</p>
+<ul>
+<li><strong>步骤</strong>：
+<ol>
+<li>数据库发生变更时，生成变更事件。</li>
+<li>消费变更事件，更新 Redis。</li>
+</ol>
+</li>
+<li><strong>优点</strong>：
+<ul>
+<li>数据库和缓存之间完全解耦。</li>
+<li>数据一致性较高。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：
+<ul>
+<li>实现复杂。</li>
+<li>需要引入额外的组件（如 Kafka、Debezium 等）。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="6-设置缓存过期时间"><strong>6. 设置缓存过期时间</strong></h3>
+<p>通过为缓存设置一个合理的过期时间，可以降低数据不一致的影响：</p>
+<ul>
+<li><strong>步骤</strong>：
+<ol>
+<li>写入数据库。</li>
+<li>写入缓存，并设置一个较短的 TTL（Time To Live）。</li>
+</ol>
+</li>
+<li><strong>优点</strong>：
+<ul>
+<li>实现简单。</li>
+<li>即使出现短暂不一致，缓存也会自动过期，重新从数据库加载最新数据。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：
+<ul>
+<li>不适合对一致性要求极高的场景。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="7-异步补偿机制"><strong>7. 异步补偿机制</strong></h3>
+<p>当发现缓存和数据库不一致时，通过异步任务进行修正：</p>
+<ul>
+<li><strong>步骤</strong>：
+<ol>
+<li>监控数据库和缓存的状态。</li>
+<li>发现不一致时，触发补偿任务，修复缓存数据。</li>
+</ol>
+</li>
+<li><strong>优点</strong>：
+<ul>
+<li>对系统的侵入性较小。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：
+<ul>
+<li>需要额外的监控和补偿逻辑。</li>
+<li>修复延迟可能导致短暂的不一致。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="总结-2"><strong>总结</strong></h3>
+<p>不同的解决方案适用于不同的场景，选择时需要综合考虑以下因素：</p>
+<ul>
+<li><strong>一致性要求</strong>：是否需要强一致性还是弱一致性？</li>
+<li><strong>性能需求</strong>：是否能接受因分布式锁或订阅机制带来的性能开销？</li>
+<li><strong>实现复杂度</strong>：团队是否有能力维护复杂的同步机制？</li>
+</ul>
+<p>常见的组合方式包括：</p>
+<ul>
+<li><strong>先更新数据库，再删除缓存</strong> + <strong>设置缓存过期时间</strong>。</li>
+<li><strong>延迟双删</strong> + <strong>分布式锁</strong>。</li>
+<li><strong>订阅数据库变更事件</strong> + <strong>异步补偿机制</strong>。</li>
+</ul>
+<p>根据业务需求选择合适的方案，能够在性能和一致性之间找到平衡点。</p>
 <h1>解释缓存穿透</h1>
+<p>缓存穿透是指查询一个不存在的数据（即数据库中没有该数据），由于缓存中也没有对应的记录，导致请求直接打到数据库上。如果这种请求频繁发生，可能会对数据库造成巨大的压力，甚至引发性能问题或服务崩溃。</p>
+<ul>
+<li>原因：
+<ul>
+<li>恶意攻击</li>
+<li>业务逻辑异常</li>
+<li>冷启动问题</li>
+</ul>
+</li>
+<li>影响：
+<ul>
+<li>数据库压力过大</li>
+<li>资源浪费</li>
+<li>用户体验差</li>
+</ul>
+</li>
+<li>解决方法：
+<ul>
+<li>缓存空值</li>
+<li>布隆过滤器</li>
+<li>请求合法性校验</li>
+<li>设置默认值</li>
+</ul>
+</li>
+</ul>
 <h1>说下布隆过滤器</h1>
+<p>布隆过滤器（Bloom Filter）是一种空间效率非常高的概率型数据结构，主要用于判断一个元素是否在一个集合中。它能够快速地告诉你某个元素“可能在集合中”或者“绝对不在集合中”。布隆过滤器的主要优点是它的空间效率和查询速度，但缺点是有一定的误报率（即可能会错误地报告某个元素存在于集合中，但实际上该元素并不存在），不过它不会产生漏报（如果布隆过滤器说某个元素不存在，则该元素一定不存在）。</p>
+<h3 id="布隆过滤器的工作原理">布隆过滤器的工作原理</h3>
+<ol>
+<li>
+<p><strong>初始化</strong>：布隆过滤器由一个长度固定的位数组（bit array）和一组哈希函数组成。位数组的初始状态为全 0。</p>
+</li>
+<li>
+<p><strong>添加元素</strong>：</p>
+<ul>
+<li>当向布隆过滤器中添加一个元素时，这个元素会被多个不同的哈希函数映射到位数组的不同位置。</li>
+<li>每个哈希函数计算出的结果对应到位数组中的一个索引位置，并将这些位置上的值设为 1。</li>
+</ul>
+</li>
+<li>
+<p><strong>查询元素</strong>：</p>
+<ul>
+<li>查询时，同样使用相同的哈希函数对目标元素进行哈希处理，检查所有对应的位数组索引位置上的值。</li>
+<li>如果有任何一个位置上的值为 0，则可以确定该元素绝对不在集合中。</li>
+<li>如果所有位置上的值都为 1，则认为该元素可能在集合中（注意这里说的是“可能”，因为有可能是由于哈希碰撞导致其他元素的操作使得这些位置被设置为 1）。</li>
+</ul>
+</li>
+</ol>
+<h3 id="特性">特性</h3>
+<ul>
+<li><strong>空间效率高</strong>：相比直接存储元素本身，布隆过滤器只需要存储少量的比特信息，因此非常适合内存有限的情况。</li>
+<li><strong>查询速度快</strong>：由于只需进行几次哈希计算和位操作，所以查询速度非常快。</li>
+<li><strong>存在误报</strong>：随着添加的元素增多，布隆过滤器出现误报的概率也会增加。但是通过调整位数组大小和哈希函数的数量，可以在一定程度上控制误报率。</li>
+<li><strong>无法删除元素</strong>：一旦元素被加入布隆过滤器后，就无法将其安全地移除，因为这可能导致其他元素的查询结果变为假阴性（false negative）。不过有一些变种设计允许近似的删除操作。</li>
+</ul>
+<h3 id="应用场景">应用场景</h3>
+<p>布隆过滤器非常适合用于以下场景：</p>
+<ul>
+<li><strong>缓存穿透问题</strong>：如之前提到的，它可以用来过滤掉那些数据库中不存在的数据请求，避免它们直接打到数据库上。</li>
+<li><strong>网络爬虫</strong>：用于检测哪些 URL 已经被爬取过，从而避免重复爬取。</li>
+<li><strong>垃圾邮件过滤</strong>：快速判断一封邮件地址是否在黑名单中。</li>
+<li><strong>大数据集的成员资格测试</strong>：例如，在海量数据中快速判断某条记录是否存在。</li>
+</ul>
 <h1>布隆过滤器的误判率怎么理解</h1>
+<p>布隆过滤器的<strong>误判率</strong>（False Positive Rate）是它的一个核心特性，也是理解布隆过滤器的关键概念。误判率指的是：当布隆过滤器报告某个元素“可能存在于集合中”时，实际上该元素并不存在的概率。</p>
+<h3 id="误判率的来源"><strong>误判率的来源</strong></h3>
+<p>布隆过滤器的误判率来源于以下几个方面：</p>
+<ol>
+<li>
+<p><strong>哈希碰撞</strong>：</p>
+<ul>
+<li>布隆过滤器通过多个哈希函数将元素映射到位数组的不同位置。由于哈希函数的输出空间有限，不同元素可能会被映射到相同的位置，这就是所谓的“哈希碰撞”。</li>
+<li>当多个元素共享相同的位数组索引时，这些位置上的值会被设置为 1。这可能导致查询一个不存在的元素时，所有相关位置都被设置为 1，从而造成误判。</li>
+</ul>
+</li>
+<li>
+<p><strong>位数组的填充程度</strong>：</p>
+<ul>
+<li>随着向布隆过滤器中添加的元素增多，位数组中的 1 的比例会逐渐增加。当位数组接近满时，误判率会显著上升。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="误判率的公式"><strong>误判率的公式</strong></h3>
+<p>布隆过滤器的误判率可以通过以下公式计算：</p>
+<p>$$P \approx (1 - e^{-kn/m})^k$$</p>
+<p>其中：</p>
+<ul>
+<li>( P )：误判率（False Positive Rate）。</li>
+<li>( k )：哈希函数的数量。</li>
+<li>( n )：插入到布隆过滤器中的元素数量。</li>
+<li>( m )：位数组的大小（比特数）。</li>
+</ul>
+<h4 id="简化公式">简化公式</h4>
+<p>为了方便理解和优化参数，通常会使用以下关系：</p>
+<ol>
+<li>
+<p><strong>最优的哈希函数数量</strong>：<br>
+$$k = \frac{m}{n} \ln(2)$$<br>
+即，哈希函数的数量 ( k ) 应该与位数组大小和元素数量的比例成正比。</p>
+</li>
+<li>
+<p><strong>误判率简化形式</strong>：<br>
+在选择最优的 ( k ) 时，误判率可以近似为：<br>
+$$P \approx (0.6185)^{m/n}$$<br>
+其中 ( m/n ) 是每个元素平均占用的比特数。</p>
+</li>
+</ol>
+<hr>
+<h3 id="误判率的影响因素"><strong>误判率的影响因素</strong></h3>
+<ol>
+<li>
+<p><strong>位数组大小 ( m )</strong>：</p>
+<ul>
+<li>位数组越大，误判率越低。</li>
+<li>位数组过小会导致误判率迅速上升。</li>
+</ul>
+</li>
+<li>
+<p><strong>插入的元素数量 ( n )</strong>：</p>
+<ul>
+<li>插入的元素越多，误判率越高。</li>
+<li>如果元素数量超过设计容量，误判率会显著增加。</li>
+</ul>
+</li>
+<li>
+<p><strong>哈希函数的数量 ( k )</strong>：</p>
+<ul>
+<li>哈希函数过多或过少都会导致误判率上升。</li>
+<li>最优的哈希函数数量需要根据 ( m ) 和 ( n ) 计算。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="如何控制误判率"><strong>如何控制误判率</strong></h3>
+<p>为了降低误判率，可以通过调整以下参数来优化布隆过滤器的设计：</p>
+<ol>
+<li>
+<p><strong>增大位数组大小 ( m )</strong>：</p>
+<ul>
+<li>更大的位数组意味着更多的存储空间，但可以有效降低误判率。</li>
+</ul>
+</li>
+<li>
+<p><strong>合理选择哈希函数数量 ( k )</strong>：</p>
+<ul>
+<li>使用最优的哈希函数数量公式 :<br>
+$$ k = \frac{m}{n} \ln(2) $$</li>
+</ul>
+</li>
+<li>
+<p><strong>限制插入元素的数量 ( n )</strong>：</p>
+<ul>
+<li>根据业务需求预估最大元素数量，并确保位数组大小足够容纳这些元素。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="实际案例"><strong>实际案例</strong></h3>
+<p>假设我们设计一个布隆过滤器，满足以下条件：</p>
+<ul>
+<li>位数组大小 ( m = 1,000,000 ) 比特。</li>
+<li>插入的元素数量 ( n = 100,000 )。</li>
+<li>使用最优的哈希函数数量 $$k = \frac{m}{n} \ln(2) \approx 7$$。</li>
+</ul>
+<p>根据公式，误判率 ( P ) 可以近似为：<br>
+$$P \approx (0.6185)^{m/n} = (0.6185)^{10} \approx 0.014$$<br>
+即误判率为 <strong>1.4%</strong>。</p>
+<hr>
+<h3 id="总结-3"><strong>总结</strong></h3>
+<p>布隆过滤器的误判率是其核心特性之一，虽然无法完全避免，但可以通过合理设计参数（如位数组大小、哈希函数数量）来控制在可接受范围内。在实际应用中，误判率的选择需要根据业务需求权衡，例如：</p>
+<ul>
+<li>对于缓存穿透问题，误判率可以稍微高一些（如 1%-5%），因为即使误判，也只是多访问一次数据库。</li>
+<li>对于垃圾邮件过滤等场景，误判率需要更低（如 0.1% 或更低），以减少误报对用户体验的影响。</li>
+</ul>
 
 
         <hr>
@@ -1071,7 +1452,7 @@ HashMap 通过键的 hashCode()方法计算哈希值，并通过(n - 1) &amp; ha
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">tcp 协议理解</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#TCP-%E4%B8%8E-UDP-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">TCP 与 UDP 的区别（重要）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E9%80%89%E6%8B%A9-TCP%EF%BC%8C%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E9%80%89-UDP"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">什么时候选择 TCP，什么时候选 UDP?</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#TCP-%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E4%BC%A0%E8%BE%93%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7%EF%BC%9F"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">TCP 如何保证传输的可靠性？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">三次握手和四次挥手具体说下</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">建立连接半连接状态是什么</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">说下连接断开 time_wait 状态</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-TIME-WAIT-%E7%8A%B6%E6%80%81%EF%BC%9F"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">什么是 TIME_WAIT 状态？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81-TIME-WAIT-%E7%8A%B6%E6%80%81%EF%BC%9F"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">为什么需要 TIME_WAIT 状态？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">说下 https 协议过程</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">说下 tls&#x2F;ssl 四次握手</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-Client-Hello%EF%BC%88%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%97%AE%E5%80%99%EF%BC%89"><span class="toc-nav-number">6.0.1.</span> <span class="toc-nav-text">1. Client Hello（客户端问候）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-Server-Hello%EF%BC%88%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%97%AE%E5%80%99%EF%BC%89"><span class="toc-nav-number">6.0.2.</span> <span class="toc-nav-text">2. Server Hello（服务器问候）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2%E4%B8%8E%E9%AA%8C%E8%AF%81"><span class="toc-nav-number">6.0.3.</span> <span class="toc-nav-text">3. 客户端密钥交换与验证</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#a-%E9%AA%8C%E8%AF%81%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E8%AF%81%E4%B9%A6"><span class="toc-nav-number">6.0.3.1.</span> <span class="toc-nav-text">a. 验证服务器的证书</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#b-%E7%94%9F%E6%88%90%E9%A2%84%E4%B8%BB%E5%AF%86%E9%92%A5-Pre-Master-Secret"><span class="toc-nav-number">6.0.3.2.</span> <span class="toc-nav-text">b. 生成预主密钥 (Pre-Master Secret)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#c-%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89%E5%8F%91%E9%80%81%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%81%E4%B9%A6"><span class="toc-nav-number">6.0.3.3.</span> <span class="toc-nav-text">c. （可选）发送客户端证书</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#d-%E5%8F%91%E9%80%81-%E2%80%9CClient-Key-Exchange%E2%80%9D-%E6%B6%88%E6%81%AF"><span class="toc-nav-number">6.0.3.4.</span> <span class="toc-nav-text">d. 发送 “Client Key Exchange” 消息</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#e-%E8%AE%A1%E7%AE%97%E4%BC%9A%E8%AF%9D%E5%AF%86%E9%92%A5"><span class="toc-nav-number">6.0.3.5.</span> <span class="toc-nav-text">e. 计算会话密钥</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2%E4%B8%8E%E5%AE%8C%E6%88%90%E6%8F%A1%E6%89%8B"><span class="toc-nav-number">6.0.4.</span> <span class="toc-nav-text">4. 服务器密钥交换与完成握手</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#a-%E8%A7%A3%E5%AF%86%E9%A2%84%E4%B8%BB%E5%AF%86%E9%92%A5"><span class="toc-nav-number">6.0.4.1.</span> <span class="toc-nav-text">a. 解密预主密钥</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#b-%E8%AE%A1%E7%AE%97%E4%BC%9A%E8%AF%9D%E5%AF%86%E9%92%A5"><span class="toc-nav-number">6.0.4.2.</span> <span class="toc-nav-text">b. 计算会话密钥</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#c-%E5%8F%91%E9%80%81-%E2%80%9CServer-Finished%E2%80%9D-%E6%B6%88%E6%81%AF"><span class="toc-nav-number">6.0.4.3.</span> <span class="toc-nav-text">c. 发送 “Server Finished” 消息</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#d-%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8F%91%E9%80%81-%E2%80%9CClient-Finished%E2%80%9D-%E6%B6%88%E6%81%AF"><span class="toc-nav-number">6.0.4.4.</span> <span class="toc-nav-text">d. 客户端发送 “Client Finished” 消息</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-%E5%8A%A0%E5%AF%86%E9%80%9A%E4%BF%A1%E5%BC%80%E5%A7%8B"><span class="toc-nav-number">6.0.5.</span> <span class="toc-nav-text">5. 加密通信开始</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-nav-number">6.0.6.</span> <span class="toc-nav-text">总结</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">这个过程有几次加密</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">linux 常用命令</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">服务器性能问题怎么定位</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">socket 网络编程了解吗</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">11.</span> <span class="toc-nav-text">hashmap 的理解</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">12.</span> <span class="toc-nav-text">链表和红黑树区别</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%B1%BB%E5%9E%8B"><span class="toc-nav-number">12.0.1.</span> <span class="toc-nav-text">1. 数据结构类型</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-nav-number">12.0.2.</span> <span class="toc-nav-text">2. 时间复杂度</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-%E7%A9%BA%E9%97%B4%E5%BC%80%E9%94%80"><span class="toc-nav-number">12.0.3.</span> <span class="toc-nav-text">3. 空间开销</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-nav-number">12.0.4.</span> <span class="toc-nav-text">4. 应用场景</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-%E5%B9%B3%E8%A1%A1%E4%B8%8E%E6%8E%92%E5%BA%8F"><span class="toc-nav-number">12.0.5.</span> <span class="toc-nav-text">5. 平衡与排序</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">13.</span> <span class="toc-nav-text">b+树怎么理解</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">14.</span> <span class="toc-nav-text">b+树和红黑树区别</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE"><span class="toc-nav-number">14.0.1.</span> <span class="toc-nav-text">1. 数据存储位置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E6%9F%A5%E6%89%BE%E6%95%88%E7%8E%87%E4%B8%8E%E8%8C%83%E5%9B%B4%E6%9F%A5%E8%AF%A2"><span class="toc-nav-number">14.0.2.</span> <span class="toc-nav-text">2. 查找效率与范围查询</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-%E5%B9%B3%E8%A1%A1%E6%9C%BA%E5%88%B6"><span class="toc-nav-number">14.0.3.</span> <span class="toc-nav-text">3. 平衡机制</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-2"><span class="toc-nav-number">14.0.4.</span> <span class="toc-nav-text">4. 应用场景</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93"><span class="toc-nav-number">14.0.5.</span> <span class="toc-nav-text">简单总结</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">15.</span> <span class="toc-nav-text">mysql 事务特点</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E5%8E%9F%E5%AD%90%E6%80%A7%EF%BC%88Atomicity%EF%BC%89"><span class="toc-nav-number">15.0.1.</span> <span class="toc-nav-text">1. 原子性（Atomicity）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E4%B8%80%E8%87%B4%E6%80%A7%EF%BC%88Consistency%EF%BC%89"><span class="toc-nav-number">15.0.2.</span> <span class="toc-nav-text">2. 一致性（Consistency）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-%E9%9A%94%E7%A6%BB%E6%80%A7%EF%BC%88Isolation%EF%BC%89"><span class="toc-nav-number">15.0.3.</span> <span class="toc-nav-text">3. 隔离性（Isolation）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-%E6%8C%81%E4%B9%85%E6%80%A7%EF%BC%88Durability%EF%BC%89"><span class="toc-nav-number">15.0.4.</span> <span class="toc-nav-text">4. 持久性（Durability）</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">16.</span> <span class="toc-nav-text">脏读、不可重复度、幻读</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">17.</span> <span class="toc-nav-text">幻读怎么解决</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">18.</span> <span class="toc-nav-text">间隙锁是哪个隔离级别用</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">19.</span> <span class="toc-nav-text">mysql 索引理解</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">20.</span> <span class="toc-nav-text">索引优化技巧</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">21.</span> <span class="toc-nav-text">慢查询怎么处理</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">22.</span> <span class="toc-nav-text">简单说 redis 用过的数据结构和底层实现</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">23.</span> <span class="toc-nav-text">list 怎么作为消息队列</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">24.</span> <span class="toc-nav-text">redis 双写一致性问题，怎么解决的</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">25.</span> <span class="toc-nav-text">解释缓存穿透</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">26.</span> <span class="toc-nav-text">说下布隆过滤器</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">27.</span> <span class="toc-nav-text">布隆过滤器的误判率怎么理解</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">tcp 协议理解</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#TCP-%E4%B8%8E-UDP-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">TCP 与 UDP 的区别（重要）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E9%80%89%E6%8B%A9-TCP%EF%BC%8C%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E9%80%89-UDP"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">什么时候选择 TCP，什么时候选 UDP?</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#TCP-%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E4%BC%A0%E8%BE%93%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7%EF%BC%9F"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">TCP 如何保证传输的可靠性？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">三次握手和四次挥手具体说下</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">建立连接半连接状态是什么</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">说下连接断开 time_wait 状态</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-TIME-WAIT-%E7%8A%B6%E6%80%81%EF%BC%9F"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">什么是 TIME_WAIT 状态？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81-TIME-WAIT-%E7%8A%B6%E6%80%81%EF%BC%9F"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">为什么需要 TIME_WAIT 状态？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">说下 https 协议过程</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">说下 tls&#x2F;ssl 四次握手</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-Client-Hello%EF%BC%88%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%97%AE%E5%80%99%EF%BC%89"><span class="toc-nav-number">6.0.1.</span> <span class="toc-nav-text">1. Client Hello（客户端问候）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-Server-Hello%EF%BC%88%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%97%AE%E5%80%99%EF%BC%89"><span class="toc-nav-number">6.0.2.</span> <span class="toc-nav-text">2. Server Hello（服务器问候）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2%E4%B8%8E%E9%AA%8C%E8%AF%81"><span class="toc-nav-number">6.0.3.</span> <span class="toc-nav-text">3. 客户端密钥交换与验证</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#a-%E9%AA%8C%E8%AF%81%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E8%AF%81%E4%B9%A6"><span class="toc-nav-number">6.0.3.1.</span> <span class="toc-nav-text">a. 验证服务器的证书</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#b-%E7%94%9F%E6%88%90%E9%A2%84%E4%B8%BB%E5%AF%86%E9%92%A5-Pre-Master-Secret"><span class="toc-nav-number">6.0.3.2.</span> <span class="toc-nav-text">b. 生成预主密钥 (Pre-Master Secret)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#c-%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89%E5%8F%91%E9%80%81%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%81%E4%B9%A6"><span class="toc-nav-number">6.0.3.3.</span> <span class="toc-nav-text">c. （可选）发送客户端证书</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#d-%E5%8F%91%E9%80%81-%E2%80%9CClient-Key-Exchange%E2%80%9D-%E6%B6%88%E6%81%AF"><span class="toc-nav-number">6.0.3.4.</span> <span class="toc-nav-text">d. 发送 “Client Key Exchange” 消息</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#e-%E8%AE%A1%E7%AE%97%E4%BC%9A%E8%AF%9D%E5%AF%86%E9%92%A5"><span class="toc-nav-number">6.0.3.5.</span> <span class="toc-nav-text">e. 计算会话密钥</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2%E4%B8%8E%E5%AE%8C%E6%88%90%E6%8F%A1%E6%89%8B"><span class="toc-nav-number">6.0.4.</span> <span class="toc-nav-text">4. 服务器密钥交换与完成握手</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#a-%E8%A7%A3%E5%AF%86%E9%A2%84%E4%B8%BB%E5%AF%86%E9%92%A5"><span class="toc-nav-number">6.0.4.1.</span> <span class="toc-nav-text">a. 解密预主密钥</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#b-%E8%AE%A1%E7%AE%97%E4%BC%9A%E8%AF%9D%E5%AF%86%E9%92%A5"><span class="toc-nav-number">6.0.4.2.</span> <span class="toc-nav-text">b. 计算会话密钥</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#c-%E5%8F%91%E9%80%81-%E2%80%9CServer-Finished%E2%80%9D-%E6%B6%88%E6%81%AF"><span class="toc-nav-number">6.0.4.3.</span> <span class="toc-nav-text">c. 发送 “Server Finished” 消息</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#d-%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8F%91%E9%80%81-%E2%80%9CClient-Finished%E2%80%9D-%E6%B6%88%E6%81%AF"><span class="toc-nav-number">6.0.4.4.</span> <span class="toc-nav-text">d. 客户端发送 “Client Finished” 消息</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-%E5%8A%A0%E5%AF%86%E9%80%9A%E4%BF%A1%E5%BC%80%E5%A7%8B"><span class="toc-nav-number">6.0.5.</span> <span class="toc-nav-text">5. 加密通信开始</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-nav-number">6.0.6.</span> <span class="toc-nav-text">总结</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">这个过程有几次加密</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">linux 常用命令</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">服务器性能问题怎么定位</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">socket 网络编程了解吗</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">11.</span> <span class="toc-nav-text">hashmap 的理解</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">12.</span> <span class="toc-nav-text">链表和红黑树区别</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%B1%BB%E5%9E%8B"><span class="toc-nav-number">12.0.1.</span> <span class="toc-nav-text">1. 数据结构类型</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-nav-number">12.0.2.</span> <span class="toc-nav-text">2. 时间复杂度</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-%E7%A9%BA%E9%97%B4%E5%BC%80%E9%94%80"><span class="toc-nav-number">12.0.3.</span> <span class="toc-nav-text">3. 空间开销</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-nav-number">12.0.4.</span> <span class="toc-nav-text">4. 应用场景</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-%E5%B9%B3%E8%A1%A1%E4%B8%8E%E6%8E%92%E5%BA%8F"><span class="toc-nav-number">12.0.5.</span> <span class="toc-nav-text">5. 平衡与排序</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">13.</span> <span class="toc-nav-text">b+树怎么理解</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">14.</span> <span class="toc-nav-text">b+树和红黑树区别</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE"><span class="toc-nav-number">14.0.1.</span> <span class="toc-nav-text">1. 数据存储位置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E6%9F%A5%E6%89%BE%E6%95%88%E7%8E%87%E4%B8%8E%E8%8C%83%E5%9B%B4%E6%9F%A5%E8%AF%A2"><span class="toc-nav-number">14.0.2.</span> <span class="toc-nav-text">2. 查找效率与范围查询</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-%E5%B9%B3%E8%A1%A1%E6%9C%BA%E5%88%B6"><span class="toc-nav-number">14.0.3.</span> <span class="toc-nav-text">3. 平衡机制</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-2"><span class="toc-nav-number">14.0.4.</span> <span class="toc-nav-text">4. 应用场景</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93"><span class="toc-nav-number">14.0.5.</span> <span class="toc-nav-text">简单总结</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">15.</span> <span class="toc-nav-text">mysql 事务特点</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E5%8E%9F%E5%AD%90%E6%80%A7%EF%BC%88Atomicity%EF%BC%89"><span class="toc-nav-number">15.0.1.</span> <span class="toc-nav-text">1. 原子性（Atomicity）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E4%B8%80%E8%87%B4%E6%80%A7%EF%BC%88Consistency%EF%BC%89"><span class="toc-nav-number">15.0.2.</span> <span class="toc-nav-text">2. 一致性（Consistency）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-%E9%9A%94%E7%A6%BB%E6%80%A7%EF%BC%88Isolation%EF%BC%89"><span class="toc-nav-number">15.0.3.</span> <span class="toc-nav-text">3. 隔离性（Isolation）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-%E6%8C%81%E4%B9%85%E6%80%A7%EF%BC%88Durability%EF%BC%89"><span class="toc-nav-number">15.0.4.</span> <span class="toc-nav-text">4. 持久性（Durability）</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">16.</span> <span class="toc-nav-text">脏读、不可重复度、幻读</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">17.</span> <span class="toc-nav-text">幻读怎么解决</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">18.</span> <span class="toc-nav-text">间隙锁是哪个隔离级别用</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">19.</span> <span class="toc-nav-text">mysql 索引理解</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">20.</span> <span class="toc-nav-text">索引优化技巧</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">21.</span> <span class="toc-nav-text">慢查询怎么处理</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">22.</span> <span class="toc-nav-text">简单说 redis 用过的数据结构和底层实现</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">23.</span> <span class="toc-nav-text">list 怎么作为消息队列</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">24.</span> <span class="toc-nav-text">redis 双写一致性问题，怎么解决的</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E5%85%88%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%8C%E5%86%8D%E6%9B%B4%E6%96%B0%E7%BC%93%E5%AD%98"><span class="toc-nav-number">24.0.1.</span> <span class="toc-nav-text">1. 先更新数据库，再更新缓存</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E5%85%88%E5%88%A0%E9%99%A4%E7%BC%93%E5%AD%98%EF%BC%8C%E5%86%8D%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-nav-number">24.0.2.</span> <span class="toc-nav-text">2. 先删除缓存，再更新数据库</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-%E5%BB%B6%E8%BF%9F%E5%8F%8C%E5%88%A0"><span class="toc-nav-number">24.0.3.</span> <span class="toc-nav-text">3. 延迟双删</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-%E4%BD%BF%E7%94%A8%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81"><span class="toc-nav-number">24.0.4.</span> <span class="toc-nav-text">4. 使用分布式锁</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-%E8%AE%A2%E9%98%85%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%98%E6%9B%B4%E4%BA%8B%E4%BB%B6"><span class="toc-nav-number">24.0.5.</span> <span class="toc-nav-text">5. 订阅数据库变更事件</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#6-%E8%AE%BE%E7%BD%AE%E7%BC%93%E5%AD%98%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4"><span class="toc-nav-number">24.0.6.</span> <span class="toc-nav-text">6. 设置缓存过期时间</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#7-%E5%BC%82%E6%AD%A5%E8%A1%A5%E5%81%BF%E6%9C%BA%E5%88%B6"><span class="toc-nav-number">24.0.7.</span> <span class="toc-nav-text">7. 异步补偿机制</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%80%BB%E7%BB%93-2"><span class="toc-nav-number">24.0.8.</span> <span class="toc-nav-text">总结</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">25.</span> <span class="toc-nav-text">解释缓存穿透</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">26.</span> <span class="toc-nav-text">说下布隆过滤器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-nav-number">26.0.1.</span> <span class="toc-nav-text">布隆过滤器的工作原理</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%89%B9%E6%80%A7"><span class="toc-nav-number">26.0.2.</span> <span class="toc-nav-text">特性</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-nav-number">26.0.3.</span> <span class="toc-nav-text">应用场景</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">27.</span> <span class="toc-nav-text">布隆过滤器的误判率怎么理解</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%AF%AF%E5%88%A4%E7%8E%87%E7%9A%84%E6%9D%A5%E6%BA%90"><span class="toc-nav-number">27.0.1.</span> <span class="toc-nav-text">误判率的来源</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%AF%AF%E5%88%A4%E7%8E%87%E7%9A%84%E5%85%AC%E5%BC%8F"><span class="toc-nav-number">27.0.2.</span> <span class="toc-nav-text">误判率的公式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%AE%80%E5%8C%96%E5%85%AC%E5%BC%8F"><span class="toc-nav-number">27.0.2.1.</span> <span class="toc-nav-text">简化公式</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%AF%AF%E5%88%A4%E7%8E%87%E7%9A%84%E5%BD%B1%E5%93%8D%E5%9B%A0%E7%B4%A0"><span class="toc-nav-number">27.0.3.</span> <span class="toc-nav-text">误判率的影响因素</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%A6%82%E4%BD%95%E6%8E%A7%E5%88%B6%E8%AF%AF%E5%88%A4%E7%8E%87"><span class="toc-nav-number">27.0.4.</span> <span class="toc-nav-text">如何控制误判率</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%9E%E9%99%85%E6%A1%88%E4%BE%8B"><span class="toc-nav-number">27.0.5.</span> <span class="toc-nav-text">实际案例</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%80%BB%E7%BB%93-3"><span class="toc-nav-number">27.0.6.</span> <span class="toc-nav-text">总结</span></a></li></ol></li></ol></li></ol>
         
         </div>
       </aside>
