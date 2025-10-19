@@ -121,7 +121,7 @@
       dead or alive
     
   </title>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 
 <!-- hack iOS CSS :active style -->
@@ -418,255 +418,6 @@
   <!-- top end -->
   
 
-  <a href="/my/面试总结20250425-2/">
-    <h2 class="post-title">
-      面试总结20250425-2
-    </h2>
-    <h3 class="post-subtitle">
-      
-    </h3>
-<!--     <div class="post-content-preview">
-      以下待完善
-想实现赛跑程序，每个用户是一个线程，10 个线程，启动之后，new thread 之后，十个按照顺序同时开始起跑怎么做
-juc coundownlatc 和 Barrier 的区别
-双亲委派机制
-类加载过程
-线程池的核心参数
-线程池什么情况下达到最大线程数
-hashmap 的底层存储结构
-hashmap 扩容流程
-能介绍一下 jvm 的内存模型吗
-老年代回收算法有哪些？
-cms ......
-    </div> -->
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by WK on
-    2025-04-25
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#面试" title="面试">面试</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/my/面试总结20250425/">
-    <h2 class="post-title">
-      面试总结20250425
-    </h2>
-    <h3 class="post-subtitle">
-      
-    </h3>
-<!--     <div class="post-content-preview">
-      问题背景
-假设我们有一个秒杀系统，用户 A 只能购买一件商品。
-如果没有分布式锁保护，在高并发场景下，可能会出现以下问题：
-
-用户 A 发起多个请求，由于并发处理，后端服务可能多次验证通过，导致用户 A 成功下单多次。
-数据库的唯一约束（如用户 ID 和订单状态）可能会延迟生效，导致短暂时间内产生重复订单。
-因此，需要一种机制来确保同一时间只有一个线程能够执行下单逻辑。
-
-基于分布式锁实现一......
-    </div> -->
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by WK on
-    2025-04-25
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#面试" title="面试">面试</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/my/面试总结20250423-2/">
-    <h2 class="post-title">
-      面试总结20250423-2
-    </h2>
-    <h3 class="post-subtitle">
-      
-    </h3>
-<!--     <div class="post-content-preview">
-      tcp 协议理解
-TCP 与 UDP 的区别（重要）
-
-是否面向连接：UDP 在传送数据之前不需要先建立连接。而 TCP 提供面向连接的服务，在传送数据之前必须先建立连接，数据传送结束后要释放连接。
-是否是可靠传输：远地主机在收到 UDP 报文后，不需要给出任何确认，并且不保证数据不丢失，不保证是否顺序到达。TCP 提供可靠的传输服务，TCP 在传递数据之前，会有三次握手来建立连接，而且在数......
-    </div> -->
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by WK on
-    2025-04-23
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#面试" title="面试">面试</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/my/面试总结20250423/">
-    <h2 class="post-title">
-      面试总结20250423
-    </h2>
-    <h3 class="post-subtitle">
-      
-    </h3>
-<!--     <div class="post-content-preview">
-      给一个无序数组，统计数组中 a[i]+a[j]&gt;某个 k，且 i&lt;j 的对数，要求时间复杂度小于 nlogn
-1234567891011121314151617function countPairs(arr, k) &#123;  arr.sort((a, b) =&gt; a - b);  let count = 0;  let left = 0;  let right = a......
-    </div> -->
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by WK on
-    2025-04-23
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#面试" title="面试">面试</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/my/面试总结20250421-2/">
-    <h2 class="post-title">
-      面试总结20250421-2
-    </h2>
-    <h3 class="post-subtitle">
-      
-    </h3>
-<!--     <div class="post-content-preview">
-      jdk8 开始，hashmap 底层原理？
-
-数据+链表+红黑树：每个 HashMap 实例都有一个默认大小的数组（桶），初始容量为 16，默认加载因子(load factor)为 0.75。当向 HashMap 中添加键值对时，首先根据键的哈希值计算出该键值对应该存放的桶的位置。如果发生哈希冲突（即多个键值对映射到同一个桶），则这些冲突的元素会以链表的形式链接起来。一旦某个桶中的链表长度超......
-    </div> -->
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by WK on
-    2025-04-21
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#面试" title="面试">面试</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/my/面试总结20250421/">
-    <h2 class="post-title">
-      面试总结20250421
-    </h2>
-    <h3 class="post-subtitle">
-      
-    </h3>
-<!--     <div class="post-content-preview">
-      假设系统访问量特别特别大，怎么办？
-
-服务器硬件
-搭建集群
-nginx 负载均衡
-缓存
-数据库优化
-熔断降级
-限流
-SQL 优化
-
-如果存储量超过设计的表存储怎么办？
-
-垂直：服务器硬件升级
-水平：分库分表、分区分片、集群
-数据压缩
-清理无用数据
-冷热分离
-定期备份
-做好监控预防
-
-JVM 内存结构和 GC 算法？
-JVM 内存结构
-
-程序计数器：记录当前线程执行的字节码指令地址
-虚拟机栈：......
-    </div> -->
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by WK on
-    2025-04-21
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#面试" title="面试">面试</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
   <a href="/my/操作系统/">
     <h2 class="post-title">
       操作系统
@@ -823,6 +574,262 @@ Python 程序由一系列语句组成，每条语句通常占一行。
 </div>
 <hr>
 
+<div class="post-preview">
+  
+  <!-- top start (article top hot config) -->
+  
+  <!-- top end -->
+  
+
+  <a href="/my/C-基础/">
+    <h2 class="post-title">
+      C++基础
+    </h2>
+    <h3 class="post-subtitle">
+      
+    </h3>
+<!--     <div class="post-content-preview">
+      C++的基本语法
+程序结构
+
+#include：用于引入头文件。
+main() 函数：程序入口点。
+注释：
+
+单行注释：//
+多行注释：/* ... */
+
+
+输入输出：
+
+输出：std::cout
+输入：std::cin
+
+
+命名空间：
+
+使用 namespace 组织代码。123namespace myNamespace &#123;    void foo() &#123; /* ........
+    </div> -->
+  </a>
+  
+  <p class="post-meta" style="margin: 10px 0;">
+    Posted by WK on
+    2025-04-10
+  </p>
+  <div class="tags">
+    
+    <a href="/tags/#C++" title="C++">C++</a>
+    
+  </div>
+  
+
+</div>
+<hr>
+
+<div class="post-preview">
+  
+  <!-- top start (article top hot config) -->
+  
+  <!-- top end -->
+  
+
+  <a href="/my/类加载机制/">
+    <h2 class="post-title">
+      类加载机制
+    </h2>
+    <h3 class="post-subtitle">
+      
+    </h3>
+<!--     <div class="post-content-preview">
+      类加载机制
+Java的类加载机制是JVM的核心功能之一，负责将字节码文件（.class文件）加载到内存中，并对其进行验证、准备、解析和初始化，最终形成可以被虚拟机直接使用的Java类。
+一、类加载的过程
+类加载分为以下几个阶段：加载、验证、准备、解析、初始化。这些阶段通常是按顺序进行的，但某些阶段可能会交叉进行。
+
+
+加载（Loading）
+
+任务：
+
+将类的.class文件从磁盘或其他来源......
+    </div> -->
+  </a>
+  
+  <p class="post-meta" style="margin: 10px 0;">
+    Posted by WK on
+    2025-04-10
+  </p>
+  <div class="tags">
+    
+    <a href="/tags/#java" title="java">java</a>
+    
+  </div>
+  
+
+</div>
+<hr>
+
+<div class="post-preview">
+  
+  <!-- top start (article top hot config) -->
+  
+  <!-- top end -->
+  
+
+  <a href="/my/java垃圾回收机制/">
+    <h2 class="post-title">
+      java垃圾回收机制
+    </h2>
+    <h3 class="post-subtitle">
+      
+    </h3>
+<!--     <div class="post-content-preview">
+      垃圾回收机制
+Java 的垃圾回收机制（Garbage Collection, GC）是 Java 虚拟机（JVM）的核心功能之一，旨在自动管理内存，减少开发人员手动管理内存的工作，同时避免内存泄漏和内存溢出等问题。
+一、垃圾回收的目标
+
+回收无用对象：释放被废弃对象占用的堆内存。
+提高内存利用率：通过整理内存碎片，使内存分配更加高效。
+简化开发：开发者无需手动管理内存，专注于业务逻辑。
+
+......
+    </div> -->
+  </a>
+  
+  <p class="post-meta" style="margin: 10px 0;">
+    Posted by WK on
+    2025-04-10
+  </p>
+  <div class="tags">
+    
+    <a href="/tags/#java" title="java">java</a>
+    
+  </div>
+  
+
+</div>
+<hr>
+
+<div class="post-preview">
+  
+  <!-- top start (article top hot config) -->
+  
+  <!-- top end -->
+  
+
+  <a href="/my/JVM内存区域/">
+    <h2 class="post-title">
+      JVM内存区域
+    </h2>
+    <h3 class="post-subtitle">
+      
+    </h3>
+<!--     <div class="post-content-preview">
+      JVM的内存区域
+线程私有的：程序计数器、虚拟机栈、本地方法栈
+线程共享的：堆、方法区、直接内存 (非运行时数据区的一部分)
+程序计数器（Program Counter Register）
+每一个线程都有它自己的程序计数器，这是一个非常小的内存空间，用于记录当前线程执行字节码的位置。如果线程正在执行的是一个Java方法，这个计数器记录的是正在执行的虚拟机字节码指令的地址；如果是Native方......
+    </div> -->
+  </a>
+  
+  <p class="post-meta" style="margin: 10px 0;">
+    Posted by WK on
+    2025-04-10
+  </p>
+  <div class="tags">
+    
+    <a href="/tags/#java" title="java">java</a>
+    
+  </div>
+  
+
+</div>
+<hr>
+
+<div class="post-preview">
+  
+  <!-- top start (article top hot config) -->
+  
+  <!-- top end -->
+  
+
+  <a href="/my/TheadLocal/">
+    <h2 class="post-title">
+      TheadLocal
+    </h2>
+    <h3 class="post-subtitle">
+      
+    </h3>
+<!--     <div class="post-content-preview">
+      并发编程 - ThreadLocal
+ThreadLocal 是 Java 提供的一个线程本地存储（Thread-Local Storage）机制，它允许每个线程拥有自己的变量副本，从而实现线程隔离，避免多线程环境下的竞争问题。
+1. ThreadLocal 的作用
+
+线程隔离：每个线程可以独立访问自己的变量副本，不会影响其他线程。
+避免同步：由于变量是线程私有的，无需加锁（如 synchr......
+    </div> -->
+  </a>
+  
+  <p class="post-meta" style="margin: 10px 0;">
+    Posted by WK on
+    2025-04-09
+  </p>
+  <div class="tags">
+    
+    <a href="/tags/#java" title="java">java</a>
+    
+  </div>
+  
+
+</div>
+<hr>
+
+<div class="post-preview">
+  
+  <!-- top start (article top hot config) -->
+  
+  <!-- top end -->
+  
+
+  <a href="/my/java并发编程/">
+    <h2 class="post-title">
+      java并发编程
+    </h2>
+    <h3 class="post-subtitle">
+      
+    </h3>
+<!--     <div class="post-content-preview">
+      并发编程
+1. 并发基础
+(1) 进程与线程
+
+进程：操作系统分配资源的基本单位，每个进程都有独立的内存空间。
+线程：进程中的一条执行路径，是 CPU 调度的基本单位，线程共享进程的资源。
+
+(2) 并发与并行
+
+并发（Concurrency）：多个任务在同一时间段内交替执行。
+并行（Parallelism）：多个任务在同一时刻同时执行（通常需要多核 CPU 支持）。
+
+2. 创建线程的方式......
+    </div> -->
+  </a>
+  
+  <p class="post-meta" style="margin: 10px 0;">
+    Posted by WK on
+    2025-04-09
+  </p>
+  <div class="tags">
+    
+    <a href="/tags/#java并发编程" title="java并发编程">java并发编程</a>
+    
+  </div>
+  
+
+</div>
+<hr>
+
 
   <!-- Pager -->
   <ul class="pager">
@@ -947,10 +954,6 @@ Python 程序由一系列语句组成，每条语句通常占一行。
     
     
     
-    <a href="/tags/#面试" title="面试" rel="6">面试</a>
-    
-    
-    
     <a href="/tags/#实验" title="实验" rel="8">实验</a>
     
     
@@ -1018,24 +1021,24 @@ Python 程序由一系列语句组成，每条语句通常占一行。
 <div class="widget">
   <ul>
     
-    <a href="my/%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%9320250425-2/">
-      <li>面试总结20250425-2</li>
+    <a href="my/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+      <li>操作系统</li>
     </a>
     
-    <a href="my/%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%9320250425/">
-      <li>面试总结20250425</li>
+    <a href="my/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+      <li>计算机网络</li>
     </a>
     
-    <a href="my/%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%9320250423-2/">
-      <li>面试总结20250423-2</li>
+    <a href="my/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/">
+      <li>python高级特性</li>
     </a>
     
-    <a href="my/%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%9320250423/">
-      <li>面试总结20250423</li>
+    <a href="my/python%E5%9F%BA%E7%A1%80/">
+      <li>python基础</li>
     </a>
     
-    <a href="my/%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%9320250421-2/">
-      <li>面试总结20250421-2</li>
+    <a href="my/C-%E5%9F%BA%E7%A1%80/">
+      <li>C++基础</li>
     </a>
     
   </ul>
@@ -1064,7 +1067,7 @@ Python 程序由一系列语句组成，每条语句通常占一行。
 
 <h5><a href="/archives/">archives</a></h5>
 <div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2025/04/">April 2025</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2023/05/">May 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2023/03/">March 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2022/04/">April 2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2022/03/">March 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2022/02/">February 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/12/">December 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/11/">November 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/10/">October 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/09/">September 2021</a><span class="archive-list-count">8</span></li></ul>
+  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2025/04/">April 2025</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2023/05/">May 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2023/03/">March 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2022/04/">April 2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2022/03/">March 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2022/02/">February 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/12/">December 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/11/">November 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/10/">October 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/09/">September 2021</a><span class="archive-list-count">8</span></li></ul>
 </div>
 
 
